@@ -1,0 +1,88 @@
+Fängt mit Traum an, Anfangswelt, grüne Wiesen, leer. 
+Mehrere Wege(1-2 Weggabelungen), beschildert, MC weigert sich aber, in eine andere Richtung als dem Ausgang zu gehen ("Der Ausgang ist im Norden"). Vllt am Ende starten.
+Ein Rätsel, wo MC die Lösung murmelt (weil er jeden Tag den selben Traum hat).
+Nach dem Lösen öffnet sich der Weg zu einer Sprechblase, in der man MC+Bett (keine Umgebung o.Ä.) sieht. MC geht hinein, verschmilzt mit Sprechblasen-MC.
+
+Er wacht in seinem Zimmer auf, Morgensonne scheint rein.
+Er putzt Zähne, isst Toast, holt seine Tasche. (Cutscene oder Gameplay...)
+Vor der Tür: er murmelt "Ich geh dann mal..." (demotivert ausatmen)
+Geht nach draußen, Haus ist Hochhaus, man ist direkt am Eingang. Vor Eingang direkt Bürgersteig und Straße.
+Leer, grau, dreckig, Ratten.
+man geht nach rechts über einen Bürgersteig oder direkt auf die Straße.
+Vor dem ersten Schritt auf die Straße hört man Hupen, dann Reifenquietschen
+Man wird von einem Auto überfahren.
+
+Exakt gleicher Traum,( diesmal ganz von vorne).
+MC (panik, weinerisch): "HÄ WAS NEIN WAS IST PASSIERT?!?".
+MC (weinend): "ich bin nicht..." (leise) "gestorben" (normallaut) "... oder?"
+MC (stark weinend, laut): "NEEEEIIIINN!!"
+MC (panik): "Was soll ich machen?!?"
+MC weint.
+Man geht wieder straight zum Ende (weinend, manchmal in panik). Ließt Schilder weinend vor. 
+Löst das Rätsel weinend.
+Wischt sich die Tränen aus den Augen, sagt: "Dann wach ich mal auf..."
+Geht in die Sprechblase. Sprechblase ist aber leer.
+
+Loop 2: 
+MC schaut sich um.
+MC (verwirrt): "Was?"
+MC (verwirrt, weinend): "Wieso wach ich nicht auf??"
+MC (panik): "Kann ich nie wieder aufwachen???"
+MC (weinend): "bitte nicht!"
+Alles wie beim ersten Loop, liest die Schilder nicht mehr richtig vor.
+Vor Betreten der Sprechblase: MC: "please..."
+
+Loop 3:
+MC schaut sich um.
+MC weint.
+MC bemerkt andere Person, Drem.
+ab jetzt redet MC auch:
+D: Hallo! Brauchst du Hilfe?
+R: H- H- Ha- (leise) llo.
+D: Du kannst ruhig lauter reden, ich tue nichts. (irgendeine pose einnehmen)
+R: Ich...
+MC fängt an zu weinen.
+D: Fang nicht an zu weinen. Komm, ich helf dir beim Aufwachen.
+MC schaut auf, wischt tränen aus Augen.
+R: D- (leise) danke.
+D (geht zu R): Kein Problem, verlass dich auf mich. Folg mir einfach!
+
+D hat Musiknoten über dem Kopf, geht 2 Felder voraus. MC folgt ohne zu weinen. [Kann nicht rückwärts gehen.]
+D zwischendrin: Ich bin übrigens Drem.
+R (leise): Ich bi-
+D: Weiter geht's!
+R: ...
+
+D löst für einen das Rätsel, summt dabei die Lösung. (Weil er die gleichen Erinnerungen hat)
+D: Sooo, diesmal sollte es gehen.
+R: A- aber-
+D: Na los Rembry, du machst das ja nicht zum ersten mal!
+R: ...
+Sprechblase hat diesmal auch MC+Bett.
+MC geht rein, D auch.
+Während D reinläuft (frühstens nach 2tem Schritt) fade out
+
+
+Krankenhaus, Zimmer mit mehreren Betten, sonst alle Leer:
+MC wacht auf, Mutter sitzt auf dem Stuhl
+M: R, du bist wach! Ich bin so froh, dass dir nichts passiert ist! Ich hol schnell den Doktor!
+Mutter verlässt Zimmer. 
+R: ...
+Mutter kommt mit Arzt wieder.
+A: Hallo R. Laut meinem Bericht wurdest du von einem Auto erfasst. Bis auf ein paar Kratzer hast du aber keinerei Verletzungen. Da hattest du aber sehr viel Glück.
+M: Das Auto hat dich wohl nur leicht berührt!
+A: Ich schicke gleich eine Krankenschwester hierher. Sie untersucht dich noch ein letztes Mal und dann kannst du wieder nach Hause.
+Arzt geht raus.
+M: Ich war so besorgt! Als ich die Nachricht bekommen habe, bin ich direkt zu dir gekommen.
+R: ...
+MC fängt an zu weinen.
+M: Keine Sorge, das war bestimmt ein großer Schock für dich. Jetzt ist alles wieder gut.
+MC weint weiter, fade out.
+
+Zu Hause:
+Vor Rs Schlafzimmer
+M: Ich hab die Schule schon benachrichtigt, du musst morgen also nicht raus. Dann gute Nacht mein Schatzi!
+[Wenn geht ein Gute-Nacht-Kuss]
+R (normal leise): Gute Nacht.
+
+R geht in Zimmer in Bett. Kann aber nocht einschlafen. Läuft grundlos im Zimmer rum. Geht dann wieder ins Bett. Schläft dann wieder ein.

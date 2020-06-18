@@ -1,0 +1,92 @@
+allgemein:
+2D
+halbwegs-von-oben-perspektive
+pixelart
+blockartig
+bewegung blockartig (besser für rätsel)
+mc sagt nichts, aber hat antwortmöglichkeiten; mc will was sagen, wird aber immer unterbrochen
+autosave nach jedem halbwegs interessantem encounter (oder nach jedem screenwechsel)
+
+name:
+dream, friend, help, reality, blur, accepting
+Helping a Dreaming Friend
+Help for a Dreamy Friend
+Help of a Dreaming Friend
+>>Friends in Dreams
+Friends in Dream & Reality
+Accepting the Help of a Dreaming Friend
+Syncing Dream and Reality
+[Eyes of the Sky
+Blue Eyes - Stolen Sky]
+
+engine: [unity, unreal(meh),] godot
+
+Hauptthema: Träume und Albträume, Verschwimmen von Traum und Realität
+
+
+Konflikte:
+>>Über vergangene Erinnerungen hinwegkommen
+Ziele (nicht) erreichen
+>>Angst, nach draußen zu gehen: schafft es vllt nur nach draußen zu gehen mit unsichtbaren freund, der einem gut zuredet
+>>Ängste allgemein
+-> eventuell später unklar, ob der unsichtbare vllt wirklich existiert 
+
+
+storyelemente:
+immer, wenn man einschläft, ist man in einer anderen Traumwelt
+auch Passagen in der Realität
+Träume beeinflussen Realität (z.b. in zahnradwelt connected man große zahnräde, wenn man aufwacht, ist der toaster wieder heile)
+vllt unsichtbaren freund, den man in traumwelt auch sieht/befreien muss, hilft einem in der realität
+MC will unsichtbaren freund ignorieren, weil er nicht glaubt, dass er echt ist
+
+
+themes:
+zahnräder
+japanische schule
+dunkle fliegende inseln
+brückenwelt
+höhle
+natur, große bäume
+züge
+spielkarten
+schnee
+
+
+charaktere:
+menschlicher MC -> geschlechtsneutral, braune haare, blaue Augen( -> Augen des Himmels?)
+
+nebensächliche charaktere:
+jump'n'run master, MC kann ihm vllt. mal helfen
+starwatcher
+roboter
+loner
+
+
+gameplay:
+(leichte) rätsel
+pseudo-kämpfe á la undertale
+brille, mit der man versteckte sachen sieht
+mit richtigem timing durch einen gang gehen
+gebiet(z.b. haus) durchsuchen, versteckte hebel finden, die versteckte gänge öffnen etc.
+komme nicht vom weg ab
+aufgezeichneter weg geht scheinbar durch wand -> wand ist durchlässig
+bissl erkunden
+
+
+rätsel:
+richtige schalterpos. durch hören
+für minecart richtigen weg mit schaltern machen
+knopf haben, der etwas öffnet, man hat aber nicht genug zeit, um dort hin zu gelangen, man muss irgendwie schummeln
+über einen brüchigen pfad die richtige route nehmen, route ist dann anders zu bekommen
+richtige dialogoptionen
+labyrinth, aber mit clue, was der richtige weg ist
+"redstone rätsel"
+künstliche sternendecke, manche sterne beweglich, man muss sternenbilder erstellen
+4 oder so elemente auf richtige stellen setzen
+sliding puzzle(eis)
+
+alles obrige in verschiedenen schwierigkeitsgraden
+
+
+nebensächliches:
+man bekommt superkraft und stirbt damit
