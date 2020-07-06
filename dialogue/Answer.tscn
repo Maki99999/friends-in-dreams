@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://fonts/font_normal01.tres" type="DynamicFont" id=1]
+[ext_resource path="res://dialogue/background.png" type="Texture" id=2]
+
+[node name="Answer" type="Control"]
+margin_right = 118.0
+margin_bottom = 98.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="NinePatchRect" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -24.0
+margin_bottom = -2.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 32, 16 )
+patch_margin_left = 15
+patch_margin_top = 7
+patch_margin_right = 15
+patch_margin_bottom = 7
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 4
+custom_constants/margin_top = 4
+custom_constants/margin_left = 4
+custom_constants/margin_bottom = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Background/MarginContainer"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 114.0
+margin_bottom = 18.0
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Das ist [wave]korrekt[/wave]."
+text = "Das ist korrekt."

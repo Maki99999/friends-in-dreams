@@ -1,0 +1,34 @@
+Wann?
+speichern:
+Nach einmaligen Dialogen
+Nach Cutscenes
+Nach Betreten einer neuen Area
+beim Beenden
+vor betreten einer area
+
+laden:
+Hauptmenü
+beim betreten einer alten area
+
+
+Was?
+Einstellungen (-> komplett separat!)
+Game Version
+MC Position
+aktuelle Area:
+- szenendatei der area
+- Status Dialogue
+- Status Cutscenes
+- Status ItemsInInventory
+- Status ItemsInWorld
+- Status Rätsel (gelöst oder teilweise oder nicht)
+
+
+Wo?
+JSON-File
+
+
+Wie?
+Alles, was etwas speichert, in eine Gruppe stecken
+diese haben dann save- und load-Methoden
+save-methode gibt dictionary + einzigartige id (manuell erstellen) -> daraus dann ein dictionary-dictionary machen, load bekommt dann dictionay-dictionary

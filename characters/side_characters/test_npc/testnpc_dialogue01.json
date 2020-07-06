@@ -1,0 +1,26 @@
+{
+  "Start": {
+    "char_name": "Test NPC",
+    "text": "Hallo. Dies ist ein Test-Text der Extraklasse mit [wave freq=20]bb|code[/wave].",
+	"face": "testnpc_face00.png",
+	"sound": "normal",
+	"sound_pitch": 0.3,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": ["Zweites"]
+  },
+  "Zweites": {
+    "char_name": "Test NPC",
+    "text": "Zweiter Text, wieder mit [wave freq=20]bb|code[/wave].",
+	"sound": "normal",
+	"sound_pitch": 0.77,
+	"sound_pitch_randomness": 0.4,
+	"type": "branching",
+	"next": ["Zweites", "Ende"],
+	"answers": ["Wiederholen", "Bitte Ende"]
+  },
+  "Ende": {
+	"type": "execute",
+	"function": "test_dialogue_function"
+  }
+}

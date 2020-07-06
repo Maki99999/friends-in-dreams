@@ -1,0 +1,10 @@
+{
+  "Start": {
+    "char_name": "Rembry",
+    "text": "Falsche Richtung.",
+	"sound": "normal",
+	"sound_pitch": 1.2,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal"
+  }
+}

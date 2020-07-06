@@ -1,0 +1,53 @@
+Face
+Typegeräusche
+Aufrufen von Funktionen
+
+MC immer als Referenz gespeichert
+Beim Starten wir der Gesprächspartner mit eventuell anderen Gesprächspartnern übergeben + ob sie nach dem gespräch befreit werden sollen
+-> mit gesprächspartner ist gemeint die referenzen zu den gesichtsbildern
+"Start" ist startnode
+
+
+Text:
+bbcode handlet Texteffekte, Farben
+
+
+Textnode:
+hat:
+id (/name der node)
+char_name (für die zuordnung zu den gesichts-bildern)
+text (max. 2 zeilen)
+face (leer/id/name)
+sound (id/name)
+sound_pitch (tonhöhe in float)
+sound_pitch_randomness (um wie viel random float die tonhöhe nach oben/untern geht)
+type (siehe unten)
+next (liste der ids der nächsten knoten, nur bei answers mehrere, kann auch leer sein (ende des gesprächs))
+answers (string-liste mit den antwortmöglichkeiten, mind. 1 element groß)
+function (string der funktion)
+
+
+types:
+- normal (nichts hinzugefügtes)
+- branching (next nodes, answer strings)
+- execute (hat nur function und next)
+
+
+dialogueStart
+-> MC (+ vllt andere bestimmte npcs) freezen (für jedes element einer gruppe (cutscene-freeze-gruppe) methode aufrufen, in der auf ein befreiungssignal gewartet wird) <- MC immer als erstes freezen, damit nicht aus versehen noch ein dialog gestartet werden kann
+-> alles resetten (keine überreste von vorheriger konversation)
+-> textbox erscheinen lassen
+-> erste node behandeln
+
+letzte Node abgearbeitet
+-> textbox schließen
+-> alle befreien (signal abfeuern) ---> abhängig von
+
+
+textnode abarbeiten:
+execute: funktion ausführen
+normal + branching:
+- text nach und nach einführen
+- "|" zur Pause machen
+- wenn branching am ende nach accept options anzeigen
+- weiter geht es mit drücken von accept

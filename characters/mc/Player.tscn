@@ -1,0 +1,283 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://characters/mc/sprite00.png" type="Texture" id=1]
+[ext_resource path="res://characters/mc/Player.gd" type="Script" id=2]
+[ext_resource path="res://characters/mc/PlayerFootsteps.gd" type="Script" id=3]
+[ext_resource path="res://characters/mc/fx/footsteps_hard/hard-footstep3.wav" type="AudioStream" id=4]
+[ext_resource path="res://characters/mc/fx/footsteps_hard/hard-footstep1.wav" type="AudioStream" id=5]
+[ext_resource path="res://characters/mc/fx/footsteps_hard/hard-footstep2.wav" type="AudioStream" id=6]
+[ext_resource path="res://characters/mc/fx/footsteps_grass/grassy-footstep3.wav" type="AudioStream" id=7]
+[ext_resource path="res://characters/mc/fx/footsteps_grass/grassy-footstep4.wav" type="AudioStream" id=8]
+[ext_resource path="res://characters/mc/fx/footsteps_grass/grassy-footstep1.wav" type="AudioStream" id=9]
+[ext_resource path="res://characters/mc/fx/footsteps_grass/grassy-footstep2.wav" type="AudioStream" id=10]
+
+[sub_resource type="Animation" id=1]
+resource_name = "down"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("NotTeleporting/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 9.68281e-08 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "left"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("NotTeleporting/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 3.29272e-10 ),
+"update": 1,
+"values": [ 3 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "right"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("NotTeleporting/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 3.39437e-12 ),
+"update": 1,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "up"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("NotTeleporting/Sprite:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 3.84028e-11 ),
+"update": 1,
+"values": [ 2 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "walk_down"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("NotTeleporting/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 0, 20, 0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_footstep_sound"
+}, {
+"args": [  ],
+"method": "play_footstep_sound"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "walk_left"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("NotTeleporting/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 13, 3, 23, 3 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_footstep_sound"
+}, {
+"args": [  ],
+"method": "play_footstep_sound"
+} ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "walk_right"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("NotTeleporting/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 11, 1, 21, 1 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_footstep_sound"
+}, {
+"args": [  ],
+"method": "play_footstep_sound"
+} ]
+}
+
+[sub_resource type="Animation" id=8]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("NotTeleporting/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 12, 2, 22, 2 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_footstep_sound"
+}, {
+"args": [  ],
+"method": "play_footstep_sound"
+} ]
+}
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 5.98988, 5.76208 )
+
+[node name="Player" type="StaticBody2D" groups=[
+"Player",
+]]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="RayCast2DMoving" type="RayCast2D" parent="."]
+visible = false
+cast_to = Vector2( 0, 16 )
+
+[node name="RayCast2DUsing" type="RayCast2D" parent="."]
+visible = false
+cast_to = Vector2( 0, 16 )
+collision_mask = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/down = SubResource( 1 )
+anims/left = SubResource( 2 )
+anims/right = SubResource( 3 )
+anims/up = SubResource( 4 )
+anims/walk_down = SubResource( 5 )
+anims/walk_left = SubResource( 6 )
+anims/walk_right = SubResource( 7 )
+anims/walk_up = SubResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 9 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="NotTeleporting" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="NotTeleporting"]
+texture = ExtResource( 1 )
+offset = Vector2( 0, -10 )
+vframes = 5
+hframes = 10
+frame = 12
+
+[node name="Camera2D" type="Camera2D" parent="NotTeleporting"]
+visible = false
+current = true
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="PlayerCollision" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCollision"]
+shape = SubResource( 9 )
+
+[node name="FootstepArea" type="Area2D" parent="."]
+visible = false
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FootstepArea"]
+shape = SubResource( 9 )
+
+[node name="Footsteps" type="Node2D" parent="."]
+script = ExtResource( 3 )
+fx_solid = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 4 ) ]
+fx_grass = [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 7 ), ExtResource( 8 ) ]
+
+[node name="Audio1" type="AudioStreamPlayer" parent="Footsteps"]
+
+[node name="Audio2" type="AudioStreamPlayer" parent="Footsteps"]

@@ -1,0 +1,5 @@
+Wie benutzen abläuft:
+Keine Eingabe = return
+Eingabe(space/enter/e)
+-> hitbox vor Player checken, ob er vom typ useable ist
+-> Wenn Ja, use von diesem ausführen

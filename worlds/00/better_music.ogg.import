@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/better_music.ogg-e29cd7bb2a83050d68ebcd00c4c20b21.oggstr"
+
+[deps]
+
+source_file="res://worlds/00/better_music.ogg"
+dest_files=[ "res://.import/better_music.ogg-e29cd7bb2a83050d68ebcd00c4c20b21.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

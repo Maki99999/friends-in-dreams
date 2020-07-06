@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/grassy-footstep1.wav-990187daff3e224aa86a2a69e32cfd56.sample"
+
+[deps]
+
+source_file="res://characters/mc/fx/footsteps_grass/grassy-footstep1.wav"
+dest_files=[ "res://.import/grassy-footstep1.wav-990187daff3e224aa86a2a69e32cfd56.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

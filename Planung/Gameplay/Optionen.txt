@@ -1,0 +1,4 @@
+sound master
+sound fx
+sound music
+borderless fullscreen toggle

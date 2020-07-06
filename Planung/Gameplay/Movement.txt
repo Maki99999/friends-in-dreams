@@ -1,0 +1,20 @@
+blockartig -> tiles -> 16x16px
+
+
+Wie Bewegung abläuft:
+Keine Eingabe = keine Bewegung (return)
+Eingabe(wasd)
+-> (I)  Check, ob man auf block gehen darf 
+   -a-> Wenn Nein: 	Anim Abspielen -> auf anim warten -> keine Bewegung(return)
+   -b-> Wenn Ja:	Bewegung Instant, Anim abspielen, auf anim warten
+-> (II) Check, ob man auf Eventfeld ist
+   -a-> Wenn Nein:	return
+   -b-> Wenn Ja:	Event abspielen
+
+
+(I):
+Hat das neue Feld Collision? (durch TileMap oder anderen Chars)
+
+(II):
+Eventfeld muss Trigger haben, das dann eigenständig auslöst
+aber: players anim muss vollständig sein
