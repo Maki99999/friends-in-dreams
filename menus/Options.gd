@@ -35,6 +35,8 @@ func _process(_delta):
 			first_press[0] = true
 		elif Input.is_action_just_pressed("ui_right"):
 			first_press[1] = true
+		if Input.is_action_just_pressed("ui_accept") && current_setting == settings_count - 1:
+			close_from_upper()
 		
 		if Input.is_action_pressed("ui_left"):
 			value_change_pressing(0)
@@ -144,6 +146,9 @@ func open():
 	anchor_left = 0
 	anchor_right = 1
 	change_setting(0)
+
+func close_from_upper():
+	get_parent().close_options()
 
 func close(var save = true):
 	anchor_left = 2

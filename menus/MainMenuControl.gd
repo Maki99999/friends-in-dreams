@@ -7,6 +7,7 @@ export(ShaderMaterial) var shader_selected
 
 onready var main_buttons_parent = $Main
 onready var options_menu = $Options
+onready var confirmation_menu = $Confirmation
 onready var fade = $Fade/AnimationPlayer
 onready var main_button_count = main_buttons_parent.get_child_count()
 
@@ -22,6 +23,7 @@ func _input(event):
 		return
 	if event.is_action_pressed("ui_menu") && options_open:
 		close_options()
+		close_confirmation()
 	elif !options_open:
 		if event.is_action_pressed("ui_down"):
 			change_button(false)
@@ -48,6 +50,16 @@ func close_options():
 	show_menu()
 	options_open = false
 
+func open_confirmation():
+	options_open = true
+	hide_menu()
+	confirmation_menu.open()
+
+func close_confirmation():
+	confirmation_menu.close()
+	show_menu()
+	options_open = false
+
 func change_button(var up):
 	if up is int:
 		main_button_current = up
@@ -70,11 +82,7 @@ func press_button():
 	match main_button_current:
 		0:
 			#newgame, vllt noch ne warnung, wenn noch anderes vorhanden ist
-			locked = true
-			fade.play_backwards("fade_in")
-			yield(fade, "animation_finished")
-			if get_tree().change_scene("res://worlds/00/scene00.tscn") != OK:
-				push_error("Cannot load first scene!")
+			open_confirmation()
 		1:
 			#loadgame
 			pass

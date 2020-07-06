@@ -7,10 +7,10 @@
 [node name="Options" type="VBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = -10.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -4.0
+margin_bottom = -4.0
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -160,6 +160,45 @@ __meta__ = {
 anchor_left = 0.5
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 2.0
+margin_right = -5.0
+margin_bottom = -2.0
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = true
+bbcode_text = "Off >"
+text = "Off >"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Back" type="NinePatchRect" parent="."]
+margin_top = 96.0
+margin_right = 60.0
+margin_bottom = 116.0
+rect_min_size = Vector2( 60, 20 )
+size_flags_horizontal = 0
+texture = ExtResource( 1 )
+patch_margin_left = 2
+
+[node name="InfoText" type="RichTextLabel" parent="Back"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 2.0
+margin_right = -5.0
+margin_bottom = -2.0
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[color=#BBBBBB]< Back[/color]"
+text = "< Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Value" type="RichTextLabel" parent="Back"]
+anchor_left = 2.0
+anchor_right = 2.0
 margin_left = 5.0
 margin_top = 2.0
 margin_right = -5.0
