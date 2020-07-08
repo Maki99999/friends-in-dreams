@@ -2,7 +2,7 @@ extends ColorRect
 
 
 var active = false
-var main_button_current = 1
+var main_button_current = 2
 
 onready var buttons = [$ButtonYes, $ButtonNo]
 onready var parent = get_parent()
@@ -27,7 +27,7 @@ func _input(event):
 		press_button()
 
 func open():
-	change_button(false)
+	change_button(false, false)
 	anchor_left = 0
 	anchor_right = 1
 	active = true
@@ -37,7 +37,8 @@ func close():
 	anchor_right = 3
 	active = false
 
-func change_button(var left):
+func change_button(var left, var with_sound = true):
+	var prev = main_button_current
 	var unselected
 	if left:
 		main_button_current = 0
@@ -45,16 +46,20 @@ func change_button(var left):
 	else:
 		main_button_current = 1
 		unselected = 0
-
-	buttons[unselected].material = null
-	buttons[unselected].texture = texture_normal
-	buttons[unselected].get_child(0).material = null
 	
-	buttons[main_button_current].material = shader_selected
-	buttons[main_button_current].texture = texture_selected
-	buttons[main_button_current].get_child(0).material = shader_selected
+	if prev != main_button_current:
+		if with_sound:
+			get_parent().play_sound_select()
+		buttons[unselected].material = null
+		buttons[unselected].texture = texture_normal
+		buttons[unselected].get_child(0).material = null
+	
+		buttons[main_button_current].material = shader_selected
+		buttons[main_button_current].texture = texture_selected
+		buttons[main_button_current].get_child(0).material = shader_selected
 	
 func press_button():
+	get_parent().play_sound_press()
 	match main_button_current:
 		0:
 			active = false

@@ -27,8 +27,13 @@ _global_script_class_icons={
 [application]
 
 config/name="Friends in Dreams"
-run/main_scene="res://worlds/00/scene00.tscn"
+run/main_scene="res://menus/mainMenu.tscn"
+boot_splash/image="res://menus/splash_screen.png"
 config/icon="res://icon.png"
+
+[autoload]
+
+SaveLoad="*res://worlds/SaveLoad.gd"
 
 [display]
 

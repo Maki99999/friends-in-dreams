@@ -3,15 +3,17 @@ extends Node2D
 
 export(Array, AudioStream) var fx_solid
 export(Array, AudioStream) var fx_grass
+export(Array, AudioStream) var fx_wood
 
 onready var audio1 = $Audio1
 onready var audio2 = $Audio2
 
 var solid = ["stone", "solid", "hard"]
 var grass = ["grass"]
+var wood = ["wood", "planks"]
 
-var possible_sounds = {"solid": solid, "grass": grass}
-onready var fx_sounds = {"solid": fx_solid, "grass": fx_grass}
+var possible_sounds = {"solid": solid, "grass": grass, "wood": wood}
+onready var fx_sounds = {"solid": fx_solid, "grass": fx_grass, "wood": fx_wood}
 
 var rng = RandomNumberGenerator.new()
 var audio_one = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://characters/mc/sprite00.png" type="Texture" id=1]
 [ext_resource path="res://characters/mc/Player.gd" type="Script" id=2]
@@ -10,6 +10,9 @@
 [ext_resource path="res://characters/mc/fx/footsteps_grass/grassy-footstep4.wav" type="AudioStream" id=8]
 [ext_resource path="res://characters/mc/fx/footsteps_grass/grassy-footstep1.wav" type="AudioStream" id=9]
 [ext_resource path="res://characters/mc/fx/footsteps_grass/grassy-footstep2.wav" type="AudioStream" id=10]
+[ext_resource path="res://characters/mc/fx/footsteps_wood/wood01.ogg" type="AudioStream" id=11]
+[ext_resource path="res://characters/mc/fx/footsteps_wood/wood02.ogg" type="AudioStream" id=12]
+[ext_resource path="res://characters/mc/fx/footsteps_wood/wood03.ogg" type="AudioStream" id=13]
 
 [sub_resource type="Animation" id=1]
 resource_name = "down"
@@ -207,10 +210,11 @@ tracks/1/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 5.98988, 5.76208 )
+extents = Vector2( 4.08925, 0.954105 )
 
 [node name="Player" type="StaticBody2D" groups=[
 "Player",
+"Saving",
 ]]
 collision_layer = 4
 collision_mask = 4
@@ -251,11 +255,28 @@ texture = ExtResource( 1 )
 offset = Vector2( 0, -10 )
 vframes = 5
 hframes = 10
-frame = 12
 
 [node name="Camera2D" type="Camera2D" parent="NotTeleporting"]
 visible = false
 current = true
+
+[node name="Footsteps" type="Node2D" parent="NotTeleporting"]
+script = ExtResource( 3 )
+fx_solid = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 4 ) ]
+fx_grass = [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 7 ), ExtResource( 8 ) ]
+fx_wood = [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ]
+
+[node name="Audio1" type="AudioStreamPlayer" parent="NotTeleporting/Footsteps"]
+
+[node name="Audio2" type="AudioStreamPlayer" parent="NotTeleporting/Footsteps"]
+
+[node name="FootstepArea" type="Area2D" parent="NotTeleporting/Footsteps"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NotTeleporting/Footsteps/FootstepArea"]
+position = Vector2( 0, 5 )
+shape = SubResource( 9 )
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -264,20 +285,3 @@ visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCollision"]
 shape = SubResource( 9 )
-
-[node name="FootstepArea" type="Area2D" parent="."]
-visible = false
-collision_layer = 4
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FootstepArea"]
-shape = SubResource( 9 )
-
-[node name="Footsteps" type="Node2D" parent="."]
-script = ExtResource( 3 )
-fx_solid = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 4 ) ]
-fx_grass = [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 7 ), ExtResource( 8 ) ]
-
-[node name="Audio1" type="AudioStreamPlayer" parent="Footsteps"]
-
-[node name="Audio2" type="AudioStreamPlayer" parent="Footsteps"]

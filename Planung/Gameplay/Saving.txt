@@ -8,20 +8,20 @@ vor betreten einer area
 
 laden:
 Hauptmenü
-beim betreten einer alten area
+beim betreten einer alten area (nicht wirklich notwendig)
 
 
 Was?
-Einstellungen (-> komplett separat!)
-Game Version
++Einstellungen (-> komplett separat!)
+Game Version (vllt)
 MC Position
 aktuelle Area:
-- szenendatei der area
-- Status Dialogue
-- Status Cutscenes
-- Status ItemsInInventory
-- Status ItemsInWorld
-- Status Rätsel (gelöst oder teilweise oder nicht)
+- szenendatei der area -> ScenePath
+- Status Dialogue -> save-group
+- Status Cutscenes -> save-group
+- Status ItemsInInventory -> save-group
+- Status ItemsInWorld -> save-group
+- Status Rätsel (gelöst oder teilweise oder nicht) -> save-group
 
 
 Wo?

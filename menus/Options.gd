@@ -36,6 +36,7 @@ func _process(_delta):
 		elif Input.is_action_just_pressed("ui_right"):
 			first_press[1] = true
 		if Input.is_action_just_pressed("ui_accept") && current_setting == settings_count - 1:
+			get_parent().play_sound_press()
 			close_from_upper()
 		
 		if Input.is_action_pressed("ui_left"):
@@ -62,7 +63,9 @@ func _ready():
 	load_settings()
 	close(false)
 
-func change_setting(var up):
+func change_setting(var up, var with_sound = true):
+	if with_sound:
+		get_parent().play_sound_select()
 	if up is int:
 		current_setting = up
 	elif up:
@@ -145,7 +148,7 @@ func open():
 	active = true
 	anchor_left = 0
 	anchor_right = 1
-	change_setting(0)
+	change_setting(0, false)
 
 func close_from_upper():
 	get_parent().close_options()

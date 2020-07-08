@@ -31,13 +31,14 @@ var unfreeze_at_end
 var people_in_conversation	# Paths to the directory of the faces of the people, one path per person
 var dialogue_file_content
 var bb_regex
-signal pressed_accept
 var is_choosing_answer = false
 var current_answer = 0
 var answer_count = 1
 var time_btwn_letters_current
 var letters_btwn_sound_current
 var accept_pressed_during_wait = false
+
+signal pressed_accept
 
 func _ready():
 	visible = true
@@ -83,7 +84,11 @@ func process_node(var node_name):
 			if node.has("face"):
 				face_image.texture = load(people_in_conversation[node["char_name"]] + node["face"])
 
-			text_label.bbcode_text = node["text"].replace("|", "")
+			var new_bbcode_text = node["text"].replace("|", "")
+			if node.has("subtype"):
+				if node["subtype"] == "thinking":
+					new_bbcode_text = "[color=#CCCCCCCC]" + new_bbcode_text + "[/color]"
+			text_label.bbcode_text = new_bbcode_text
 			var text_without_extras = bb_regex.sub(node["text"], "", true)
 			var pauses = []
 			for c in text_without_extras.length():

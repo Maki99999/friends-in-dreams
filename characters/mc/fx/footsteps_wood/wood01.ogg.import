@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/wood01.ogg-c0a13ac5aacf8c5e03514f6568233a2e.oggstr"
+
+[deps]
+
+source_file="res://characters/mc/fx/footsteps_wood/wood01.ogg"
+dest_files=[ "res://.import/wood01.ogg-c0a13ac5aacf8c5e03514f6568233a2e.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

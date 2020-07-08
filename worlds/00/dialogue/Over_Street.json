@@ -5,6 +5,7 @@
 	"sound": "normal",
 	"sound_pitch": 1.2,
 	"sound_pitch_randomness": 0.1,
-	"type": "normal"
+	"type": "normal",
+	"subtype": "thinking"
   }
 }

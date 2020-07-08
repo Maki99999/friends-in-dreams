@@ -7,6 +7,8 @@ export(ShaderMaterial) var shader_selected
 
 onready var main_esc_menu = $Main
 onready var options_menu = $Options
+onready var fx_select = $SelectSound
+onready var fx_press = $PressSound
 onready var main_button_count = main_esc_menu.get_child_count()
 
 var menu_open = false
@@ -14,6 +16,7 @@ var options_open = false
 var main_button_current = -1
 
 func _ready():
+	visible = true
 	main_esc_menu.visible = true
 	close_menu()
 
@@ -35,12 +38,18 @@ func _input(event):
 		elif event.is_action_pressed("ui_accept"):
 			press_button()
 
+func play_sound_select():
+	fx_select.play()
+
+func play_sound_press():
+	fx_press.play()
+
 func open_menu():
 	menu_open = true
 	get_tree().paused = true
 	anchor_left = 0
 	anchor_right = 1
-	change_button(0)
+	change_button(0, false)
 
 func close_menu():
 	anchor_right = 3
@@ -58,7 +67,9 @@ func close_options():
 	main_esc_menu.visible = true
 	options_open = false
 
-func change_button(var up):
+func change_button(var up, var with_sound = true):
+	if with_sound:
+		play_sound_select()
 	if up is int:
 		main_button_current = up
 	elif up:
@@ -77,11 +88,12 @@ func change_button(var up):
 	sel_button.get_child(0).material = shader_selected
 
 func press_button():
+	play_sound_press()
 	match main_button_current:
 		1:
 			open_options()
 		2:
-			#save
+			SaveLoad.save_game()
 			get_tree().quit()
 		_:
 			close_menu()

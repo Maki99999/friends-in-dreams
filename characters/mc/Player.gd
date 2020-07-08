@@ -1,6 +1,8 @@
 extends Node2D
 
 
+const id = "Player0"
+
 onready var tile_size = get_parent().tile_size
 onready var animation_player = $AnimationPlayer
 onready var raycast_moving = $RayCast2DMoving
@@ -8,8 +10,8 @@ onready var raycast_using = $RayCast2DUsing
 onready var tween = $Tween
 onready var not_teleporting = $NotTeleporting
 onready var timer = $Timer
-onready var footsteps = $Footsteps
-onready var footstep_area = $FootstepArea
+onready var footsteps = $NotTeleporting/Footsteps
+onready var footstep_area = $NotTeleporting/Footsteps/FootstepArea
 onready var fade_anim = get_tree().get_nodes_in_group("fade_anim")[0]
 onready var facing = start_dir
 
@@ -31,6 +33,9 @@ var is_teleporting = false
 
 func _ready():
 	animation_player.play(start_dir)
+	freeze()
+	yield(get_tree(), "idle_frame")
+	unfreeze()
 
 func _process(_delta):
 	try_moving()
@@ -152,3 +157,16 @@ func play_footstep_sound():
 	else:
 		var area_name = current_areas[0].name
 		footsteps.play(area_name)
+
+func save():
+	var saved_data = {	"x": global_position.x, 
+						"y": global_position.y, 
+						"facing": facing}
+	return([id, saved_data])
+
+func restore(var saved_data):
+	var player_data = saved_data[id]
+	global_position = Vector2(player_data["x"], player_data["y"])
+
+	facing = player_data["facing"]
+	animation_player.play(facing)
