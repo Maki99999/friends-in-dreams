@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Slow Stride Loop.ogg-6058845350aa8170f0348e919ff36853.oggstr"
+
+[deps]
+
+source_file="res://worlds/01/Slow Stride Loop.ogg"
+dest_files=[ "res://.import/Slow Stride Loop.ogg-6058845350aa8170f0348e919ff36853.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

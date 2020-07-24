@@ -1,0 +1,47 @@
+Welt 1: man wacht auf auf einem Blumen Hügel. Nach panischen Gedanken kann man den Hügel hinunter gehen. Unten ist Fraus Haus. 
+Vor Haus ist Frau. Sie spricht einen an, lädt einen in ihr aus ein. Im Haus sieht man, dass sie viele viele Kinder hat. 
+fragt einen, wo man ist etc. MC antwortet auf wenige Fragen kurz. Frau versteht MC nicht richtig und sagt, 
+er solle sich erst einmal beruhigen. Sie sagt, es gäbe ein beruhigendes onsen, in dem er mal rein gehen soll. 
+Sie lässt dann MC gehen, weil sie zu beschäftigt mit den Kindern ist.
+Bei Frau vllt. Schon minigame, das man nicht gewinnen kann.
+Im onsen beruhigt man sich, man erfassz die Situation und vllt. Macht man im Kopf dialogtests
+Dann macht man minigame mit Frau, die einen dann sagt, dass in welt 3 jemand ist, der ihm helfen kann und dass er dafür durch 
+die Zirkuszelt muss. Sie gibt ihm dann etwas, womit er in die nächste Welt kann. 
+Kinder schreien, weil man nicht lächelt
+
+
+Welt 1:
+Man trifft zuerst Tochter von Frau, die führt einen dann zu Frau, die versteht MC aber nicht und schickt uns beide dann 
+zum onsen zum Entspannen. Türsteher lässt einen aber nicht gratis hinein.
+...
+Minigame
+Frau hört zu, glaubt ihm aber nicht ganz. Sie meint dann aber, dass sie einen kennt, der was sehr ähnliches gesagt hat. 
+Dann schickt sie einen zu welt 3, mit Eintrittskarte zum Zirkus, da der auf dem weg liegt 
+und die Karte sonst nicht benutzt werden würde
+
+Jeder Freund will etwas:
+- (1) Dass MC mal lächelt; sich entspannt; die Situation akzeptiert
+
+#	Welt			Wer fagt danach				Wer ist Boss		Mit wem Freundschaft schließen	
+(1)	Naturwelt, Baumwelt	Nette, besorgte Frau			netter Türsteher	Frau	
+
+Jede Welt lernt man etwas über MC kennen:
+- Mutter arbeitet hart, damit MC ein schönes Leben führen kann -> Mutter will dafür auch mal ein Lächeln sehen
+
+#	Was lernt man über MC kennen?								Wie kommt man in nächste Welt?
+(1)	Mutter arbeitet hart für MC								Frau gibt einem ein Ticket für 
+die Zirkuswelt, muss dann nur noch dort hingehen. Frau sagt, sie kennt jemanden in Welt 3, der einem weiter helfen kann 
+und dass man dafür durch den Zirkus muss. Beim Versuch des Zurückgehens denkt MC: "Ich denke nicht, dass es nützlich ist, 
+noch einmal zurück zu laufen."
+
+
+mädchen will einen apfel in grün, im Nachhinein muss man ihr aber drei Äpfel geben
+roboter führt einem zum apfelbaum, da zwischen vllt. ein Rätsel
+Apfelbaum hat drei Äpfel: grün, rot, lila.
+erster Apfel ist gratis
+zweiten Apfel bezahlt man mit einer Goldmünze
+dritten Apfel kann man nicht mehr bezahlen -> Baum überreden
+
+Goldmünze bekommt man von einem zwerg, der in einer höhle ist. Da steht dann eine Goldmachmaschine, die man mit einem Rätsel repariert und dadurch die Münze bekommt
+zwerg schläft beim ersten treffen
+zwerg wartet auf seine zwei brüder, mit denen er die Maschine reparieren will. 

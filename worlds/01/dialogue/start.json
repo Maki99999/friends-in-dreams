@@ -1,0 +1,22 @@
+{
+  "Start": {
+    "char_name": "Rembry",
+    "text": ["... Wo bin ich?",
+		"Ich war doch gerade noch vor dem Haus?",
+		"...",
+		"Wie komm ich zurück? Was mach' ich jetzt?! Wohin soll ich gehen?!?",
+		"...",
+		"Ich sehe keine Straßen in der Nähe.",
+		"..."],
+	"sound": "normal",
+	"sound_pitch": 1.2,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"subtype": "thinking",
+	"next": "End"
+  },
+  "End": {
+    "function": "start_music",
+	"type": "execute"
+  }
+}

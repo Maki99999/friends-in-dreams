@@ -117,6 +117,8 @@ Gesprächsminigame:
 -- fragt dich besorgt die ganze zeit, was man will
 -- tut so, als wenn er dich ignoriert
 
+Minigame: man hat Zeiger links, von rechts kommen drei Wörter, man muss sich schnell für eines entscheiden, random Wörter erschweren die Sicht
+
 
 nebensächliches:
 man bekommt superkraft und stirbt damit

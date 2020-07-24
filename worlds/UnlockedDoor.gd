@@ -9,6 +9,11 @@ var in_use = false
 
 onready var player = get_tree().get_nodes_in_group("Player")[0]
 onready var fx_open = $AudioStreamPlayer
+onready var new_parent_node = null
+
+func _ready():
+	if new_parent != null && !new_parent.is_empty():
+		new_parent_node = get_node(new_parent)
 
 func use():
 	teleport()
@@ -23,7 +28,7 @@ func _on_Area2D_area_entered(area):
 		teleport()
 
 func teleport():
-	if player.teleport(get_node(new_parent), new_position, new_direction):
+	if player.teleport(new_position, new_direction, new_parent_node):
 		fx_open.play()
 
 func _on_Area2D_area_exited(area):

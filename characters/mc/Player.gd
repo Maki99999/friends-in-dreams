@@ -12,6 +12,7 @@ onready var not_teleporting = $NotTeleporting
 onready var timer = $Timer
 onready var footsteps = $NotTeleporting/Footsteps
 onready var footstep_area = $NotTeleporting/Footsteps/FootstepArea
+onready var cam = $NotTeleporting/Camera2D
 onready var fade_anim = get_tree().get_nodes_in_group("fade_anim")[0]
 onready var facing = start_dir
 
@@ -91,15 +92,15 @@ func move(var dir):
 	facing = dir
 	animation_player.play("walk_" + dir)
 
-	position = position - Vector2.ONE * (tile_size / 2) + inputs[dir] * tile_size
-	position = position.snapped(Vector2.ONE * tile_size) + Vector2.ONE * (tile_size / 2)
-	var start_position_local = - inputs[dir] * tile_size
+	global_position = global_position - Vector2.ONE * (tile_size / 2) + inputs[dir] * tile_size
+	global_position = global_position.snapped(Vector2.ONE * tile_size) + Vector2.ONE * (tile_size / 2)
+	var start_position_local = inputs[dir] * -tile_size
 	not_teleporting.position = start_position_local
 	
 	tween.interpolate_property(not_teleporting, "position", start_position_local, Vector2.ZERO, 1.0/speed, Tween.TRANS_LINEAR)
 	
 	tween.start()
-	yield(tween, "tween_completed")
+	yield(tween, "tween_all_completed")
 	
 func freeze():
 	proc_sem -= 1
@@ -111,7 +112,19 @@ func unfreeze():
 	if proc_sem >= 1:
 		set_process(true)
 
-func teleport(var new_parent, var new_position, var new_direction):
+func teleport_instant(var new_position, var new_direction = null, var new_parent = null):
+	if new_parent != null:
+		get_parent().remove_child(self)
+		new_parent.add_child(self)
+		position = new_position - new_parent.global_position
+		get_parent().snap_to_grid(self)
+	else:
+		global_position = new_position
+	if new_direction != null:
+		facing = new_direction
+		animation_player.play(new_direction)
+
+func teleport(var new_position, var new_direction = null, var new_parent = null):
 	if is_teleporting:
 		return false
 	is_teleporting = true
@@ -120,12 +133,7 @@ func teleport(var new_parent, var new_position, var new_direction):
 	fade_anim.play_backwards("fade_in")
 	yield(fade_anim, "animation_finished")
 	
-	get_parent().remove_child(self)
-	new_parent.add_child(self)
-	position = new_position - new_parent.global_position
-	get_parent().snap_to_grid(self)
-	facing = new_direction
-	animation_player.play(new_direction)
+	teleport_instant(new_position, new_direction, new_parent)
 	
 	fade_anim.play("fade_in")
 	
@@ -135,7 +143,7 @@ func teleport(var new_parent, var new_position, var new_direction):
 	is_teleporting = false
 	return true
 
-func move_to(var new_position, var is_relative = false):
+func move_to(var new_position, var is_relative = false, var stop_after = true):
 	if is_relative:
 		new_position = global_position + new_position
 	new_position = new_position - Vector2.ONE * (tile_size / 2)
@@ -149,6 +157,24 @@ func move_to(var new_position, var is_relative = false):
 		yield(move("down"), "completed")
 	while new_position.y < global_position.y:
 		yield(move("up"), "completed")
+	if stop_after:
+		animation_player.play(facing)
+
+func move_cam_to(var new_position, var cam_speed):
+	if tween.is_active():
+		yield(tween, "tween_all_completed")
+
+	tween.interpolate_property(cam, "global_position", cam.global_position, new_position, 1.0/cam_speed, Tween.TRANS_LINEAR)
+	tween.start()
+	yield(tween, "tween_all_completed")
+
+func reset_cam(var cam_speed):
+	if tween.is_active():
+		yield(tween, "tween_all_completed")
+
+	tween.interpolate_property(cam, "position", cam.position, Vector2.ZERO, 1.0/cam_speed, Tween.TRANS_LINEAR)
+	tween.start()
+	yield(tween, "tween_all_completed")
 
 func play_footstep_sound():
 	var current_areas = footstep_area.get_overlapping_areas()

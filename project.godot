@@ -34,6 +34,7 @@ config/icon="res://icon.png"
 [autoload]
 
 SaveLoad="*res://worlds/SaveLoad.gd"
+Utils="*res://worlds/Utils.gd"
 
 [display]
 

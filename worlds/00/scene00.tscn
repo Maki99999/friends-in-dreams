@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://worlds/00/tiles/Tiles00.png" type="Texture" id=1]
 [ext_resource path="res://characters/mc/Player.tscn" type="PackedScene" id=2]
@@ -7,14 +7,8 @@
 [ext_resource path="res://worlds/00/items/testItem.png" type="Texture" id=5]
 [ext_resource path="res://characters/side_characters/test_npc/testnpc.png" type="Texture" id=6]
 [ext_resource path="res://characters/side_characters/test_npc/TestNpc.gd" type="Script" id=7]
-[ext_resource path="res://dialogue/background.png" type="Texture" id=8]
-[ext_resource path="res://dialogue/next_arrow.png" type="Texture" id=9]
-[ext_resource path="res://fonts/font_normal01.tres" type="DynamicFont" id=10]
-[ext_resource path="res://dialogue/Dialogue.gd" type="Script" id=11]
-[ext_resource path="res://dialogue/Answer.tscn" type="PackedScene" id=12]
-[ext_resource path="res://dialogue/Answers.gd" type="Script" id=13]
-[ext_resource path="res://dialogue/background_light.png" type="Texture" id=14]
-[ext_resource path="res://dialogue/voices/normal/VoiceBeep01.wav" type="AudioStream" id=15]
+[ext_resource path="res://menus/EscMenu.tscn" type="PackedScene" id=8]
+[ext_resource path="res://dialogue/Dialogue.tscn" type="PackedScene" id=9]
 [ext_resource path="res://worlds/00/tiles/Tiles01.png" type="Texture" id=16]
 [ext_resource path="res://dialogue/LookingAtDialogue.tscn" type="PackedScene" id=17]
 [ext_resource path="res://worlds/00/tiles/Tiles02.png" type="Texture" id=18]
@@ -27,14 +21,6 @@
 [ext_resource path="res://worlds/00/fx/crash.ogg" type="AudioStream" id=25]
 [ext_resource path="res://worlds/00/fx/car horn.wav" type="AudioStream" id=26]
 [ext_resource path="res://worlds/00/better_music.ogg" type="AudioStream" id=27]
-[ext_resource path="res://menus/EscMenu.gd" type="Script" id=28]
-[ext_resource path="res://menus/slight_up_and_down.tres" type="Material" id=29]
-[ext_resource path="res://menus/EscSelected.png" type="Texture" id=30]
-[ext_resource path="res://menus/VBoxContainerVarWidth.gd" type="Script" id=31]
-[ext_resource path="res://menus/EscUnselected.png" type="Texture" id=32]
-[ext_resource path="res://menus/optionsMenu.tscn" type="PackedScene" id=33]
-[ext_resource path="res://menus/button_sound.wav" type="AudioStream" id=34]
-[ext_resource path="res://menus/button_sound_2.wav" type="AudioStream" id=35]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 16, 48, 0, 48, 0, 0, 16, 0 )
@@ -1164,144 +1150,6 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 extents = Vector2( 182.461, 6.84902 )
 
 [sub_resource type="Animation" id=44]
-length = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:anchor_top")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 1.0 ]
-}
-
-[sub_resource type="Animation" id=45]
-length = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:anchor_top")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 1.0, 0.6 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:anchor_bottom")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 1.4, 1.0 ]
-}
-
-[sub_resource type="Animation" id=46]
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:margin_top")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ -33, -32.0 ]
-}
-
-[sub_resource type="Animation" id=47]
-length = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-
-[sub_resource type="Animation" id=48]
-length = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-
-[sub_resource type="Animation" id=49]
-length = 0.2
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:anchor_left")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 1.05, 0.6 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath(".:anchor_right")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 1.45, 1.0 ]
-}
-
-[sub_resource type="Animation" id=50]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:color")
@@ -1600,7 +1448,7 @@ bus = "FX"
 [node name="music" type="AudioStreamPlayer" parent="Outside/DeathZone"]
 pause_mode = 2
 stream = ExtResource( 27 )
-bus = "FX"
+bus = "Music"
 
 [node name="Timer" type="Timer" parent="Outside/DeathZone"]
 
@@ -1633,158 +1481,7 @@ polygon = PoolVector2Array( -232, 120, 376, 120, 376, -280, 8, -280, 8, -232, 24
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
-[node name="Dialogue" type="Control" parent="GUI" groups=[
-"dialogue",
-]]
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource( 11 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-player_path = NodePath("../../Inside/Entities/Player")
-time_btwn_letters = 0.06
-time_btwn_letters_fast = 0.025
-time_btwn_letters_long_mult = 8.0
-cooldown = 1.0
-cooldown_before_answers = 0.2
-letters_btwn_sound = 2
-letters_btwn_sound_fast = 3
-voice_normal = ExtResource( 15 )
-
-[node name="DialogueBox" type="MarginContainer" parent="GUI/Dialogue"]
-anchor_top = 0.6
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_constants/margin_right = 10
-custom_constants/margin_top = 10
-custom_constants/margin_left = 10
-custom_constants/margin_bottom = 10
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Background" type="NinePatchRect" parent="GUI/Dialogue/DialogueBox"]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 310.0
-margin_bottom = 61.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource( 8 )
-region_rect = Rect2( 0, 0, 32, 16 )
-patch_margin_left = 15
-patch_margin_top = 7
-patch_margin_right = 15
-patch_margin_bottom = 7
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="GUI/Dialogue/DialogueBox"]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 310.0
-margin_bottom = 61.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/margin_right = 8
-custom_constants/margin_top = 8
-custom_constants/margin_left = 8
-custom_constants/margin_bottom = 8
-
-[node name="HSplitContainer" type="HSplitContainer" parent="GUI/Dialogue/DialogueBox/MarginContainer"]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 292.0
-margin_bottom = 43.0
-split_offset = 99
-
-[node name="Text" type="RichTextLabel" parent="GUI/Dialogue/DialogueBox/MarginContainer/HSplitContainer"]
-margin_right = 235.0
-margin_bottom = 35.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/mono_font = ExtResource( 10 )
-custom_fonts/normal_font = ExtResource( 10 )
-custom_constants/line_separation = 2
-bbcode_enabled = true
-bbcode_text = "hiiiiiii~ <3 <3  luv u all <3hiiiiiii~ <3 <3  luv u all <hiiiiiii~ <3 <3  luv u all <3hiiiiiii~ <3 <3  l"
-text = "hiiiiiii~ <3 <3  luv u all <3hiiiiiii~ <3 <3  luv u all <hiiiiiii~ <3 <3  luv u all <3hiiiiiii~ <3 <3  l"
-scroll_active = false
-
-[node name="Face" type="TextureRect" parent="GUI/Dialogue/DialogueBox/MarginContainer/HSplitContainer"]
-margin_left = 247.0
-margin_right = 284.0
-margin_bottom = 35.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/Dialogue/DialogueBox"]
-anims/idle = SubResource( 44 )
-anims/open_dialogue = SubResource( 45 )
-
-[node name="Timer" type="Timer" parent="GUI/Dialogue/DialogueBox"]
-wait_time = 4096.0
-
-[node name="SmallArrow" type="TextureRect" parent="GUI/Dialogue"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -8.0
-margin_top = -32.0
-margin_right = 8.0
-margin_bottom = -16.0
-texture = ExtResource( 9 )
-stretch_mode = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/Dialogue/SmallArrow"]
-anims/blink = SubResource( 46 )
-anims/idle = SubResource( 47 )
-
-[node name="Answers" type="MarginContainer" parent="GUI/Dialogue"]
-visible = false
-anchor_left = 1.05
-anchor_top = 0.1
-anchor_right = 1.45
-anchor_bottom = 0.6
-custom_constants/margin_right = 10
-custom_constants/margin_bottom = -8
-script = ExtResource( 13 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-normal_texture = ExtResource( 8 )
-highlight_texture = ExtResource( 14 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Dialogue/Answers"]
-margin_right = 118.0
-margin_bottom = 98.0
-custom_constants/separation = 24
-alignment = 2
-
-[node name="Answer" parent="GUI/Dialogue/Answers/VBoxContainer" instance=ExtResource( 12 )]
-margin_top = 98.0
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/Dialogue/Answers"]
-anims/idle = SubResource( 48 )
-anims/open_answers = SubResource( 49 )
-
-[node name="Voice01" type="AudioStreamPlayer" parent="GUI/Dialogue"]
-volume_db = -10.0
-bus = "FX"
-
-[node name="Voice02" type="AudioStreamPlayer" parent="GUI/Dialogue"]
-volume_db = -10.0
-bus = "FX"
+[node name="Dialogue" parent="GUI" instance=ExtResource( 9 )]
 
 [node name="Fade" type="ColorRect" parent="GUI"]
 visible = false
@@ -1801,7 +1498,7 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/Fade" groups=[
 "fade_anim",
 ]]
-anims/fade_in = SubResource( 50 )
+anims/fade_in = SubResource( 44 )
 
 [node name="black" type="ColorRect" parent="GUI"]
 visible = false
@@ -1815,150 +1512,5 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="EscMenu" type="Control" parent="GUI"]
-pause_mode = 2
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource( 28 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-texture_normal = ExtResource( 32 )
-texture_selected = ExtResource( 30 )
-shader_selected = ExtResource( 29 )
-
-[node name="Blacken" type="ColorRect" parent="GUI/EscMenu"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0, 0, 0, 0.886275 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Main" type="VBoxContainer" parent="GUI/EscMenu"]
-visible = false
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -96.0
-margin_top = -54.0
-margin_right = 96.0
-margin_bottom = 54.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-alignment = 1
-script = ExtResource( 31 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-centered = true
-
-[node name="Button" type="NinePatchRect" parent="GUI/EscMenu/Main"]
-material = ExtResource( 29 )
-margin_left = 50.0
-margin_top = 20.0
-margin_right = 100.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 100, 20 )
-texture = ExtResource( 30 )
-patch_margin_left = 2
-patch_margin_top = 2
-patch_margin_right = 2
-patch_margin_bottom = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Text" type="RichTextLabel" parent="GUI/EscMenu/Main/Button"]
-material = ExtResource( 29 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 2.0
-margin_right = -5.0
-margin_bottom = -2.0
-custom_fonts/normal_font = ExtResource( 10 )
-text = "Resume"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button2" type="NinePatchRect" parent="GUI/EscMenu/Main"]
-material = ExtResource( 29 )
-margin_left = 50.0
-margin_top = 44.0
-margin_right = 100.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 100, 20 )
-texture = ExtResource( 30 )
-patch_margin_left = 2
-patch_margin_top = 2
-patch_margin_right = 2
-patch_margin_bottom = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Text" type="RichTextLabel" parent="GUI/EscMenu/Main/Button2"]
-material = ExtResource( 29 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 2.0
-margin_right = -5.0
-margin_bottom = -2.0
-custom_fonts/normal_font = ExtResource( 10 )
-text = "Options"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button3" type="NinePatchRect" parent="GUI/EscMenu/Main"]
-material = ExtResource( 29 )
-margin_left = 50.0
-margin_top = 68.0
-margin_right = 100.0
-margin_bottom = 88.0
-rect_min_size = Vector2( 100, 20 )
-texture = ExtResource( 30 )
-patch_margin_left = 2
-patch_margin_top = 2
-patch_margin_right = 2
-patch_margin_bottom = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Text" type="RichTextLabel" parent="GUI/EscMenu/Main/Button3"]
-material = ExtResource( 29 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 2.0
-margin_right = -5.0
-margin_bottom = -2.0
-custom_fonts/normal_font = ExtResource( 10 )
-text = "Save & Quit"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Options" parent="GUI/EscMenu" instance=ExtResource( 33 )]
-visible = false
-
-[node name="SelectSound" type="AudioStreamPlayer" parent="GUI/EscMenu"]
-stream = ExtResource( 34 )
-bus = "FX"
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="PressSound" type="AudioStreamPlayer" parent="GUI/EscMenu"]
-stream = ExtResource( 35 )
-bus = "FX"
-__meta__ = {
-"_editor_description_": ""
-}
+[node name="EscMenu" parent="GUI" instance=ExtResource( 8 )]
 [connection signal="area_entered" from="Outside/DeathZone" to="Outside/DeathZone" method="_on_area_entered"]

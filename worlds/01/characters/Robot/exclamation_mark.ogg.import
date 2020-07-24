@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/exclamation_mark.ogg-bef07d0b5c8511191c3a349f94dedadb.oggstr"
+
+[deps]
+
+source_file="res://worlds/01/characters/Robot/exclamation_mark.ogg"
+dest_files=[ "res://.import/exclamation_mark.ogg-bef07d0b5c8511191c3a349f94dedadb.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

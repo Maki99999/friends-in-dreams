@@ -72,9 +72,6 @@ func reset():
 	answers.reset()
 
 func process_node(var node_name):
-	time_btwn_letters_current = time_btwn_letters
-	letters_btwn_sound_current = letters_btwn_sound
-
 	var node = dialogue_file_content[node_name]
 	match node["type"]:
 		"normal", "branching":
@@ -84,53 +81,14 @@ func process_node(var node_name):
 			if node.has("face"):
 				face_image.texture = load(people_in_conversation[node["char_name"]] + node["face"])
 
-			var new_bbcode_text = node["text"].replace("|", "")
-			if node.has("subtype"):
-				if node["subtype"] == "thinking":
-					new_bbcode_text = "[color=#CCCCCCCC]" + new_bbcode_text + "[/color]"
-			text_label.bbcode_text = new_bbcode_text
-			var text_without_extras = bb_regex.sub(node["text"], "", true)
-			var pauses = []
-			for c in text_without_extras.length():
-				if text_without_extras[c] == "|":
-					pauses.append(c - pauses.size())
-			text_without_extras = text_without_extras.replace("|", "")
-
-			var sound_letter = -1
-
-			for i in range(text_without_extras.length() + 1):
-				if i > 1 && accept_pressed_during_wait:
-					time_btwn_letters_current = time_btwn_letters_fast
-					letters_btwn_sound_current = letters_btwn_sound_fast
-				
-				sound_letter = (sound_letter + 1) % letters_btwn_sound_current
-				if sound_letter == 0:
-					var audio = audio01
-					if audio01.playing:
-						audio = audio02
-
-					var pitch = node["sound_pitch"] + rng.randf_range(-node["sound_pitch_randomness"], node["sound_pitch_randomness"])
-					audio.pitch_scale = pitch
-					audio.play()
-				
-				text_label.visible_characters = i
-				if i in pauses:
-					timer.start(time_btwn_letters_current * time_btwn_letters_long_mult)
-				else:
-					timer.start(time_btwn_letters_current)
-				accept_pressed_during_wait = false
-				yield(timer, "timeout")
-		
-			small_arrow_anim.play("blink")
-			yield(self, "pressed_accept")
-			small_arrow_anim.play("idle")
+			yield(type_sentences(node), "completed")
 			
 		"execute":
 			if initiator != null:
 				initiator.call(node["function"])
 		_:
 			push_error("Unsupported dialogue node type: " + node["type"] + ".")
-			end_dialogue()
+			yield(end_dialogue(), "completed")
 
 	var next_node = null
 	
@@ -148,16 +106,70 @@ func process_node(var node_name):
 		is_choosing_answer = false
 		answers.choosen()
 		next_node = node["next"][current_answer]
-	else:
-		if next_node is String:
+	elif node.has("next"):
+		if node["next"] is String:
 			next_node = node["next"]
-		elif node.has("next"):
+		elif node["next"] is Array:
 			next_node = node["next"][0]
+		else:
+			next_node = null
 
 	if next_node != null:
-		process_node(next_node)
+		yield(process_node(next_node), "completed")
 	else:
-		end_dialogue()
+		yield(end_dialogue(), "completed")
+
+func type_sentences(var node):
+	var sentences
+	if node["text"] is String:
+		sentences = [node["text"]]
+	else:
+		sentences = node["text"]
+	
+	for sentence in sentences:
+		time_btwn_letters_current = time_btwn_letters
+		letters_btwn_sound_current = letters_btwn_sound
+		
+		var new_bbcode_text = sentence.replace("|", "")
+		if node.has("subtype"):
+			if node["subtype"] == "thinking":
+				new_bbcode_text = "[color=#CCCCCCCC]" + new_bbcode_text + "[/color]"
+		text_label.bbcode_text = new_bbcode_text
+		var text_without_extras = bb_regex.sub(sentence, "", true)
+		var pauses = []
+		for c in text_without_extras.length():
+			if text_without_extras[c] == "|":
+				pauses.append(c - pauses.size())
+		text_without_extras = text_without_extras.replace("|", "")
+
+		var sound_letter = -1
+
+		for i in range(text_without_extras.length() + 1):
+			if i > 1 && accept_pressed_during_wait:
+				time_btwn_letters_current = time_btwn_letters_fast
+				letters_btwn_sound_current = letters_btwn_sound_fast
+		
+			sound_letter = (sound_letter + 1) % letters_btwn_sound_current
+			if sound_letter == 0:
+				var audio = audio01
+				if audio01.playing:
+					audio = audio02
+
+				var pitch = node["sound_pitch"] + rng.randf_range(-node["sound_pitch_randomness"], node["sound_pitch_randomness"])
+				audio.pitch_scale = pitch
+				audio.play()
+		
+			text_label.visible_characters = i
+			if i in pauses:
+				timer.start(time_btwn_letters_current * time_btwn_letters_long_mult)
+			else:
+				timer.start(time_btwn_letters_current)
+			accept_pressed_during_wait = false
+			yield(timer, "timeout")
+
+		small_arrow_anim.play("blink")
+		yield(self, "pressed_accept")
+		small_arrow_anim.play("idle")
 
 func start_dialogue(var dialogue_file_path, var people_in_this_conversation, var will_unfreeze_at_end = true, start_initiator = null):
 	if is_in_dialogue:
@@ -175,7 +187,7 @@ func start_dialogue(var dialogue_file_path, var people_in_this_conversation, var
 	read_file(dialogue_file_path)
 	
 	yield(animator, "animation_finished")
-	process_node("Start")
+	yield(process_node("Start"), "completed")
 
 func end_dialogue():
 	animator.play_backwards("open_dialogue")
@@ -185,6 +197,8 @@ func end_dialogue():
 		player.unfreeze()
 		timer.start(cooldown)
 		yield(timer, "timeout")
+	else:
+		yield(animator, "animation_finished")
 	is_in_dialogue = false
 
 func read_file(var dialogue_file_path):

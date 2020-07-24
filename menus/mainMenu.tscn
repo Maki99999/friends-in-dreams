@@ -41,7 +41,7 @@ tracks/1/keys = {
 "values": [ true, true, false ]
 }
 
-[node name="World00" type="Node2D"]
+[node name="MainMenu" type="Node2D"]
 __meta__ = {
 "_edit_lock_": true
 }

@@ -19,7 +19,7 @@ func load_game():
 	var saved_data = read_file(save_path)
 	
 	if get_tree().change_scene(saved_data["scene"]) != OK:
-		push_error("Can't load game!")
+		push_error("Can't load scene!")
 	
 	yield(get_tree(), "idle_frame")
 	for component in get_save_components():
