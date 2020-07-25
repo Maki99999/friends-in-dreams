@@ -124,9 +124,13 @@ func teleport_instant(var new_position, var new_direction = null, var new_parent
 		facing = new_direction
 		animation_player.play(new_direction)
 
-func teleport(var new_position, var new_direction = null, var new_parent = null):
+func try_teleport(var new_position, var new_direction = null, var new_parent = null):
 	if is_teleporting:
 		return false
+	teleport(new_position, new_direction, new_parent)
+	return true
+
+func teleport(var new_position, var new_direction = null, var new_parent = null):
 	is_teleporting = true
 	freeze()
 	
@@ -141,7 +145,6 @@ func teleport(var new_position, var new_direction = null, var new_parent = null)
 	yield(timer, "timeout")
 	unfreeze()
 	is_teleporting = false
-	return true
 
 func move_to(var new_position, var is_relative = false, var stop_after = true):
 	if is_relative:
@@ -159,6 +162,11 @@ func move_to(var new_position, var is_relative = false, var stop_after = true):
 		yield(move("up"), "completed")
 	if stop_after:
 		animation_player.play(facing)
+
+func move_to_mult(var new_positions):
+	for i in range(new_positions.size() - 1):
+		yield(move_to(new_positions[i], false, false), "completed")
+	yield(move_to(new_positions[-1], false, true), "completed")
 
 func move_cam_to(var new_position, var cam_speed):
 	if tween.is_active():

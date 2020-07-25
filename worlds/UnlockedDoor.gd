@@ -28,7 +28,7 @@ func _on_Area2D_area_entered(area):
 		teleport()
 
 func teleport():
-	if player.teleport(new_position, new_direction, new_parent_node):
+	if player.try_teleport(new_position, new_direction, new_parent_node):
 		fx_open.play()
 
 func _on_Area2D_area_exited(area):

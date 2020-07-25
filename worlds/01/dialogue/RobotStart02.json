@@ -1,11 +1,21 @@
 {
   "Start": {
+    "char_name": "Robot",
+    "text": "Kein |Feind. |Bit|te.",
+	"face": "neutral.png",
+	"sound": "robot",
+	"sound_pitch": 1,
+	"sound_pitch_randomness": 0,
+	"type": "normal",
+	"next": "2nd"
+  },
+  "2nd": {
     "char_name": "Rembry",
-    "text": "",
+    "text": "...",
 	"sound": "normal",
+	"face": "fearsad01.png",
 	"sound_pitch": 1.2,
 	"sound_pitch_randomness": 0.1,
-	"type": "normal",
-	"subtype": "thinking",
+	"type": "normal"
   }
 }

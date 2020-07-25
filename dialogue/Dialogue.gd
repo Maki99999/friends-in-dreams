@@ -13,6 +13,7 @@ export(float) var cooldown_before_answers
 export(int) var letters_btwn_sound
 export(int) var letters_btwn_sound_fast
 export(AudioStream) var voice_normal
+export(AudioStream) var voice_robot
 
 onready var animator = $DialogueBox/AnimationPlayer
 onready var text_label = $DialogueBox/MarginContainer/HSplitContainer/Text
@@ -22,7 +23,7 @@ onready var answers = $Answers
 onready var timer = $DialogueBox/Timer
 onready var audio01 = $Voice01
 onready var audio02 = $Voice02
-onready var voice_dictionary = {"normal": voice_normal}
+onready var voice_dictionary = {"normal": voice_normal, "robot": voice_robot}
 onready var rng = RandomNumberGenerator.new()
 var is_in_dialogue
 var initiator
@@ -211,5 +212,6 @@ func read_file(var dialogue_file_path):
 	var data_parse = JSON.parse(data_text)
 	if data_parse.error != OK:
 		push_error("Invalid dialogue file!")
+		end_dialogue()
 		return
 	dialogue_file_content = data_parse.result

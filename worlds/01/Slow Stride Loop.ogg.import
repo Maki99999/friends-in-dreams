@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Slow Stride Loop.ogg-6058845350aa8170f0348e919ff3685
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0

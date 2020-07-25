@@ -38,6 +38,7 @@ func cutscene_robot_start():
 	$RobotStart.queue_free()
 	player.freeze()
 	var robot = get_node("/root/World01/Main/Entities/Robot")
+	var door = get_node("/root/World01/Main/Entities/KaoriDoorOutside")
 	var timer = Timer.new()
 	get_tree().root.add_child(timer)
 	
@@ -46,7 +47,7 @@ func cutscene_robot_start():
 	robot.animation("left")
 	yield(robot.emote("exclamation_mark"),"completed")
 	player.reset_cam(1.0)
-#
+
 	var left
 	if player.global_position.x > 350:
 		left = Vector2.LEFT * 16
@@ -87,14 +88,26 @@ func cutscene_robot_start():
 		"Robot": "res://worlds/01/characters/Robot/faces/"}), "completed")
 	
 	robot.move_to(robot.global_position + Vector2.DOWN * 16 + Vector2.RIGHT * 16, null, 3.0, true)
-	yield(player.move_to(Vector2.DOWN * 32, true, true), "completed")
+	yield(player.move_to(Vector2.DOWN * 32, true, false), "completed")
 	var p = player.move_to(Vector2(488,648))
 	yield(robot.move_to(Vector2(488,648), "up", 3.0), "completed")
-	Utils.sprite_disappear(robot.sprite, 0.15)
+	yield(Utils.sprite_disappear(robot.sprite, 0.15), "completed")
+	robot.teleport_instant(Vector2(-1208, 392), get_node("/root/World01/House/Entities"))
+	robot.sprite.modulate = Color(1, 1, 1, 1)
+	robot.move_to(Vector2(-1112, 392), "down", 3.0)
 	yield(p, "completed")
-	player.teleport(Vector2(-488,648))
+
+	door.in_use = true
+	yield(player.teleport(Vector2(-1208,456), "up", get_node("/root/World01/House/Entities")), "completed")
+	door.in_use = false
+	yield(player.move_to_mult([Vector2(-1208,392), Vector2(-1128,408), Vector2(-1112,408)]), "completed")
 	
-	#player.unfreeze()
+	yield(dialogue.start_dialogue(dialogue_path_prefix + "/KaoriStart01.json", \
+		{"Rembry": "res://characters/mc/faces/", \
+		"Robot": "res://worlds/01/characters/Robot/faces/", \
+		"Kaori": "res://worlds/01/characters/Kaori/faces/"}), "completed")
+	
+	player.unfreeze()
 	timer.queue_free()
 	finished_cutscenes.append("RobotStart")
 

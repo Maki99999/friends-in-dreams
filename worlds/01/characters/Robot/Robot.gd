@@ -41,6 +41,12 @@ func move_to(var new_position, var end_dir = null, var speed = 3.0, var pref_upd
 		desired_volume = -80
 		anim.play(end_dir)
 
+func teleport_instant(var new_position, var new_parent = null):
+	if new_parent != null:
+		get_parent().remove_child(self)
+		new_parent.add_child(self)
+	global_position = new_position
+
 func emote(var name):
 	anim_emote.play(name)
 	yield(anim_emote, "animation_finished")
