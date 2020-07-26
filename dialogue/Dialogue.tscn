@@ -211,10 +211,10 @@ margin_left = 8.0
 margin_top = 8.0
 margin_right = 292.0
 margin_bottom = 43.0
-split_offset = 99
+split_offset = 104
 
 [node name="Text" type="RichTextLabel" parent="DialogueBox/MarginContainer/HSplitContainer"]
-margin_right = 235.0
+margin_right = 240.0
 margin_bottom = 35.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -222,12 +222,12 @@ custom_fonts/mono_font = ExtResource( 1 )
 custom_fonts/normal_font = ExtResource( 1 )
 custom_constants/line_separation = 2
 bbcode_enabled = true
-bbcode_text = "hiiiiiii~ <3 <3  luv u all <3hiiiiiii~ <3 <3  luv u all <hiiiiiii~ <3 <3  luv u all <3hiiiiiii~ <3 <3  l"
-text = "hiiiiiii~ <3 <3  luv u all <3hiiiiiii~ <3 <3  luv u all <hiiiiiii~ <3 <3  luv u all <3hiiiiiii~ <3 <3  l"
+bbcode_text = "Aber wenn du zu lange brauchst, musst du für mich als Hausfrau arbeiten. [wave amp=20 freq=4]Hihihihi![/wave]"
+text = "Aber wenn du zu lange brauchst, musst du für mich als Hausfrau arbeiten. Hihihihi!"
 scroll_active = false
 
 [node name="Face" type="TextureRect" parent="DialogueBox/MarginContainer/HSplitContainer"]
-margin_left = 247.0
+margin_left = 252.0
 margin_right = 284.0
 margin_bottom = 35.0
 size_flags_horizontal = 3
@@ -285,15 +285,8 @@ margin_bottom = 98.0
 custom_constants/separation = 24
 alignment = 2
 
-[node name="Answer" type="Control" parent="Answers/VBoxContainer" instance=ExtResource( 7 )]
+[node name="Answer" parent="Answers/VBoxContainer" instance=ExtResource( 7 )]
 margin_top = 98.0
-margin_right = 118.0
-margin_bottom = 98.0
-size_flags_horizontal = 3
-size_flags_vertical = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Answers"]
 anims/idle = SubResource( 5 )

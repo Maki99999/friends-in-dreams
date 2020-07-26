@@ -7,9 +7,9 @@
 	"sound_pitch": 1,
 	"sound_pitch_randomness": 0,
 	"type": "normal",
-	"next": "2nd"
+	"next": "2"
   },
-  "2nd": {
+  "2": {
     "char_name": "Rembry",
     "text": "W|-was meinst du?",
 	"sound": "normal",

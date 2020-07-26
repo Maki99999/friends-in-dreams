@@ -1,11 +1,180 @@
 {
   "Start": {
-    "char_name": "Rembry",
-    "text": "",
+    "char_name": "Robot",
+    "text": "Habe |Freund |mit|ge|bracht.",
+	"face": "neutral.png",
+	"sound": "robot",
+	"sound_pitch": 1,
+	"sound_pitch_randomness": 0,
+	"type": "normal",
+	"next": "2"
+  },
+  "2": {
+    "char_name": "Kaori",
+    "text": "Wie oft soll ich dir noch sagen, dass ich keine Freunde brauch.",
 	"sound": "normal",
+	"face": "angry.png",
+	"sound_pitch": 1.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "3"
+  },
+  "3": {
+    "char_name": "Kaori",
+    "text": "Von wo hast du ihn überhapt entführt?",
+	"sound": "normal",
+	"face": "normal_left.png",
+	"sound_pitch": 1.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "4"
+  },
+  "4": {
+    "char_name": "Robot",
+    "text": "Er |kam |aus |Nor|den.",
+	"face": "neutral.png",
+	"sound": "robot",
+	"sound_pitch": 1,
+	"sound_pitch_randomness": 0,
+	"type": "normal",
+	"next": "5"
+  },
+  "5": {
+    "char_name": "Kaori",
+    "text": ["Hmmm...",
+			"Im Norden gibt es aber nichts.",
+			"Sag mal...| Wie heißt du denn?"],
+	"sound": "normal",
+	"face": "normal_left.png",
+	"sound_pitch": 1.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "6"
+  },
+  "6": {
+    "char_name": "Rembry",
+    "text": "R|-rembry.",
+	"sound": "normal",
+	"face": "normal.png",
 	"sound_pitch": 1.2,
 	"sound_pitch_randomness": 0.1,
 	"type": "normal",
-	"subtype": "thinking",
+	"next": "7"
+  },
+  "7": {
+    "char_name": "Kaori",
+    "text": ["Rembry also. Mein Name ist Kaori.",
+			"Tut mir leid, dass mich mein Roboter hier hin gebracht hat.",
+			"Das macht der öfter, du kannst wieder gehen."],
+	"sound": "normal",
+	"face": "normal_left.png",
+	"sound_pitch": 1.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "8"
+  },
+  "8": {
+    "char_name": "Rembry",
+    "text": ["...",
+			"Ä|-ähm..."],
+	"sound": "normal",
+	"face": "normal.png",
+	"sound_pitch": 1.2,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "9"
+  },
+  "9": {
+    "char_name": "Kaori",
+    "text": "Ja? Hat dir mein Roboter irgendwas versprochen?",
+	"sound": "normal",
+	"face": "normal_left.png",
+	"sound_pitch": 1.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "10"
+  },
+  "10": {
+    "char_name": "Rembry",
+    "text": "A|-also...",
+	"sound": "normal",
+	"face": "normal.png",
+	"sound_pitch": 1.2,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "11"
+  },
+  "11": {
+    "char_name": "Robot",
+    "text": "Wir |hel|fen, |wenn |du |hilfst.",
+	"face": "neutral.png",
+	"sound": "robot",
+	"sound_pitch": 1,
+	"sound_pitch_randomness": 0,
+	"type": "normal",
+	"next": "12"
+  },
+  "12": {
+    "char_name": "Kaori",
+    "text": "Ach, das hat er gesagt? Brauchst du denn Hilfe?",
+	"sound": "normal",
+	"face": "normal_left.png",
+	"sound_pitch": 1.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "13"
+  },
+  "13": {
+    "char_name": "Rembry",
+    "text": "Ja, I|-ich...",
+	"sound": "normal",
+	"face": "normal.png",
+	"sound_pitch": 1.2,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "14"
+  },
+  "14": {
+    "char_name": "Kaori",
+    "text": ["Jaja, die Kleinigkeiten muss ich erstmal nicht hören.",
+			"Hm, aber eigentlich hab ich gar keine Lust darauf.",
+			"Ah, ich hab da eine Idee.",
+			"Weißt du, ich hatte noch nie einen Apfel. Die sind hier sehr selten.",
+			"Wenn du mir noch heute einen [color=#00FFFF]grünen Apfel[/color] besorgst, werde ich dir helfen.",
+			"Aber wenn du zu lange brauchst, musst du für mich als Hausfrau arbeiten. |[wave amp=20 freq=4]Hihihihi![/wave]",
+			"Keine Sorge, ein Apfelbaum ist ganz in der Nähe. Der Roboter bringt dich hin.",
+			"Also, hilfst du mir?"],
+	"sound": "normal",
+	"face": "normal_left.png",
+	"sound_pitch": 1.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "branching",
+	"next": ["E1", "R1"],
+	"answers": ["Okay.", "Naja..."]
+  },
+  "E1": {
+    "char_name": "Kaori",
+    "text": ["Sehr gut, dann warte ich hier auf dich!",
+			"Viel Glück~."],
+	"sound": "normal",
+	"face": "smiling.png",
+	"sound_pitch": 1.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal"
+  },
+  "R1": {
+    "char_name": "Kaori",
+    "text": ["Nicht? Ach komm.",
+			"Du musst nur dem Roboter folgen und dann einen [color=#00FFFF]grünen Apfel[/color] pflücken.",
+			"Der Roboter ist leider zu dumm zum Pflücken, sonst hätte er das gemacht.",
+			"Ganz simpel. Und danach helfe ich dir bei deinem Problem. Egal, was es ist.",
+			"Bist du jetzt dabei?"],
+	"sound": "normal",
+	"face": "normal_left.png",
+	"sound_pitch": 1.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "branching",
+	"next": ["E1"],
+	"answers": ["Okay."]
   }
 }

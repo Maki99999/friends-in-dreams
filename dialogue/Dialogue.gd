@@ -212,6 +212,5 @@ func read_file(var dialogue_file_path):
 	var data_parse = JSON.parse(data_text)
 	if data_parse.error != OK:
 		push_error("Invalid dialogue file!")
-		end_dialogue()
 		return
 	dialogue_file_content = data_parse.result
