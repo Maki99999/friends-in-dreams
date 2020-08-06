@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://fonts/font_normal01.tres" type="DynamicFont" id=1]
 [ext_resource path="res://dialogue/Answers.gd" type="Script" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://dialogue/background.png" type="Texture" id=6]
 [ext_resource path="res://dialogue/Answer.tscn" type="PackedScene" id=7]
 [ext_resource path="res://dialogue/Dialogue.gd" type="Script" id=8]
+[ext_resource path="res://dialogue/skip_circle.png" type="Texture" id=9]
+[ext_resource path="res://dialogue/skip_icon.png" type="Texture" id=10]
 
 [sub_resource type="Animation" id=1]
 length = 0.1
@@ -145,6 +147,62 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 1.45, 1.0 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "fade_in"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [node name="Dialogue" type="Control" groups=[
@@ -299,3 +357,25 @@ bus = "FX"
 [node name="Voice02" type="AudioStreamPlayer" parent="."]
 volume_db = -10.0
 bus = "FX"
+
+[node name="Skip" type="MarginContainer" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -8.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureProgress" type="TextureProgress" parent="Skip"]
+margin_right = 16.0
+margin_bottom = 16.0
+texture_over = ExtResource( 10 )
+texture_progress = ExtResource( 9 )
+fill_mode = 4
+tint_under = Color( 1, 1, 1, 0 )
+radial_initial_angle = 161.9
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Skip"]
+anims/fade_in = SubResource( 7 )
+anims/idle = SubResource( 8 )

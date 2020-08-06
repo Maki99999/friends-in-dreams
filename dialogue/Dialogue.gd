@@ -23,6 +23,8 @@ onready var answers = $Answers
 onready var timer = $DialogueBox/Timer
 onready var audio01 = $Voice01
 onready var audio02 = $Voice02
+onready var skip_progress = $Skip/TextureProgress
+onready var skip_anim = $Skip/AnimationPlayer
 onready var voice_dictionary = {"normal": voice_normal, "robot": voice_robot}
 onready var rng = RandomNumberGenerator.new()
 var is_in_dialogue
@@ -38,20 +40,40 @@ var answer_count = 1
 var time_btwn_letters_current
 var letters_btwn_sound_current
 var accept_pressed_during_wait = false
+var is_skipping = false
+var is_holding_skip = false
+var skip_start_time = 0.0
+
+const skip_time = 3500.0
 
 signal pressed_accept
+
+func _process(_delta):
+	if is_in_dialogue:
+		if Input.is_action_just_released("ui_cancel"):
+			is_holding_skip = false
+			update_skip(true)
+		elif Input.is_action_pressed("ui_cancel"):
+			if is_holding_skip:
+				if OS.get_ticks_msec() > skip_start_time + skip_time:
+					pass#is_skipping = true
+			else:
+				is_holding_skip = true
+				skip_start_time = OS.get_ticks_msec()
+			update_skip()
 
 func _ready():
 	visible = true
 	player = get_node(player_path)
 	reset()
 	animator.play("idle")
+	skip_anim.play("idle")
 	
 	bb_regex = RegEx.new()
 	bb_regex.compile("\\[[^\\]]*\\]")
 
 func _input(event):
-	if !(event is InputEventKey):
+	if !(event is InputEventKey) || !is_in_dialogue:
 		return
 	if event.is_action_pressed("ui_accept"):
 		emit_signal("pressed_accept")
@@ -64,6 +86,17 @@ func _input(event):
 			current_answer = posmod(current_answer + 1, answer_count)
 			answers.highlight(current_answer)
 
+func update_skip(var stop = false):
+	if stop:
+		skip_anim.play_backwards("fade_in")
+		
+	var new_val = (OS.get_ticks_msec() - skip_start_time) /  skip_time
+	skip_progress.value = new_val * 100
+	if new_val < 0.01:
+		skip_anim.play("fade_in")
+	elif new_val > 0.99:
+		skip_anim.play_backwards("fade_in")
+
 func reset():
 	text_label.bbcode_text = ""
 	text_label.visible_characters = 0
@@ -71,6 +104,7 @@ func reset():
 	unfreeze_at_end = true
 	small_arrow_anim.play("idle")
 	answers.reset()
+	is_skipping = false
 
 func process_node(var node_name):
 	var node = dialogue_file_content[node_name]
@@ -81,7 +115,7 @@ func process_node(var node_name):
 			
 			if node.has("face"):
 				face_image.texture = load(people_in_conversation[node["char_name"]] + node["face"])
-
+			
 			yield(type_sentences(node), "completed")
 			
 		"execute":
@@ -149,6 +183,8 @@ func type_sentences(var node):
 			if i > 1 && accept_pressed_during_wait:
 				time_btwn_letters_current = time_btwn_letters_fast
 				letters_btwn_sound_current = letters_btwn_sound_fast
+			if is_skipping:
+				time_btwn_letters_current = 0
 		
 			sound_letter = (sound_letter + 1) % letters_btwn_sound_current
 			if sound_letter == 0:
@@ -167,10 +203,11 @@ func type_sentences(var node):
 				timer.start(time_btwn_letters_current)
 			accept_pressed_during_wait = false
 			yield(timer, "timeout")
-
-		small_arrow_anim.play("blink")
-		yield(self, "pressed_accept")
-		small_arrow_anim.play("idle")
+		
+		if !is_skipping:
+			small_arrow_anim.play("blink")
+			yield(self, "pressed_accept")
+			small_arrow_anim.play("idle")
 
 func start_dialogue(var dialogue_file_path, var people_in_this_conversation, var will_unfreeze_at_end = true, start_initiator = null):
 	if is_in_dialogue:

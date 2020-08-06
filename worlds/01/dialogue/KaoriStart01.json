@@ -160,7 +160,22 @@
 	"face": "smiling.png",
 	"sound_pitch": 1.4,
 	"sound_pitch_randomness": 0.1,
-	"type": "normal"
+	"type": "normal",
+	"next": "E2"
+  },
+  "E2": {
+    "char_name": "Robot",
+    "text": "Fol|ge |mir.",
+	"face": "neutral.png",
+	"sound": "robot",
+	"sound_pitch": 1,
+	"sound_pitch_randomness": 0,
+	"type": "normal",
+	"next": "E3"
+  },
+  "E3": {
+	"type": "execute",
+	"function": "move_robot"
   },
   "R1": {
     "char_name": "Kaori",
@@ -174,7 +189,7 @@
 	"sound_pitch": 1.4,
 	"sound_pitch_randomness": 0.1,
 	"type": "branching",
-	"next": ["E1"],
-	"answers": ["Okay."]
+	"next": ["E1", "E1"],
+	"answers": ["Okay.", "Ja."]
   }
 }
