@@ -4,6 +4,8 @@ extends StaticBody2D
 export(NodePath) var new_parent
 export(Vector2) var new_position
 export(String, "up", "down", "left", "right") var new_direction
+export(Vector2) var border_x_after_tp = Vector2(-10000000, 10000000)
+export(Vector2) var border_y_after_tp = Vector2(-10000000, 10000000)
 
 var in_use = false
 
@@ -28,7 +30,7 @@ func _on_Area2D_area_entered(area):
 		teleport()
 
 func teleport():
-	if player.try_teleport(new_position, new_direction, new_parent_node):
+	if player.try_teleport(new_position, new_direction, new_parent_node, border_x_after_tp, border_y_after_tp):
 		fx_open.play()
 
 func _on_Area2D_area_exited(area):

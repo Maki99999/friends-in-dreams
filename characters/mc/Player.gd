@@ -31,6 +31,7 @@ var dir_last_pressed_time = -1000.0
 var use_on_cooldown = false
 var proc_sem = 1
 var is_teleporting = false
+var inventory = {}
 
 func _ready():
 	animation_player.play(start_dir)
@@ -124,13 +125,15 @@ func teleport_instant(var new_position, var new_direction = null, var new_parent
 		facing = new_direction
 		animation_player.play(new_direction)
 
-func try_teleport(var new_position, var new_direction = null, var new_parent = null):
+func try_teleport(var new_position, var new_direction = null, var new_parent = null, \
+		var border_x = Vector2(-10000000, 10000000), var border_y = Vector2(-10000000, 10000000)):
 	if is_teleporting:
 		return false
-	teleport(new_position, new_direction, new_parent)
+	yield(teleport(new_position, new_direction, new_parent, border_x, border_y), "completed")
 	return true
 
-func teleport(var new_position, var new_direction = null, var new_parent = null):
+func teleport(var new_position, var new_direction = null, var new_parent = null, \
+		var border_x = Vector2(-10000000, 10000000), var border_y = Vector2(-10000000, 10000000)):
 	is_teleporting = true
 	freeze()
 	
@@ -138,6 +141,7 @@ func teleport(var new_position, var new_direction = null, var new_parent = null)
 	yield(fade_anim, "animation_finished")
 	
 	teleport_instant(new_position, new_direction, new_parent)
+	change_fixed_cam(border_x, border_y)
 	
 	fade_anim.play("fade_in")
 	
@@ -179,10 +183,27 @@ func move_cam_to(var new_position, var cam_speed):
 func reset_cam(var cam_speed):
 	if tween.is_active():
 		yield(tween, "tween_all_completed")
-
+	
 	tween.interpolate_property(cam, "position", cam.position, Vector2.ZERO, 1.0/cam_speed, Tween.TRANS_LINEAR)
 	tween.start()
 	yield(tween, "tween_all_completed")
+
+func change_fixed_cam(var border_x = Vector2(-10000000, 10000000), var border_y = Vector2(-10000000, 10000000)):
+	var diff = border_x.y - border_x.x
+	if diff < 320:
+		cam.limit_left = border_x.x - ((320 - diff) / 2)
+		cam.limit_right = border_x.y + ((320 - diff) / 2)
+	else:
+		cam.limit_left = border_x.x
+		cam.limit_right = border_x.y
+	
+	diff = border_y.y - border_y.x
+	if diff < 180:
+		cam.limit_top = border_y.x - ((180 - diff) / 2)
+		cam.limit_bottom = border_y.y + ((180 - diff) / 2)
+	else:
+		cam.limit_top = border_y.x
+		cam.limit_bottom = border_y.y
 
 func play_footstep_sound():
 	var current_areas = footstep_area.get_overlapping_areas()
@@ -195,12 +216,15 @@ func play_footstep_sound():
 func save():
 	var saved_data = {	"x": global_position.x, 
 						"y": global_position.y, 
-						"facing": facing}
+						"facing": facing,
+						"inventory": inventory}
 	return([id, saved_data])
 
 func restore(var saved_data):
 	var player_data = saved_data[id]
+	
 	global_position = Vector2(player_data["x"], player_data["y"])
+	inventory = player_data["inventory"]
 
 	facing = player_data["facing"]
 	animation_player.play(facing)
