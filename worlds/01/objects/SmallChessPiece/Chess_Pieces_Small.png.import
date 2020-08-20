@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Chess_Pieces_Small.png-d3a5a2527ab56dc6140ba225cdf9b868.stex"
+path="res://.import/Chess_Pieces_Small.png-bdd354b760e5b96851b8920dfeec41e6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://worlds/01/objects/Chess_Pieces_Small.png"
-dest_files=[ "res://.import/Chess_Pieces_Small.png-d3a5a2527ab56dc6140ba225cdf9b868.stex" ]
+source_file="res://worlds/01/objects/SmallChessPiece/Chess_Pieces_Small.png"
+dest_files=[ "res://.import/Chess_Pieces_Small.png-bdd354b760e5b96851b8920dfeec41e6.stex" ]
 
 [params]
 

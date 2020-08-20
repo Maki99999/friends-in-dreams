@@ -1,12 +1,14 @@
 extends StaticBody2D
 
 
-var random_flicker = true
-var next_flicker = 0
 onready var rand = RandomNumberGenerator.new()
 onready var tween = $Tween
 onready var sprite = $Sprite
 onready var anim = $Sprite/AnimationPlayer
+onready var dialogue = get_tree().get_nodes_in_group("dialogue")[0]
+
+var random_flicker = true
+var next_flicker = 0
 
 func _ready():
 	anim.play("down")
@@ -25,3 +27,11 @@ func _process(_delta):
 		tween.start()
 		yield(tween, "tween_completed")
 		random_flicker = true
+
+func use():
+	#bis jetzt nur debug
+	get_tree().get_nodes_in_group("dialogue")[0].start_dialogue(\
+	"res://characters/side_characters/test_npc/testnpc_dialogue02.json",\
+	{"Test NPC": "res://characters/side_characters/test_npc/"})
+	
+	

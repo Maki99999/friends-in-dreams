@@ -301,7 +301,7 @@ anims/idle = SubResource( 1 )
 anims/open_dialogue = SubResource( 2 )
 
 [node name="Timer" type="Timer" parent="DialogueBox"]
-wait_time = 4096.0
+wait_time = 0.001
 
 [node name="SmallArrow" type="TextureRect" parent="."]
 anchor_left = 0.5
@@ -340,7 +340,7 @@ highlight_texture = ExtResource( 4 )
 [node name="VBoxContainer" type="VBoxContainer" parent="Answers"]
 margin_right = 118.0
 margin_bottom = 98.0
-custom_constants/separation = 24
+custom_constants/separation = 23
 alignment = 2
 
 [node name="Answer" parent="Answers/VBoxContainer" instance=ExtResource( 7 )]

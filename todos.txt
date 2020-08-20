@@ -1,4 +1,1 @@
--Verhindern, dass man in Cutscenes speichern kann bzw. irgendwie die pos des spielers an die letztsichere Position vor der Cutscene setzen.
--vllt so machen, dass cutscenes immer eienn starrtpunkt haben(zum speichern innerhalb cutscenes) und eienn endpunkt (zum überspringen)
--fixed cameras für innerhalb häuser etc, dafür extra attrbut in player; die teleport-türen können das regeln
--
+- (skip vllt so machen, dass cutscenes immer einen endpunkt (zum überspringen) haben)

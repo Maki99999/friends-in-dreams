@@ -6,11 +6,10 @@ onready var anim = $Cutscenes01
 onready var dialogue = get_tree().get_nodes_in_group("dialogue")[0]
 onready var music01 = $Music01
 
-var finished_cutscenes = ["Start"]
+var finished_cutscenes = ["Start"] # TODO change to empty
 var current_cutscene = ""
-var start_pos = Vector2(632, 136)
-var dialogue_path_prefix = "res://worlds/01/dialogue/"
 
+const dialogue_path_prefix = "res://worlds/01/dialogue/"
 const id = "01Cutscenes01"
 
 func _ready():
@@ -19,7 +18,20 @@ func _ready():
 	else:
 		start_music()
 
+func start_cutscene(var name, var save_pos):
+	current_cutscene = name
+	player.pos_before_cutscene = save_pos
+
+func end_cutscene(var name):
+	finished_cutscenes.append(name)
+	current_cutscene = ""
+	player.pos_before_cutscene = null
+	SaveLoad.save_game()
+
 func cutscene_start():
+	var start_pos = Vector2(632, 136)
+	
+	start_cutscene("Start", start_pos)
 	player.freeze()
 	player.teleport_instant(start_pos)
 	anim.play("CutsceneStart")
@@ -27,7 +39,7 @@ func cutscene_start():
 	dialogue.start_dialogue(dialogue_path_prefix + "/start.json", \
 		{"Rembry": "res://characters/mc/faces/"}, true, self)
 	player.unfreeze()
-	finished_cutscenes.append("Start")
+	end_cutscene("Start")
 
 func _on_RobotStart_area_entered(area):
 	if area.get_parent() != null && area.get_parent().get_groups().has("Player")\
@@ -35,8 +47,9 @@ func _on_RobotStart_area_entered(area):
 		cutscene_robot_start()
 
 func cutscene_robot_start():
-	$RobotStart.queue_free()
+	start_cutscene("RobotStart", Vector2(360, 616))
 	player.freeze()
+	$RobotStart.queue_free()
 	var robot = get_node("/root/World01/Main/Entities/Robot")
 	var door = get_node("/root/World01/Main/Entities/KaoriDoorOutside")
 	var timer = Timer.new()
@@ -55,7 +68,7 @@ func cutscene_robot_start():
 		left = Vector2.RIGHT * 16
 
 	yield(robot.move_to(player.global_position + Vector2.DOWN * 16, "up"), "completed")
-	yield(dialogue.start_dialogue(dialogue_path_prefix + "/RobotStart01.json", \
+	yield(dialogue.start_dialogue(dialogue_path_prefix + "RobotStart01.json", \
 		{"Rembry": "res://characters/mc/faces/", \
 		"Robot": "res://worlds/01/characters/Robot/faces/"}), "completed")
 
@@ -109,7 +122,7 @@ func cutscene_robot_start():
 	
 	player.unfreeze()
 	timer.queue_free()
-	finished_cutscenes.append("RobotStart")
+	end_cutscene("RobotStart")
 
 func can_start_cutscene(var cutscene_name):
 	return !finished_cutscenes.has(cutscene_name) \

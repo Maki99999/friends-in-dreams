@@ -31,12 +31,15 @@ var dir_last_pressed_time = -1000.0
 var use_on_cooldown = false
 var proc_sem = 1
 var is_teleporting = false
-var inventory = {}
+var pos_before_cutscene = null
+var inventory = []
 
 func _ready():
 	animation_player.play(start_dir)
+	
+	timer.start(1.0)
 	freeze()
-	yield(get_tree(), "idle_frame")
+	yield(timer, "timeout")
 	unfreeze()
 
 func _process(_delta):
@@ -172,7 +175,7 @@ func move_to_mult(var new_positions):
 		yield(move_to(new_positions[i], false, false), "completed")
 	yield(move_to(new_positions[-1], false, true), "completed")
 
-func move_cam_to(var new_position, var cam_speed):
+func move_cam_to(var new_position, var cam_speed): #cam_speed in percent
 	if tween.is_active():
 		yield(tween, "tween_all_completed")
 
@@ -214,8 +217,11 @@ func play_footstep_sound():
 		footsteps.play(area_name)
 
 func save():
-	var saved_data = {	"x": global_position.x, 
-						"y": global_position.y, 
+	var pos = global_position
+	if pos_before_cutscene != null:
+		pos = pos_before_cutscene
+	var saved_data = {	"x": pos.x, 
+						"y": pos.y, 
 						"facing": facing,
 						"inventory": inventory}
 	return([id, saved_data])

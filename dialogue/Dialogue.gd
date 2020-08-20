@@ -40,23 +40,26 @@ var answer_count = 1
 var time_btwn_letters_current
 var letters_btwn_sound_current
 var accept_pressed_during_wait = false
+var can_skip = false
 var is_skipping = false
 var is_holding_skip = false
 var skip_start_time = 0.0
+var dynamic_words_translated = {}
+var dynamic_words = {}
 
 const skip_time = 3500.0
 
 signal pressed_accept
 
 func _process(_delta):
-	if is_in_dialogue:
+	if is_in_dialogue && can_skip:
 		if Input.is_action_just_released("ui_cancel"):
 			is_holding_skip = false
 			update_skip(true)
 		elif Input.is_action_pressed("ui_cancel"):
 			if is_holding_skip:
 				if OS.get_ticks_msec() > skip_start_time + skip_time:
-					pass#is_skipping = true
+					is_skipping = true
 			else:
 				is_holding_skip = true
 				skip_start_time = OS.get_ticks_msec()
@@ -80,15 +83,16 @@ func _input(event):
 		accept_pressed_during_wait = true
 	if is_choosing_answer:
 		if event.is_action_pressed("ui_down"):
-			current_answer = posmod(current_answer - 1, answer_count)
+			current_answer = posmod(current_answer + 1, answer_count)
 			answers.highlight(current_answer)
 		if event.is_action_pressed("ui_up"):
-			current_answer = posmod(current_answer + 1, answer_count)
+			current_answer = posmod(current_answer - 1, answer_count)
 			answers.highlight(current_answer)
 
 func update_skip(var stop = false):
 	if stop:
 		skip_anim.play_backwards("fade_in")
+		return
 		
 	var new_val = (OS.get_ticks_msec() - skip_start_time) /  skip_time
 	skip_progress.value = new_val * 100
@@ -104,7 +108,11 @@ func reset():
 	unfreeze_at_end = true
 	small_arrow_anim.play("idle")
 	answers.reset()
+	can_skip = false
 	is_skipping = false
+	is_holding_skip = false
+	skip_start_time = 0.0
+	dynamic_words = {}
 
 func process_node(var node_name):
 	var node = dialogue_file_content[node_name]
@@ -115,12 +123,22 @@ func process_node(var node_name):
 			
 			if node.has("face"):
 				face_image.texture = load(people_in_conversation[node["char_name"]] + node["face"])
+			else:
+				face_image.texture = null
 			
 			yield(type_sentences(node), "completed")
 			
 		"execute":
 			if initiator != null:
-				initiator.call(node["function"])
+				if node.has("parameters"):
+					for word in dynamic_words.keys(): # replace #A with dynamic_words["A"]
+						for i in range(node["parameters"].size()):
+							node["parameters"][i] = node["parameters"][i].replace(word, dynamic_words[word])
+					initiator.callv(node["function"], node["parameters"])
+				else:
+					initiator.call(node["function"])
+		"end":
+			pass
 		_:
 			push_error("Unsupported dialogue node type: " + node["type"] + ".")
 			yield(end_dialogue(), "completed")
@@ -132,6 +150,9 @@ func process_node(var node_name):
 		current_answer = 0
 		answer_count = node["answers"].size()
 		
+		for word in dynamic_words.keys(): # replace #A with dynamic_words["A"]
+			for i in range(node["answers"].size()):
+				node["answers"][i] = node["answers"][i].replace(word, dynamic_words_translated[word])
 		answers.init(node["answers"])
 		
 		timer.start(cooldown_before_answers)
@@ -165,6 +186,9 @@ func type_sentences(var node):
 		time_btwn_letters_current = time_btwn_letters
 		letters_btwn_sound_current = letters_btwn_sound
 		
+		for word in dynamic_words.keys(): # replace #A with dynamic_words["A"]
+			sentence = sentence.replace(word, dynamic_words_translated[word])
+		
 		var new_bbcode_text = sentence.replace("|", "")
 		if node.has("subtype"):
 			if node["subtype"] == "thinking":
@@ -184,7 +208,7 @@ func type_sentences(var node):
 				time_btwn_letters_current = time_btwn_letters_fast
 				letters_btwn_sound_current = letters_btwn_sound_fast
 			if is_skipping:
-				time_btwn_letters_current = 0
+				break
 		
 			sound_letter = (sound_letter + 1) % letters_btwn_sound_current
 			if sound_letter == 0:
@@ -204,24 +228,34 @@ func type_sentences(var node):
 			accept_pressed_during_wait = false
 			yield(timer, "timeout")
 		
+		text_label.visible_characters = text_without_extras.length() + 1
+		yield(get_tree(), "idle_frame")
+		
 		if !is_skipping:
 			small_arrow_anim.play("blink")
 			yield(self, "pressed_accept")
 			small_arrow_anim.play("idle")
 
-func start_dialogue(var dialogue_file_path, var people_in_this_conversation, var will_unfreeze_at_end = true, start_initiator = null):
+func start_dialogue(var dialogue_file_path, var people_in_this_conversation, \
+		var will_unfreeze_at_end = true, start_initiator = null, \
+		dynamic_wordlist = {}, dynamic_translations_path = null):
+	
 	if is_in_dialogue:
 		return
 	is_in_dialogue = true
 	player.freeze()
 	for node in get_tree().get_nodes_in_group("cutscene_freeze"):
 		node.freeze()
+		
 	reset()
+	can_skip = true
 	animator.play("open_dialogue")
 	
 	people_in_conversation = people_in_this_conversation
 	unfreeze_at_end = will_unfreeze_at_end
 	initiator = start_initiator
+	
+	read_dynamic_file(dynamic_wordlist, dynamic_translations_path)
 	read_file(dialogue_file_path)
 	
 	yield(animator, "animation_finished")
@@ -229,6 +263,8 @@ func start_dialogue(var dialogue_file_path, var people_in_this_conversation, var
 
 func end_dialogue():
 	animator.play_backwards("open_dialogue")
+	update_skip(true)
+	can_skip = false
 	if unfreeze_at_end:
 		for node in get_tree().get_nodes_in_group("cutscene_freeze"):
 			node.unfreeze()
@@ -246,8 +282,30 @@ func read_file(var dialogue_file_path):
 		return
 	var data_text = data_file.get_as_text()
 	data_file.close()
+	
 	var data_parse = JSON.parse(data_text)
 	if data_parse.error != OK:
 		push_error("Invalid dialogue file!")
 		return
 	dialogue_file_content = data_parse.result
+	
+func read_dynamic_file(var dynamic_wordlist, var dynamic_file_path):
+	if dynamic_wordlist.empty() || dynamic_file_path == null:
+		return
+		
+	var data_file = File.new()
+	if data_file.open(dynamic_file_path, File.READ) != OK:
+		push_error("Can't find dynamic word list file!")
+		return
+	var data_text = data_file.get_as_text()
+	data_file.close()
+	
+	var data_parse = JSON.parse(data_text)
+	if data_parse.error != OK:
+		push_error("Invalid dynamic word list!")
+		return
+	
+	for word in dynamic_wordlist.keys():
+		dynamic_words_translated[word] = data_parse.result[dynamic_wordlist[word]]["translation"]
+	
+	dynamic_words = dynamic_wordlist

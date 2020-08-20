@@ -1,0 +1,11 @@
+{
+  "Start": {
+    "char_name": "Rembry",
+    "text": "Ein Podest. Ich könnte hier etwas draufstellen.",
+	"sound": "normal",
+	"sound_pitch": 1.2,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"subtype": "thinking"
+  }
+}

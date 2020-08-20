@@ -1,0 +1,39 @@
+json-Datei:
+Jedes Element ist ein Dialogelement
+Elementnamen sind beliebig
+Startelement muss "Start" heißen
+
+Verschiedene Typen:
+"normal" mit Subelementen:
+- "char_name" (optional (nicht optional, wenn "face" existiert), Name des Charakters, der gerade spricht, zur Zuordnung zu den Gesichtern)
+- "text" (Der Dialogtext, String oder Array, "|" wird durch eine Sprechpause ersetzt; mit bbcode)
+- "face" (optional, Dateiname des Gesichtes)
+- "sound" (unterstützt die Sounds: "normal", "robot")
+- "sound_pitch" (selbsterklärend)
+- "sound_pitch_randomness" (sound bekommt ein wenig randomness: formel ist random_range(sound_pitch - sound_pitch_randomness, sound_pitch + sound_pitch_randomness))
+- "type" (hier "normal")
+- "subtype" (optional)
+- - ="thinking" (Text wird gräulich eingefärbt)
+- "next" (Elementname des nächsten Dialogelementes(1-Array oder String), bei Dialogende leer/nicht vorhanden)
+
+"branching" mit allen "normal"-Subelementen mit Änderungen:
+- "type" (hier "branching")
+- "next" (Elementnamen der nächsten Dialogelemente (Array))
+- "answers" (Auswählbare Antwortmöglichkeiten (Array, gleiche Länge und Reihenfolge wie "next"))
+
+"execute" mit Subelementen:
+- "type" (hier "execute")
+- "function" (Name der Methode, die aufgerufen wird)
+- "parameters" (Array mit Parametern)
+- "next" (Wie bei "normal")
+
+"end" mit einzigem Subelement:
+- "type" (hier "end")
+
+
+In "text", "answers", "" wird #<DictionaryItem> ersetzt durch ein dem DialogManager übergebenes übersetztes Dictionary-Item
+In "parameters" wird #<DictionaryItem> ersetzt durch ein dem DialogManager übergebenes nicht-übersetztes Dictionary-Item
+
+dynamische Texte sind in einer Extra-json-Datei:
+Element ist id eines Textes
+Ein Subelement mit Namen "translation"

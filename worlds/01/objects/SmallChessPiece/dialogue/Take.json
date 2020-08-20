@@ -1,0 +1,20 @@
+{
+  "Start": {
+    "char_name": "Rembry",
+    "text": "#1. Soll ich es nehmen?",
+	"sound": "normal",
+	"sound_pitch": 1.2,
+	"sound_pitch_randomness": 0.1,
+	"type": "branching",
+	"subtype": "thinking",
+	"next": ["Yes", "End"],
+	"answers": ["Ja", "Nein"]
+  },
+  "Yes": {
+	"type": "execute",
+	"function": "take"
+  },
+  "End": {
+	"type": "end"
+  }
+}

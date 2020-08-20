@@ -1,0 +1,14 @@
+{
+  "queen": {
+    "translation": "Eine Königin"
+  },
+  "bishop": {
+    "translation": "Ein Läufer"
+  },
+  "rook": {
+    "translation": "Ein Turm"
+  },
+  "knight": {
+    "translation": "Ein Springer"
+  }
+}
