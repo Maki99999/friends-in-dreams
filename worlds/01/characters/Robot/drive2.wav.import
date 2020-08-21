@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/drive2.wav-6c10194a4e8fd7d61d69bb7186b41054.sample"
+
+[deps]
+
+source_file="res://worlds/01/characters/Robot/drive2.wav"
+dest_files=[ "res://.import/drive2.wav-6c10194a4e8fd7d61d69bb7186b41054.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

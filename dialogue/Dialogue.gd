@@ -27,9 +27,9 @@ onready var skip_progress = $Skip/TextureProgress
 onready var skip_anim = $Skip/AnimationPlayer
 onready var voice_dictionary = {"normal": voice_normal, "robot": voice_robot}
 onready var rng = RandomNumberGenerator.new()
+onready var player = get_tree().get_nodes_in_group("Player")[0]
 var is_in_dialogue
 var initiator
-var player
 var unfreeze_at_end
 var people_in_conversation	# Paths to the directory of the faces of the people, one path per person
 var dialogue_file_content
@@ -67,7 +67,6 @@ func _process(_delta):
 
 func _ready():
 	visible = true
-	player = get_node(player_path)
 	reset()
 	animator.play("idle")
 	skip_anim.play("idle")

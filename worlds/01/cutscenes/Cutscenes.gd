@@ -104,8 +104,7 @@ func cutscene_robot_start():
 	yield(player.move_to(Vector2.DOWN * 32, true, false), "completed")
 	var p = player.move_to(Vector2(488,648))
 	yield(robot.move_to(Vector2(488,648), "up", 3.0), "completed")
-	yield(Utils.sprite_disappear(robot.sprite, 0.15), "completed")
-	robot.teleport_instant(Vector2(-1208, 392), get_node("/root/World01/House/Entities"))
+	yield(robot.teleport(Vector2(-1208, 392), get_node("/root/World01/House/Entities"), false, true), "completed")
 	robot.sprite.modulate = Color(1, 1, 1, 1)
 	robot.move_to(Vector2(-1112, 392), "down", 3.0)
 	yield(p, "completed")
@@ -118,7 +117,7 @@ func cutscene_robot_start():
 	yield(dialogue.start_dialogue(dialogue_path_prefix + "/KaoriStart01.json", \
 		{"Rembry": "res://characters/mc/faces/", \
 		"Robot": "res://worlds/01/characters/Robot/faces/", \
-		"Kaori": "res://worlds/01/characters/Kaori/faces/"}), "completed")
+		"Kaori": "res://worlds/01/characters/Kaori/faces/"}, true, robot), "completed")
 	
 	player.unfreeze()
 	timer.queue_free()

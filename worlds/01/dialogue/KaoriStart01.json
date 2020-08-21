@@ -175,7 +175,7 @@
   },
   "E3": {
 	"type": "execute",
-	"function": "move_robot"
+	"function": "walk_to_gate01"
   },
   "R1": {
     "char_name": "Kaori",
