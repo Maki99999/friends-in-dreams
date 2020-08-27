@@ -30,7 +30,7 @@ func use():
 		return
 	
 	if current_statue == "empty":
-		var intersection = intersection(["queen", "bishop", "rook", "knight"], player.inventory)
+		var intersection = Utils.intersection(["queen", "bishop", "rook", "knight"], player.inventory)
 		
 		var dynamic_words = {}
 		for i in range(intersection.size()):
@@ -40,13 +40,6 @@ func use():
 	else:
 		dialogue.start_dialogue(dialogue_path + not_empty_suffix, null, true, self, \
 		{"#1": current_statue}, dialogue_path + dynamic_words_articles_suffix)
-
-func intersection(var array1, var array2):
-	var intersection = []
-	for item in array1:
-		if array2.has(item):
-			intersection.append(item)
-	return intersection
 
 func place(var figure):
 	player.inventory.erase(figure)

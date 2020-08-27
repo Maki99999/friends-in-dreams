@@ -14,6 +14,7 @@ export(int) var letters_btwn_sound
 export(int) var letters_btwn_sound_fast
 export(AudioStream) var voice_normal
 export(AudioStream) var voice_robot
+export(AudioStream) var voice_wood
 
 onready var animator = $DialogueBox/AnimationPlayer
 onready var text_label = $DialogueBox/MarginContainer/HSplitContainer/Text
@@ -25,7 +26,7 @@ onready var audio01 = $Voice01
 onready var audio02 = $Voice02
 onready var skip_progress = $Skip/TextureProgress
 onready var skip_anim = $Skip/AnimationPlayer
-onready var voice_dictionary = {"normal": voice_normal, "robot": voice_robot}
+onready var voice_dictionary = {"normal": voice_normal, "robot": voice_robot, "wood": voice_wood}
 onready var rng = RandomNumberGenerator.new()
 onready var player = get_tree().get_nodes_in_group("Player")[0]
 var is_in_dialogue
@@ -259,6 +260,7 @@ func start_dialogue(var dialogue_file_path, var people_in_this_conversation, \
 	
 	yield(animator, "animation_finished")
 	yield(process_node("Start"), "completed")
+	yield(get_tree(), "idle_frame")
 
 func end_dialogue():
 	animator.play_backwards("open_dialogue")

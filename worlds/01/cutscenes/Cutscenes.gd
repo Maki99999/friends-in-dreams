@@ -5,6 +5,8 @@ onready var player = get_tree().get_nodes_in_group("Player")[0]
 onready var anim = $Cutscenes01
 onready var dialogue = get_tree().get_nodes_in_group("dialogue")[0]
 onready var music01 = $Music01
+onready var timer = $Timer
+onready var take_fx = $takeFx
 
 var finished_cutscenes = ["Start"] # TODO change to empty
 var current_cutscene = ""
@@ -52,8 +54,6 @@ func cutscene_robot_start():
 	$RobotStart.queue_free()
 	var robot = get_node("/root/World01/Main/Entities/Robot")
 	var door = get_node("/root/World01/Main/Entities/KaoriDoorOutside")
-	var timer = Timer.new()
-	get_tree().root.add_child(timer)
 	
 	yield(player.move_cam_to(robot.global_position, 1.0), "completed")
 
@@ -122,6 +122,38 @@ func cutscene_robot_start():
 	player.unfreeze()
 	timer.queue_free()
 	end_cutscene("RobotStart")
+
+func cutscene_tree_01(var tree):
+	start_cutscene("Tree01", Vector2(1528, 216))
+	player.freeze()
+	
+	yield(player.move_cam_to(Vector2(1528, 140), 0.85), "completed")
+	timer.start(1.0)
+	yield(timer, "timeout")
+	yield(player.reset_cam(0.85), "completed")
+	
+	yield(dialogue.start_dialogue("res://worlds/01/dialogue/Tree01.json", \
+					{"Rembry": "res://characters/mc/faces/", \
+					"Robot": "res://worlds/01/characters/Robot/faces/"}), "completed")
+	yield(Utils.sprite_appear(tree.sprite, 1), "completed")
+	yield(dialogue.start_dialogue("res://worlds/01/dialogue/Tree02.json", \
+					{"Rembry": "res://characters/mc/faces/", \
+					"Tree": "res://worlds/01/characters/Tree/faces/"}, true, \
+					tree, {"#1": "green", "#2": "red", "#3": "purple"}, \
+					"res://worlds/01/dialogue/ApplesColorsNamesCaps.json"), "completed")
+
+func cutscene_tree_01b(var tree, var color):
+	yield(dialogue.start_dialogue("res://worlds/01/dialogue/Tree03.json", \
+					{"Rembry": "res://characters/mc/faces/"}), "completed")
+	timer.start(1.5)
+	yield(timer, "timeout")
+	tree.apple_take(color)
+	take_fx.play()
+	
+	player.inventory.append(color)
+	tree.state = "2applesIdle"
+	player.unfreeze()
+	end_cutscene("Tree01")
 
 func can_start_cutscene(var cutscene_name):
 	return !finished_cutscenes.has(cutscene_name) \

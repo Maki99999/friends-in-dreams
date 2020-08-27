@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/tree01.wav-49ccbcb8dcdc4a8fe9a879ebd4b59e06.sample"
+
+[deps]
+
+source_file="res://dialogue/voices/wood/tree01.wav"
+dest_files=[ "res://.import/tree01.wav-49ccbcb8dcdc4a8fe9a879ebd4b59e06.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

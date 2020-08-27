@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/noromal.png-8ae9adb36660f8936394ec5d500564f3.stex"
+path="res://.import/greenApple.png-a2322caf32c2d862f4aac7969adfbdcf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/mc/faces/noromal.png"
-dest_files=[ "res://.import/noromal.png-8ae9adb36660f8936394ec5d500564f3.stex" ]
+source_file="res://worlds/01/objects/apples/greenApple.png"
+dest_files=[ "res://.import/greenApple.png-a2322caf32c2d862f4aac7969adfbdcf.stex" ]
 
 [params]
 

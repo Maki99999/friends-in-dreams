@@ -41,6 +41,8 @@ func open():
 	timer.start(0.6)
 	yield(timer, "timeout")
 	
+	$"../Robot".walk_to_tree01()
+	
 	yield(player.reset_cam(1.0), "completed")
 	player.unfreeze()
 	

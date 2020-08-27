@@ -52,7 +52,14 @@ func move(var obj, var dir, var speed):
 	var new_position = old_position - Vector2.ONE * (tile_size / 2.0) + inputs[dir] * tile_size
 	new_position = new_position.snapped(Vector2.ONE * tile_size) + Vector2.ONE * (tile_size / 2.0)
 	
-	tween.interpolate_property(obj, "position", old_position, new_position, 1.0/speed, Tween.TRANS_LINEAR)
+	tween.interpolate_property(obj, "global_position", old_position, new_position, 1.0/speed, Tween.TRANS_LINEAR)
+	tween.call_deferred("start")
+	yield(tween, "tween_completed")
+
+func move_pos(var obj, var new_position, var speed):
+	var old_position = obj.global_position
+	
+	tween.interpolate_property(obj, "global_position", old_position, new_position, 1.0/speed, Tween.TRANS_LINEAR)
 	tween.call_deferred("start")
 	yield(tween, "tween_completed")
 
@@ -70,3 +77,10 @@ func sprite_appear(var sprite, var duration):
 			Tween.TRANS_LINEAR, Tween.EASE_IN)
 	tween.call_deferred("start")
 	yield(tween, "tween_completed")
+
+func intersection(var array1, var array2):
+	var intersection = []
+	for item in array1:
+		if array2.has(item):
+			intersection.append(item)
+	return intersection

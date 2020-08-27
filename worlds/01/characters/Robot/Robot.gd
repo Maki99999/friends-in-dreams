@@ -24,7 +24,7 @@ func _ready():
 	walk_fx.volume_db = -INF
 	walk_fx.play()
 	
-	walk_to_gate01() #DEBUG
+	restore({id: {"state": "tree01"}})#DEBUG
 
 func _process(delta):
 	if current_volume == -INF:
@@ -70,37 +70,52 @@ func emote(var name):
 func animation(var name):
 	anim.play(name)
 
-func walk_to_gate01():
-	state = "to_gate"
-	
-	yield(move_to(Vector2(-1208, 472), "down", 3.0), "completed")
-	yield(teleport(Vector2(600,648), get_node("/root/World01/Main/Entities"), true, true), "completed")
-	yield(move_with_player([Vector2(600,520), \
-							Vector2(952,520), \
-							Vector2(952,440), \
-							Vector2(1544,440), \
-							Vector2(1544,376)]), "completed")
-
 func move_with_player(var points):
 	var max_distance_sqr = 3600
 	for point in points:
-		while global_position.distance_squared_to(player.global_position) > max_distance_sqr:
+		while global_position.distance_squared_to(player.global_position) > max_distance_sqr && \
+				player.global_position.x < global_position.x:
 			yield(get_tree(), "idle_frame")
 		
 		while global_position.distance_squared_to(point) >= 64:
-			while global_position.distance_squared_to(player.global_position) > max_distance_sqr:
+			while global_position.distance_squared_to(player.global_position) > max_distance_sqr && \
+					player.global_position.x < global_position.x:
 				yield(get_tree(), "idle_frame")
 			if point.distance_squared_to(player.global_position) < max_distance_sqr:
 				yield(move_to(point, "down", 3.0), "completed")
 			else:
 				yield(move_to(global_position + (point - global_position).clamped(16) , "down", 2.5), "completed")
-	state = "gate"
+
+func walk_to_gate01():
+	state = "to_gate01"
+	
+	yield(move_to(Vector2(-1208, 472), "down", 3.0), "completed")
+	yield(teleport(Vector2(600, 648), get_node("/root/World01/Main/Entities"), true, true), "completed")
+	yield(move_with_player([Vector2(600, 520), \
+							Vector2(952, 520), \
+							Vector2(952, 440), \
+							Vector2(1544, 440), \
+							Vector2(1544, 376)]), "completed")
+	state = "gate01"
+
+func walk_to_tree01():
+	state = "tree01"
+	yield(move_to(Vector2(1528, 376), null, 3.0), "completed")
+	yield(move_to(Vector2(1528, 216), null, 3.0), "completed")
+	yield(move_to(Vector2(1560, 216), "down", 3.0), "completed")
 
 func use():
-	if state == "gate":
-		dialogue.start_dialogue("res://worlds/01/dialogue/RobotStartGate01.json", \
-			{"Rembry": "res://characters/mc/faces/", \
-			"Robot": "res://worlds/01/characters/Robot/faces/"})
+	match state:
+		"gate01":
+			dialogue.start_dialogue("res://worlds/01/dialogue/RobotStartGate01.json", \
+					{"Rembry": "res://characters/mc/faces/", \
+					"Robot": "res://worlds/01/characters/Robot/faces/"})
+		"tree01":
+			dialogue.start_dialogue("res://worlds/01/dialogue/RobotTree01.json", \
+					{"Rembry": "res://characters/mc/faces/", \
+					"Robot": "res://worlds/01/characters/Robot/faces/"})
+		_:
+			pass
 
 func save():
 	var saved_data = {"state": state}
@@ -112,9 +127,12 @@ func restore(var saved_data):
 	state = data["state"]
 	
 	match state:
-		"gate", "to_gate":
-			state = "gate"
+		"gate01", "to_gate01":
+			state = "gate01"
 			global_position = Vector2(1544,376)
+			anim.play("down")
+		"tree01":
+			global_position = Vector2(1560, 216)
 			anim.play("down")
 		"idle", _:
 			pass

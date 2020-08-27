@@ -169,6 +169,7 @@ func move_to(var new_position, var is_relative = false, var stop_after = true):
 		yield(move("up"), "completed")
 	if stop_after:
 		animation_player.play(facing)
+	yield(get_tree(), "idle_frame")
 
 func move_to_mult(var new_positions):
 	for i in range(new_positions.size() - 1):
