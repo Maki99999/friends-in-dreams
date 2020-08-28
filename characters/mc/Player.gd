@@ -35,6 +35,8 @@ var pos_before_cutscene = null
 var inventory = []
 
 func _ready():
+	inventory = ["green"] #DEBUG
+	
 	animation_player.play(start_dir)
 	
 	timer.start(1.0)

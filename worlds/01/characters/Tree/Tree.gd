@@ -14,6 +14,9 @@ const id = "01Tree"
 
 func _ready():
 	sprite.modulate = Color(1, 1, 1, 0)
+	
+	yield(get_tree(), "idle_frame")
+	restore({id: {"state": "2applesIdle"}})
 
 func use():
 	match state:
@@ -22,11 +25,10 @@ func use():
 		"2applesIdle":
 			dialogue.start_dialogue("res://worlds/01/dialogue/TreeIdle.json", \
 					{"Rembry": "res://characters/mc/faces/", \
-					"Robot": "res://worlds/01/characters/Robot/faces/"})
+					"Tree": "res://worlds/01/characters/Tree/faces/"})
 
 func apple_fall(var color):
-	remove_child(apples[color])
-	player.get_parent().add_child(apples[color])
+	Utils.change_parent(apples[color], player.get_parent())
 	apple_fall_fx.play()
 	yield(Utils.move_pos(apples[color], Vector2(apples[color].global_position.x, 208), 1), "completed")
 	cutscenes.cutscene_tree_01b(self, color)
@@ -48,4 +50,5 @@ func restore(var saved_data):
 			tree_after_block.is_enabled = true
 			sprite.modulate = Color(1, 1, 1, 0)
 		"2applesIdle":
+			sprite.modulate = Color(1, 1, 1, 1)
 			apple_take(Utils.intersection(apples.keys(), player.inventory)[0])

@@ -143,13 +143,20 @@ func cutscene_tree_01(var tree):
 					"res://worlds/01/dialogue/ApplesColorsNamesCaps.json"), "completed")
 
 func cutscene_tree_01b(var tree, var color):
+	var robot = get_node("/root/World01/Main/Entities/Robot")
+	robot.move_to(Vector2(1544, 344), "down", 3.0)
+	
 	yield(dialogue.start_dialogue("res://worlds/01/dialogue/Tree03.json", \
 					{"Rembry": "res://characters/mc/faces/"}), "completed")
-	timer.start(1.5)
+	
+	
+	timer.start(0.2)
 	yield(timer, "timeout")
 	tree.apple_take(color)
 	take_fx.play()
 	
+	robot.teleport(Vector2(-1112, 392), get_node("/root/World01/House/Entities"), false, true)
+	robot.state = "idle02"
 	player.inventory.append(color)
 	tree.state = "2applesIdle"
 	player.unfreeze()

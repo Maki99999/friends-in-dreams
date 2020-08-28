@@ -1,0 +1,11 @@
+{
+  "Start": {
+    "char_name": "Robot",
+    "text": ".|.|.",
+	"face": "neutral.png",
+	"sound": "robot",
+	"sound_pitch": 1,
+	"sound_pitch_randomness": 0,
+	"type": "normal"
+  }
+}

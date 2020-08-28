@@ -1,6 +1,9 @@
 extends Node2D
 
 
+onready var player = get_tree().get_nodes_in_group("Player")[0]
+onready var dialogue = get_tree().get_nodes_in_group("dialogue")[0]
+
 var tween
 
 const tile_size = 16
@@ -84,3 +87,9 @@ func intersection(var array1, var array2):
 		if array2.has(item):
 			intersection.append(item)
 	return intersection
+
+func change_parent(var obj, var new_parent):
+	var old_pos = obj.global_position
+	obj.get_parent().call_deferred("remove_child", obj)
+	new_parent.call_deferred("add_child", obj)
+	obj.global_position = old_pos

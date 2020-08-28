@@ -6,7 +6,6 @@
 	"face": "normal.png",
 	"sound_pitch": 1.2,
 	"sound_pitch_randomness": 0.1,
-	"type": "normal",
-	"next": "2"
+	"type": "normal"
   }
 }

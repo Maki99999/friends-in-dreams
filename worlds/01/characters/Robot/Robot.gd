@@ -24,7 +24,7 @@ func _ready():
 	walk_fx.volume_db = -INF
 	walk_fx.play()
 	
-	restore({id: {"state": "tree01"}})#DEBUG
+	restore({id: {"state": "idle02"}})#DEBUG
 
 func _process(delta):
 	if current_volume == -INF:
@@ -114,8 +114,9 @@ func use():
 			dialogue.start_dialogue("res://worlds/01/dialogue/RobotTree01.json", \
 					{"Rembry": "res://characters/mc/faces/", \
 					"Robot": "res://worlds/01/characters/Robot/faces/"})
-		_:
-			pass
+		"idle02":
+			dialogue.start_dialogue("res://worlds/01/dialogue/RobotIdle02.json", \
+					{"Robot": "res://worlds/01/characters/Robot/faces/"})
 
 func save():
 	var saved_data = {"state": state}
@@ -133,6 +134,10 @@ func restore(var saved_data):
 			anim.play("down")
 		"tree01":
 			global_position = Vector2(1560, 216)
+			anim.play("down")
+		"idle02":
+			Utils.change_parent(self, $"/root/World01/House/Entities")
+			global_position = Vector2(-1112, 392)
 			anim.play("down")
 		"idle", _:
 			pass

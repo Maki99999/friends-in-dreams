@@ -20,10 +20,15 @@ func use():
 			pass
 
 func dialogue_wait_apple():
-	if has_apples.empty():
-		dialogue.start_dialogue("res://worlds/01/dialogue/KaoriWait01.json", \
-			{"Rembry": "res://characters/mc/faces/", \
-			"Kaori": "res://worlds/01/characters/Kaori/faces/"})
+	match Utils.intersection(wants_apples, Utils.player.inventory).size():
+		0:
+			dialogue.start_dialogue("res://worlds/01/dialogue/KaoriWait01.json", \
+				{"Rembry": "res://characters/mc/faces/", \
+				"Kaori": "res://worlds/01/characters/Kaori/faces/"})
+		1:
+			dialogue.start_dialogue("res://worlds/01/dialogue/KaoriWait01.json", \nexttodo
+				{"Rembry": "res://characters/mc/faces/", \
+				"Kaori": "res://worlds/01/characters/Kaori/faces/"})
 
 func save():
 	var saved_data = {"state": state,
