@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://characters/mc/sprite00.png" type="Texture" id=1]
 [ext_resource path="res://characters/mc/Player.gd" type="Script" id=2]
@@ -151,6 +151,41 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=8]
+resource_name = "walk_down_fast"
+length = 0.8
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("NotTeleporting/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 30, 20, 40 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_footstep_sound"
+}, {
+"args": [  ],
+"method": "play_footstep_sound"
+} ]
+}
+
+[sub_resource type="Animation" id=9]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("NotTeleporting/Sprite:frame")
@@ -182,7 +217,42 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
+resource_name = "walk_left_fast"
+length = 0.8
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("NotTeleporting/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 13, 33, 23, 43 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_footstep_sound"
+}, {
+"args": [  ],
+"method": "play_footstep_sound"
+} ]
+}
+
+[sub_resource type="Animation" id=11]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("NotTeleporting/Sprite:frame")
@@ -214,7 +284,42 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=12]
+resource_name = "walk_right_fast"
+length = 0.8
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("NotTeleporting/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 11, 31, 21, 41 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_footstep_sound"
+}, {
+"args": [  ],
+"method": "play_footstep_sound"
+} ]
+}
+
+[sub_resource type="Animation" id=13]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("NotTeleporting/Sprite:frame")
@@ -246,7 +351,41 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="Animation" id=14]
+resource_name = "walk_up_fast"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("NotTeleporting/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 12, 32, 22, 42 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_footstep_sound"
+}, {
+"args": [  ],
+"method": "play_footstep_sound"
+} ]
+}
+
+[sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 4.08925, 0.954105 )
 
 [node name="Player" type="StaticBody2D" groups=[
@@ -277,13 +416,17 @@ anims/right = SubResource( 4 )
 anims/stand_up = SubResource( 5 )
 anims/up = SubResource( 6 )
 anims/walk_down = SubResource( 7 )
-anims/walk_left = SubResource( 8 )
-anims/walk_right = SubResource( 9 )
-anims/walk_up = SubResource( 10 )
+anims/walk_down_fast = SubResource( 8 )
+anims/walk_left = SubResource( 9 )
+anims/walk_left_fast = SubResource( 10 )
+anims/walk_right = SubResource( 11 )
+anims/walk_right_fast = SubResource( 12 )
+anims/walk_up = SubResource( 13 )
+anims/walk_up_fast = SubResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-shape = SubResource( 11 )
+shape = SubResource( 15 )
 
 [node name="Tween" type="Tween" parent="."]
 
@@ -294,7 +437,7 @@ texture = ExtResource( 1 )
 offset = Vector2( 0, -10 )
 vframes = 5
 hframes = 10
-frame = 2
+frame = 13
 
 [node name="Camera2D" type="Camera2D" parent="NotTeleporting"]
 visible = false
@@ -317,7 +460,7 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NotTeleporting/Footsteps/FootstepArea"]
 position = Vector2( 0, 5 )
-shape = SubResource( 11 )
+shape = SubResource( 15 )
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -325,4 +468,4 @@ shape = SubResource( 11 )
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCollision"]
-shape = SubResource( 11 )
+shape = SubResource( 15 )

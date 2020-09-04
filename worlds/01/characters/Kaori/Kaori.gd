@@ -10,25 +10,41 @@ const wants_apples = ["green", "red", "purple"]
 const id = "01Kaori"
 
 func _ready():
+	state = "wait" #TODO: DEBUG
 	pass
 
 func use():
 	match state:
 		"wait":
-			dialogue_wait_apple()
+			yield(dialogue_wait_apple(), "completed")
+		"back1":
+			var remaining = Utils.complement(wants_apples, Utils.player.inventory)
+			yield(dialogue.start_dialogue("res://worlds/01/dialogue/KaoriGive1.json", \
+				{"Rembry": "res://characters/mc/faces/", \
+				"Kaori": "res://worlds/01/characters/Kaori/faces/"}, true, self, \
+				{"#1": remaining[0]}, "res://worlds/01/dialogue/ApplesNamesN.json"), "completed")
+			state = "wait"
+			var tree = get_node("/root/World01/Main/Tree")
+			tree.state = "2apples"
+			tree.tree_after_block.is_enabled = false
 		_:
 			pass
 
 func dialogue_wait_apple():
-	match Utils.intersection(wants_apples, Utils.player.inventory).size():
-		0:
-			dialogue.start_dialogue("res://worlds/01/dialogue/KaoriWait01.json", \
-				{"Rembry": "res://characters/mc/faces/", \
-				"Kaori": "res://worlds/01/characters/Kaori/faces/"})
-		1:
-			dialogue.start_dialogue("res://worlds/01/dialogue/KaoriWait01.json", \nexttodo
-				{"Rembry": "res://characters/mc/faces/", \
-				"Kaori": "res://worlds/01/characters/Kaori/faces/"})
+	var remaining = Utils.complement(wants_apples, Utils.player.inventory)
+	if remaining.has("green"):
+		yield(dialogue.start_dialogue("res://worlds/01/dialogue/KaoriWaitGreen.json", \
+			{"Rembry": "res://characters/mc/faces/", \
+			"Kaori": "res://worlds/01/characters/Kaori/faces/"}), "completed")
+	elif remaining.has("red"):
+		yield(dialogue.start_dialogue("res://worlds/01/dialogue/KaoriWaitRed.json", \
+			{"Rembry": "res://characters/mc/faces/", \
+			"Kaori": "res://worlds/01/characters/Kaori/faces/"}), "completed")
+	elif remaining.has("purple"):
+		yield(dialogue.start_dialogue("res://worlds/01/dialogue/KaoriWaitRed.json", \
+			{"Rembry": "res://characters/mc/faces/", \
+			"Kaori": "res://worlds/01/characters/Kaori/faces/"}), "completed")
+	yield(get_tree(), "idle_frame")
 
 func save():
 	var saved_data = {"state": state,

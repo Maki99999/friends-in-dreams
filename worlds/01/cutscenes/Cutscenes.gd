@@ -8,13 +8,14 @@ onready var music01 = $Music01
 onready var timer = $Timer
 onready var take_fx = $takeFx
 
-var finished_cutscenes = ["Start"] # TODO change to empty
+var finished_cutscenes = []
 var current_cutscene = ""
 
 const dialogue_path_prefix = "res://worlds/01/dialogue/"
 const id = "01Cutscenes01"
 
 func _ready():
+	finished_cutscenes = ["Start"] #TODO DEBUG
 	if !("Start" in finished_cutscenes):
 		cutscene_start()
 	else:
@@ -144,6 +145,7 @@ func cutscene_tree_01(var tree):
 
 func cutscene_tree_01b(var tree, var color):
 	var robot = get_node("/root/World01/Main/Entities/Robot")
+	var kaori = get_node("/root/World01/House/Entities/Kaori")
 	robot.move_to(Vector2(1544, 344), "down", 3.0)
 	
 	yield(dialogue.start_dialogue("res://worlds/01/dialogue/Tree03.json", \
@@ -159,6 +161,8 @@ func cutscene_tree_01b(var tree, var color):
 	robot.state = "idle02"
 	player.inventory.append(color)
 	tree.state = "2applesIdle"
+	kaori.state = "back1"
+	
 	player.unfreeze()
 	end_cutscene("Tree01")
 

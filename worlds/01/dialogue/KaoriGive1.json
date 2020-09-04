@@ -1,0 +1,96 @@
+{
+  "Start": {
+    "char_name": "Kaori",
+    "text": "Hast du jetzt endlich meinen Apfel dabei?",
+	"sound": "normal",
+	"face": "normal_left.png",
+	"sound_pitch": 1.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "1"
+  },
+  "1": {
+    "char_name": "Rembry",
+    "text": "J|-Ja. Hier.",
+	"sound": "normal",
+	"face": "normal.png",
+	"sound_pitch": 1.2,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "2"
+  },
+  "2": {
+    "char_name": "Kaori",
+    "text": ["Danke. Das ging schneller als erwartet."],
+	"sound": "normal",
+	"face": "normal.png",
+	"sound_pitch": 1.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "2a"
+  },
+  "2a": {
+    "char_name": "Kaori",
+    "text": ["...",
+	"Ja, dann..."],
+	"sound": "normal",
+	"face": "sad.png",
+	"sound_pitch": 1.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "2b"
+  },
+  "2b": {
+    "char_name": "Kaori",
+    "text": ["Ach Moment, ich wollte doch einen #1! Ja genau!",
+	"Du hast die falsche Farbe gebracht, deswegen gilt die Abmachung nicht!",
+	"Ha! Also musst du hier wohl noch eine Weile bleiben!"],
+	"sound": "normal",
+	"face": "normal.png",
+	"sound_pitch": 1.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "3"
+  },
+  "3": {
+    "char_name": "Rembry",
+    "text": "A|-Aber-",
+	"sound": "normal",
+	"face": "sad.png",
+	"sound_pitch": 1.2,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "4"
+  },
+  "4": {
+    "char_name": "Kaori",
+    "text": ["Kein aber! Abmachung ist Abmachung!",
+	"Bring mir einen [color=#00FFFF]#1[/color] oder du musst hier bleiben! Das war die Abmachung.",
+	"Während du das besorgst, räumt der Roboter schonmal ein Zimmer für dich frei."],
+	"sound": "normal",
+	"face": "normal.png",
+	"sound_pitch": 1.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "5"
+  },
+  "5": {
+    "char_name": "Rembry",
+    "text": "Okay...",
+	"sound": "normal",
+	"face": "normal.png",
+	"sound_pitch": 1.2,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "6"
+  },
+  "6": {
+    "char_name": "Kaori",
+    "text": "Dann los los!",
+	"sound": "normal",
+	"face": "normal.png",
+	"sound_pitch": 1.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal"
+  }
+}

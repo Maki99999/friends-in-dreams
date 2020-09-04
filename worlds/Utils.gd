@@ -87,6 +87,13 @@ func intersection(var array1, var array2):
 		if array2.has(item):
 			intersection.append(item)
 	return intersection
+	
+func complement(var array1, var array2):
+	var complement = array1
+	for item in array2:
+		if array1.has(item):
+			complement.remove(complement.find(item))
+	return complement
 
 func change_parent(var obj, var new_parent):
 	var old_pos = obj.global_position

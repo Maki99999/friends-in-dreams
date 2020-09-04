@@ -24,7 +24,7 @@ func _ready():
 	walk_fx.volume_db = -INF
 	walk_fx.play()
 	
-	restore({id: {"state": "idle02"}})#DEBUG
+	restore({id: {"state": "idle02"}})	#TODO DEBUG
 
 func _process(delta):
 	if current_volume == -INF:

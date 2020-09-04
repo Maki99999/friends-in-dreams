@@ -13,6 +13,9 @@ var opened = false
 
 const id = "01BigWallGate"
 
+func _ready():
+	restore({id: {"opened": true}})
+
 func check():
 	var check = true
 	for piece in pieces:

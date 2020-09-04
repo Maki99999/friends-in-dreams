@@ -1,0 +1,21 @@
+{
+  "Start": {
+    "char_name": "Kaori",
+    "text": "Wo bleibt mein [color=#00FFFF]lila Apfel[/color]?",
+	"sound": "normal",
+	"face": "angry.png",
+	"sound_pitch": 1.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "End"
+  },
+  "End": {
+    "char_name": "Rembry",
+    "text": "...",
+	"sound": "normal",
+	"face": "normal.png",
+	"sound_pitch": 1.2,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal"
+  }
+}

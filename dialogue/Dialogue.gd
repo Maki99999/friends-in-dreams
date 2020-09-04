@@ -61,6 +61,7 @@ func _process(_delta):
 			if is_holding_skip:
 				if OS.get_ticks_msec() > skip_start_time + skip_time:
 					is_skipping = true
+					emit_signal("pressed_accept")
 			else:
 				is_holding_skip = true
 				skip_start_time = OS.get_ticks_msec()
@@ -241,6 +242,7 @@ func start_dialogue(var dialogue_file_path, var people_in_this_conversation, \
 		dynamic_wordlist = {}, dynamic_translations_path = null):
 	
 	if is_in_dialogue:
+		yield(get_tree(), "idle_frame")
 		return
 	is_in_dialogue = true
 	player.freeze()

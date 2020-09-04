@@ -1,7 +1,9 @@
-- (skip vllt so machen, dass cutscenes immer einen endpunkt (zum überspringen) haben)
-- kaori 2. dialog mit etwas mehr inhalt
-- nach dialog treeAfterBlock weg
-- Saving für TreeAfterBlock
-- baum dialog apple denied
+- symbol nach speichern
+- geist
+- miner
+- wache
+- wald
+- kaori dialog falscher apfel 2
+- baum dialog denied 2
 - kaori dialog denk dir was aus!
 - footsteps

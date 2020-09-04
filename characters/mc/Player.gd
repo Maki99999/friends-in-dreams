@@ -35,7 +35,7 @@ var pos_before_cutscene = null
 var inventory = []
 
 func _ready():
-	inventory = ["green"] #DEBUG
+	inventory = ["green"] #TODO DEBUG
 	
 	animation_player.play(start_dir)
 	
@@ -96,14 +96,20 @@ func try_moving():
 
 func move(var dir):
 	facing = dir
-	animation_player.play("walk_" + dir)
+	if Input.is_action_pressed("ui_cancel"):
+		animation_player.play("walk_" + dir + "_fast")
+	else:
+		animation_player.play("walk_" + dir)
 
 	global_position = global_position - Vector2.ONE * (tile_size / 2) + inputs[dir] * tile_size
 	global_position = global_position.snapped(Vector2.ONE * tile_size) + Vector2.ONE * (tile_size / 2)
 	var start_position_local = inputs[dir] * -tile_size
 	not_teleporting.position = start_position_local
 	
-	tween.interpolate_property(not_teleporting, "position", start_position_local, Vector2.ZERO, 1.0/speed, Tween.TRANS_LINEAR)
+	var current_walk_speed = speed
+	if Input.is_action_pressed("ui_cancel"):
+		current_walk_speed *= 1.8
+	tween.interpolate_property(not_teleporting, "position", start_position_local, Vector2.ZERO, 1.0/current_walk_speed, Tween.TRANS_LINEAR)
 	
 	tween.start()
 	yield(tween, "tween_all_completed")
