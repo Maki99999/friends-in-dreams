@@ -14,7 +14,7 @@ var opened = false
 const id = "01BigWallGate"
 
 func _ready():
-	restore({id: {"opened": true}})
+	restore({id: {"opened": true}}) #TODO DEBUG
 
 func check():
 	var check = true

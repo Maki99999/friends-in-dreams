@@ -38,9 +38,8 @@ func _on_area_entered(area):
 		fx_wheels.stop()
 		music.stop()
 		yield(fx_crash, "finished")
-	
-		if get_tree().change_scene("res://worlds/01/scene01.tscn") != OK:
-			push_error("Can't load game!")
+		
+		SceneManager.change_scene("res://worlds/01/scene01.tscn")
 
 func move_car():
 	car.global_position.x = player.global_position.x + 20 * 16

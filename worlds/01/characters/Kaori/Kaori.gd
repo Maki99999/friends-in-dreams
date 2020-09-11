@@ -27,6 +27,7 @@ func use():
 			var tree = get_node("/root/World01/Main/Tree")
 			tree.state = "2apples"
 			tree.tree_after_block.is_enabled = false
+			SaveLoad.save_game()
 		_:
 			pass
 

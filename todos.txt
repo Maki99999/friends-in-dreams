@@ -1,4 +1,6 @@
-- symbol nach speichern
+- minigame:
+- - richtiges maze finden (niciht mehr random)
+- saveload und utils -> onready sachen muss mach szenenwechsel auch neu gemacht werden
 - geist
 - miner
 - wache

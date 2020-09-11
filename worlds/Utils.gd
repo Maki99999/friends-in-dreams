@@ -1,8 +1,8 @@
 extends Node2D
 
 
-onready var player = get_tree().get_nodes_in_group("Player")[0]
-onready var dialogue = get_tree().get_nodes_in_group("dialogue")[0]
+var player
+var dialogue
 
 var tween
 
@@ -15,8 +15,29 @@ const inputs = {"right"	: Vector2.RIGHT,
 				"down"	: Vector2.DOWN}
 
 func _ready():
+	if SceneManager.connect("scene_change", self, "_on_scene_change") != OK:
+		push_error("Can't connect to SceneManager!")
+	
 	tween = Tween.new()
 	get_tree().get_root().call_deferred("add_child", tween)
+	
+	ready_scene()
+
+func _on_scene_change():
+	ready_scene()
+
+func ready_scene():
+	player = get_tree().get_nodes_in_group("Player")
+	if player.empty():
+		player = null
+	else:
+		player = player[0]
+
+	dialogue = get_tree().get_nodes_in_group("dialogue")
+	if dialogue.empty():
+		dialogue = null
+	else:
+		dialogue = dialogue[0]
 
 func move_to(var obj, var new_position, var anim,
 		var anim_names = anim_names_default, var speed = 3.0, \
@@ -100,3 +121,25 @@ func change_parent(var obj, var new_parent):
 	obj.get_parent().call_deferred("remove_child", obj)
 	new_parent.call_deferred("add_child", obj)
 	obj.global_position = old_pos
+
+func string_to_array(var string):
+	var array = []
+	for c in string:
+		array.append(c)
+	return array
+
+func new_2d_array(var width, var height, var default_value = 0):
+	var matrix = []
+	matrix.resize(width)
+	for x in range(width):
+		matrix[x] = []
+		matrix[x].resize(height)
+		for y in range(height):
+			matrix[x][y] = default_value
+	return matrix
+
+func shuffle_array(var array):
+	var new_array = array.duplicate(true)
+	randomize()
+	new_array.shuffle()
+	return new_array

@@ -16,7 +16,7 @@ func _ready():
 	sprite.modulate = Color(1, 1, 1, 0)
 	
 	yield(get_tree(), "idle_frame")
-	restore({id: {"state": "2apples"}})
+	restore({id: {"state": "2applesIdle2"}})
 
 func use():
 	match state:
@@ -27,10 +27,11 @@ func use():
 					{"Rembry": "res://characters/mc/faces/", \
 					"Tree": "res://worlds/01/characters/Tree/faces/"})
 		"2apples":
-			dialogue.start_dialogue("res://worlds/01/dialogue/TreeDenied01.json", \
+			yield(dialogue.start_dialogue("res://worlds/01/dialogue/TreeDenied01.json", \
 					{"Rembry": "res://characters/mc/faces/", \
-					"Tree": "res://worlds/01/characters/Tree/faces/"})
+					"Tree": "res://worlds/01/characters/Tree/faces/"}), "completed")
 			state = "2applesIdle2"
+			SaveLoad.save_game()
 		"2applesIdle2":
 			dialogue.start_dialogue("res://worlds/01/dialogue/TreeIdle2.json", \
 					{"Rembry": "res://characters/mc/faces/", \

@@ -462,7 +462,9 @@ collision_mask = 4
 position = Vector2( 0, 5 )
 shape = SubResource( 15 )
 
-[node name="Timer" type="Timer" parent="."]
+[node name="TimerFreeze" type="Timer" parent="."]
+
+[node name="TimerUse" type="Timer" parent="TimerFreeze"]
 
 [node name="PlayerCollision" type="Area2D" parent="."]
 visible = false

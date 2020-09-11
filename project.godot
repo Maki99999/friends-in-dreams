@@ -35,6 +35,7 @@ config/icon="res://icon.png"
 
 SaveLoad="*res://worlds/SaveLoad.gd"
 Utils="*res://worlds/Utils.gd"
+SceneManager="*res://worlds/SceneManager.gd"
 
 [display]
 

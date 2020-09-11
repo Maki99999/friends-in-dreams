@@ -1,0 +1,189 @@
+{
+  "Start": {
+    "char_name": "Garm",
+    "text": "Jo Kleiner, was machste denn hier so?",
+	"face": "normal.png",
+	"sound": "normal",
+	"sound_pitch": 0.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "2"
+  },
+  "2": {
+    "char_name": "Rembry",
+    "text": "Ich-",
+	"sound": "normal",
+	"face": "normal.png",
+	"sound_pitch": 1.2,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "3"
+  },
+  "3": {
+    "char_name": "Garm",
+    "text": "Hahaha! Nicht, dass mich was angeht.",
+	"face": "happy.png",
+	"sound": "normal",
+	"sound_pitch": 0.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "4"
+  },
+  "4": {
+    "char_name": "Garm",
+    "text": "Ein Jungspund wie du hast wahrscheinlich so einige Abenteuer vor dir.",
+	"face": "wink.png",
+	"sound": "normal",
+	"sound_pitch": 0.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "5"
+  },
+  "5": {
+    "char_name": "Garm",
+    "text": ["Ich bin schon alt und schaffe nichts mehr alleine.",
+"Wie die alte Maschine hier... Da ist die Verkabelung leider kaputt.",
+"Jetzt muss ich auf meine zwei Brüder warten. Die können das reparieren."],
+	"face": "normal.png",
+	"sound": "normal",
+	"sound_pitch": 0.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "6"
+  },
+  "6": {
+    "char_name": "Garm",
+    "text": "Hahaha! Das interessiert dich wahrscheinlich gar nicht.",
+	"face": "happy.png",
+	"sound": "normal",
+	"sound_pitch": 0.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "7"
+  },
+  "7": {
+    "char_name": "Rembry",
+    "text": "Äh-",
+	"sound": "normal",
+	"face": "normal.png",
+	"sound_pitch": 1.2,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "8"
+  },
+  "8": {
+    "char_name": "Garm",
+    "text": ["Naja, du kannst dir das Schlamassel an der Wand ja mal anschauen.",
+"Hoffentlich kommen die beiden auch bald mal, ist sehr langweilig hier.",
+"Du fragst dich bestimmt, wieso in so einer Höhle eine Maschine steht.",
+"Tja, die Maschine muss hier stehen, weil das die einzige Höhle mit einer Steckdose ist."],
+	"face": "normal.png",
+	"sound": "normal",
+	"sound_pitch": 0.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "9"
+  },
+  "9": {
+    "char_name": "Rembry",
+    "text": "W-",
+	"sound": "normal",
+	"face": "normal.png",
+	"sound_pitch": 1.2,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "10"
+  },
+  "10": {
+    "char_name": "Garm",
+    "text": "Was die Maschine macht?",
+	"face": "normal.png",
+	"sound": "normal",
+	"sound_pitch": 0.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "11"
+  },
+  "11": {
+    "char_name": "Garm",
+    "text": "Hahaha! Natürlich willst du das wissen.",
+	"face": "happy.png",
+	"sound": "normal",
+	"sound_pitch": 0.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "12"
+  },
+  "12": {
+    "char_name": "Garm",
+    "text": "Verrate es aber keinem weiter.",
+	"face": "wink.png",
+	"sound": "normal",
+	"sound_pitch": 0.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "13"
+  },
+  "13": {
+    "char_name": "Garm",
+    "text": "Die Maschine kann Altgold in eine neue Form bringen.",
+	"face": "normal.png",
+	"sound": "normal",
+	"sound_pitch": 0.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "14"
+  },
+  "14": {
+    "char_name": "Rembry",
+    "text": "M|-Münzen-",
+	"sound": "normal",
+	"face": "normal.png",
+	"sound_pitch": 1.2,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "15"
+  },
+  "15": {
+    "char_name": "Garm",
+    "text": "Hahaha! Ja, Goldmünzen kann man so auch machen.",
+	"face": "happy.png",
+	"sound": "normal",
+	"sound_pitch": 0.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "16"
+  },
+  "16": {
+    "char_name": "Garm",
+    "text": "Willst du etwa Geld fälschen?",
+	"face": "wink.png",
+	"sound": "normal",
+	"sound_pitch": 0.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "17"
+  },
+  "17": {
+    "char_name": "Garm",
+    "text": "Hahaha! Kleiner Scherz, heute benutzt niemand mehr Münzen.",
+	"face": "happy.png",
+	"sound": "normal",
+	"sound_pitch": 0.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "18"
+  },
+  "18": {
+    "char_name": "Garm",
+    "text": ["Online-Banking ist das neue Ding.",
+"Aber so eine gute alte Goldmünze ist als Sammelstück schon sehr schön.",
+"Naja, ohne richtiges Kabel, kann die Maschine gar nichts.",
+"Meine Brüder reparieren das heute Abend, so lange muss ich hier wohl noch rumsitzen."],
+	"face": "normal.png",
+	"sound": "normal",
+	"sound_pitch": 0.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal"
+  }
+}

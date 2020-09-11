@@ -65,7 +65,6 @@ func press_button():
 			active = false
 			parent.fade.play_backwards("fade_in")
 			yield(parent.fade, "animation_finished")
-			if get_tree().change_scene("res://worlds/00/scene00.tscn") != OK:
-				push_error("Cannot load first scene!")
+			SceneManager.change_scene("res://worlds/00/scene00.tscn")
 		1:
 			parent.close_confirmation()

@@ -9,7 +9,8 @@ onready var raycast_moving = $RayCast2DMoving
 onready var raycast_using = $RayCast2DUsing
 onready var tween = $Tween
 onready var not_teleporting = $NotTeleporting
-onready var timer = $Timer
+onready var timer = $TimerFreeze
+onready var timer_use = $TimerFreeze/TimerUse
 onready var footsteps = $NotTeleporting/Footsteps
 onready var footstep_area = $NotTeleporting/Footsteps/FootstepArea
 onready var cam = $NotTeleporting/Camera2D
@@ -59,10 +60,16 @@ func try_using():
 		
 		var use_result = raycast_using.get_collider().use() # true = with cooldown
 		if use_result == null || use_result:
-			timer.start(use_cooldown)
+			timer_use.start(use_cooldown)
 			use_on_cooldown = true
-			yield(timer, "timeout")
+			yield(timer_use, "timeout")
 			use_on_cooldown = false
+
+func add_use_cooldown():
+	timer_use.start(use_cooldown)
+	use_on_cooldown = true
+	yield(timer_use, "timeout")
+	use_on_cooldown = false
 
 func try_moving():
 	for dir in inputs.keys():
