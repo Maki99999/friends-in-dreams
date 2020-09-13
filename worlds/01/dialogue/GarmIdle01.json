@@ -2,7 +2,11 @@
   "Start": {
     "char_name": "Garm",
     "text": ["Du kannst dir den Kabelchaos an der Wand gerne mal anschauen.",
-"Meine Brüder reparieren das heute Abend, so lange muss ich hier wohl noch rumsitzen."],
+	"Normalerweise sollten alle Kabel leuchten.",
+	"Und die Enden der Kabel sollten auch nicht lose in der Luft schweben.",
+	"Entweder muss ein Kabelende an einem anderen Kabelende oder am Rand enden.",
+	"Naja, das Kabelsystem ist sowieso veraltet.",
+	"Meine Brüder ersetzen das heute Abend, so lange muss ich hier wohl noch rumsitzen."],
 	"face": "normal.png",
 	"sound": "normal",
 	"sound_pitch": 0.4,

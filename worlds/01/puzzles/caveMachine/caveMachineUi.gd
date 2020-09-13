@@ -3,6 +3,8 @@ extends Control
 
 export(Array, Texture) var tiles_not_active #0a, 1a, 2a, 2b, 3a, 4a
 export(Array, Texture) var tiles_active
+export(Texture) var tile_not_correct
+export(Texture) var tile_correct
 export(Texture) var texture_normal
 export(Texture) var texture_selected
 export(ShaderMaterial) var shader_selected
@@ -38,17 +40,28 @@ func init_tiles(var m):
 func init_tile(var pos, var tile_str):
 	var node = TextureRect.new()
 	
-	node.margin_left = pos.x
-	node.margin_top = pos.y
-	node.margin_right = tile_size.x
-	node.margin_bottom = tile_size.x
+	node.margin_left = 0
+	node.margin_top = 0
+	node.margin_right = 0
+	node.margin_bottom = 0
 	
 	node.rect_pivot_offset = tile_size / 2
 	node.rect_rotation = 90 * int(tile_str.right(1))
 	
 	node.texture = tiles_not_active[get_texture_index(tile_str)]
 	
-	tiles_node.add_child(node)
+	var node_overlay = TextureRect.new()
+	
+	node_overlay.margin_left = pos.x
+	node_overlay.margin_top = pos.y
+	node_overlay.margin_right = tile_size.x
+	node_overlay.margin_bottom = tile_size.x
+	
+	node.texture = tile_not_correct
+	
+	tiles_node.add_child(node_overlay)
+	node_overlay.add_child(node)
+	
 	return node
 
 func delete_tiles():
@@ -85,6 +98,14 @@ func activate_maze(var m):
 				tiles[x][y].texture = tiles_active[get_texture_index(maze[x][y])]
 			else:
 				tiles[x][y].texture = tiles_not_active[get_texture_index(maze[x][y])]
+
+func correct_maze(var m, var m_actives):
+	for x in tiles.size():
+		for y in tiles[0].size():
+			if m[x][y] && m_actives[x][y]:
+				tiles[x][y].get_parent().texture = tile_correct
+			else:
+				tiles[x][y].get_parent().texture = tile_not_correct
 
 func get_texture_index(var name):
 	match name.left(2):

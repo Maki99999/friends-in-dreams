@@ -1,6 +1,5 @@
-- minigame:
-- - richtiges maze finden (niciht mehr random)
-- saveload und utils -> onready sachen muss mach szenenwechsel auch neu gemacht werden
+- nach minigame zwerg anderer dialog, nimmt ab dann gold und form von einem ab (3 versch. dialoge)
+- gold schmelzen cutscene mit dialogen und soundeffekten
 - geist
 - miner
 - wache

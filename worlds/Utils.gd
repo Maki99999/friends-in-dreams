@@ -127,6 +127,12 @@ func string_to_array(var string):
 	for c in string:
 		array.append(c)
 	return array
+	
+func array_to_string(var array):
+	var string = ""
+	for c in array:
+		string += c
+	return string
 
 func new_2d_array(var width, var height, var default_value = 0):
 	var matrix = []

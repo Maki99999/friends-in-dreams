@@ -1,4 +1,4 @@
-[gd_scene load_steps=190 format=2]
+[gd_scene load_steps=195 format=2]
 
 [ext_resource path="res://worlds/01/tiles/house02.png" type="Texture" id=1]
 [ext_resource path="res://characters/mc/Player.tscn" type="PackedScene" id=2]
@@ -63,6 +63,11 @@
 [ext_resource path="res://fonts/font_normal01.tres" type="DynamicFont" id=61]
 [ext_resource path="res://menus/EscSelected.png" type="Texture" id=62]
 [ext_resource path="res://menus/slight_up_and_down.tres" type="Material" id=63]
+[ext_resource path="res://worlds/01/puzzles/caveMachine/tileWrong.png" type="Texture" id=64]
+[ext_resource path="res://worlds/01/puzzles/caveMachine/tileRight.png" type="Texture" id=65]
+[ext_resource path="res://worlds/01/puzzles/caveMachine/MachinePowerOn.ogg" type="AudioStream" id=66]
+[ext_resource path="res://worlds/01/puzzles/caveMachine/sfx100v2_loop_machine_01.ogg" type="AudioStream" id=67]
+[ext_resource path="res://worlds/EnterArea.tscn" type="PackedScene" id=68]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
@@ -2919,6 +2924,13 @@ position = Vector2( 1528, -88 )
 dialogue_path = "res://worlds/01/dialogue/AfterTreeBlock01.json"
 moveto_after_dialogue = Vector2( 0, 16 )
 
+[node name="EnterCave" parent="Main/Entities" instance=ExtResource( 68 )]
+position = Vector2( 2280, -440 )
+new_parent = NodePath("../../../Cave/Entities")
+new_position = Vector2( -1224, -24 )
+border_x_after_tp = Vector2( -1272, -984 )
+border_y_after_tp = Vector2( -120, 8 )
+
 [node name="Layer2" type="TileMap" parent="Main"]
 tile_set = SubResource( 64 )
 cell_size = Vector2( 16, 16 )
@@ -3104,7 +3116,7 @@ hframes = 10
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cave/Entities/Dwarf/Sprite"]
 
 [node name="Player" parent="Cave/Entities" instance=ExtResource( 2 )]
-position = Vector2( -1096, -40 )
+position = Vector2( -1224, -40 )
 start_dir = "down"
 
 [node name="Machine" type="StaticBody2D" parent="Cave/Entities" groups=[
@@ -3167,6 +3179,26 @@ frame = 3
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cave/Entities/Machine/SpriteMold"]
 anims/put = SubResource( 123 )
 
+[node name="Timer" type="Timer" parent="Cave/Entities/Machine"]
+
+[node name="MachineLoop" type="AudioStreamPlayer2D" parent="Cave/Entities/Machine"]
+stream = ExtResource( 67 )
+volume_db = -4.0
+max_distance = 200.0
+attenuation = 0.112656
+bus = "FX"
+
+[node name="MachineStart" type="AudioStreamPlayer" parent="Cave/Entities/Machine"]
+stream = ExtResource( 66 )
+volume_db = -5.0
+bus = "FX"
+
+[node name="Exit" parent="Cave/Entities" instance=ExtResource( 68 )]
+position = Vector2( -1224, -8 )
+new_parent = NodePath("../../../Main/Entities")
+new_position = Vector2( 2280, -424 )
+new_direction = "down"
+
 [node name="Layer2" type="TileMap" parent="Cave"]
 tile_set = SubResource( 112 )
 cell_size = Vector2( 16, 16 )
@@ -3227,6 +3259,7 @@ __meta__ = {
 }
 
 [node name="caveMachine" type="Control" parent="GUI/Puzzles"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 48 )
@@ -3236,6 +3269,8 @@ __meta__ = {
 }
 tiles_not_active = [ ExtResource( 51 ), ExtResource( 52 ), ExtResource( 50 ), ExtResource( 49 ), ExtResource( 58 ), ExtResource( 47 ) ]
 tiles_active = [ ExtResource( 51 ), ExtResource( 53 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 54 ), ExtResource( 57 ) ]
+tile_not_correct = ExtResource( 64 )
+tile_correct = ExtResource( 65 )
 texture_normal = ExtResource( 60 )
 texture_selected = ExtResource( 62 )
 shader_selected = ExtResource( 63 )

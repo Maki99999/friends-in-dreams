@@ -1,8 +1,8 @@
 extends StaticBody2D
 
 
+onready var machine = $"../Machine"
 onready var machine_anim = $"../Machine".anim
-onready var dialogue = Utils.dialogue
 
 var state = "init"
 
@@ -14,15 +14,22 @@ func _ready():
 func use():
 	match state:
 		"init":
-			yield(dialogue.start_dialogue("res://worlds/01/dialogue/Garm01.json", \
+			yield(Utils.dialogue.start_dialogue("res://worlds/01/dialogue/Garm01.json", \
 				{"Rembry": "res://characters/mc/faces/", \
 				"Garm": "res://worlds/01/characters/Garm/faces/"}), "completed")
 			state = "idle"
 			SaveLoad.save_game()
 		"idle":
-			yield(dialogue.start_dialogue("res://worlds/01/dialogue/GarmIdle01.json", \
-				{"Rembry": "res://characters/mc/faces/", \
-				"Garm": "res://worlds/01/characters/Garm/faces/"}), "completed")
+			if !machine.minigame_completed:
+				yield(Utils.dialogue.start_dialogue("res://worlds/01/dialogue/GarmIdle01.json", \
+					{"Rembry": "res://characters/mc/faces/", \
+					"Garm": "res://worlds/01/characters/Garm/faces/"}), "completed")
+			else:
+				pass #TODO dialogue: haste gut gemacht, dafür darfste die maschine 1 mal benutzen; gib sachen und ich mach das für dich
+				state = "items"
+				SaveLoad.save_game()
+		"items":
+			pass #TODO dialogue: gib sachen und ich mach das für dich
 
 func save():
 	var saved_data = {"state": state}
