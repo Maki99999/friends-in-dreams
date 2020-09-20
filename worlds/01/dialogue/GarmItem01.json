@@ -1,0 +1,11 @@
+{
+  "Start": {
+    "char_name": "Garm",
+    "text": "Oh, du hast Gold gefunden! Jetzt fehlt nur noch eine [color=#00FFFF]Form[/color].",
+	"face": "normal.png",
+	"sound": "normal",
+	"sound_pitch": 0.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal"
+  }
+}

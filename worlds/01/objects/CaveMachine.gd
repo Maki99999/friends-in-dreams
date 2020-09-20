@@ -17,6 +17,7 @@ var maze_corrects
 var selected_x = 0
 var selected_y = 0
 var in_minigame = false
+var completed = false
 
 const maze_width = 8
 const maze_height = 5
@@ -29,6 +30,8 @@ func _ready():
 	anim.play("idle")
 	ui.visible = false
 	init_maze()
+	yield(get_tree(), "idle_frame")
+	restore({id: {"has_gold": false, "has_mold": false, "minigame_completed": true, "maze_nesw": maze_pregenerated, "completed": false}}) #TODO Debug
 
 func _input(event):
 	if !(event is InputEventKey) || !in_minigame:
@@ -377,7 +380,8 @@ func save():
 	var saved_data = {	"has_gold": has_gold,
 						"has_mold": has_mold,
 						"minigame_completed": minigame_completed,
-						"maze_nesw": maze_nesw}
+						"maze_nesw": maze_nesw,
+						"completed": completed}
 	return([id, saved_data])
 
 func restore(var saved_data):
@@ -387,16 +391,26 @@ func restore(var saved_data):
 	has_mold = data["has_mold"]
 	minigame_completed = data["minigame_completed"]
 	maze_nesw = data["maze_nesw"]
+	completed = data["completed"]
 	
 	init_maze(false)
 	
-	if has_gold:#&& noch nicht eingepourt
-		anim.play("Gold")
-		yield(anim, "animation_finished")
-	if has_mold:
+	anim.play("idle")
+	yield(anim, "animation_finished")
+	if completed:
 		anim.play("Mold")
 		yield(anim, "animation_finished")
-	if minigame_completed:
 		anim.play("LEDs")
 		$MachineLoop.play()
 		yield(anim, "animation_finished")
+	else:
+		if has_gold:
+			anim.play("Gold")
+			yield(anim, "animation_finished")
+		if has_mold:
+			anim.play("Mold")
+			yield(anim, "animation_finished")
+		if minigame_completed:
+			anim.play("LEDs")
+			$MachineLoop.play()
+			yield(anim, "animation_finished")

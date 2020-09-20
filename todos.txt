@@ -1,5 +1,3 @@
-- nach minigame zwerg anderer dialog, nimmt ab dann gold und form von einem ab (3 versch. dialoge)
-- gold schmelzen cutscene mit dialogen und soundeffekten
 - geist
 - miner
 - wache

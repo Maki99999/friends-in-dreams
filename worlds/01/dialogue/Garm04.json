@@ -1,0 +1,21 @@
+{
+  "Start": {
+    "char_name": "Garm",
+    "text": ["Hier bitte sehr, eine Goldmünze. Kannste haben."],
+	"face": "normal.png",
+	"sound": "normal",
+	"sound_pitch": 0.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "1"
+  },
+  "1": {
+    "char_name": "Garm",
+    "text": ["Geb nicht alles auf einmal aus."],
+	"face": "happy.png",
+	"sound": "normal",
+	"sound_pitch": 0.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal"
+  }
+}

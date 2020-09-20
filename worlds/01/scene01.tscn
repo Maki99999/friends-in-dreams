@@ -1,4 +1,4 @@
-[gd_scene load_steps=195 format=2]
+[gd_scene load_steps=199 format=2]
 
 [ext_resource path="res://worlds/01/tiles/house02.png" type="Texture" id=1]
 [ext_resource path="res://characters/mc/Player.tscn" type="PackedScene" id=2]
@@ -68,6 +68,10 @@
 [ext_resource path="res://worlds/01/puzzles/caveMachine/MachinePowerOn.ogg" type="AudioStream" id=66]
 [ext_resource path="res://worlds/01/puzzles/caveMachine/sfx100v2_loop_machine_01.ogg" type="AudioStream" id=67]
 [ext_resource path="res://worlds/EnterArea.tscn" type="PackedScene" id=68]
+[ext_resource path="res://worlds/01/puzzles/caveMachine/machinePour.ogg" type="AudioStream" id=69]
+[ext_resource path="res://worlds/01/puzzles/forest/forest.gd" type="Script" id=70]
+[ext_resource path="res://worlds/01/puzzles/forest/00a.png" type="Texture" id=71]
+[ext_resource path="res://worlds/01/puzzles/forest/00b.png" type="Texture" id=72]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
@@ -2572,7 +2576,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=118]
 resource_name = "Pour"
-length = 2.0
+length = 3.0
 tracks/0/type = "animation"
 tracks/0/path = NodePath("SpriteGold/AnimationPlayer")
 tracks/0/interp = 1
@@ -2581,6 +2585,32 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "clips": PoolStringArray( "pour" ),
+"times": PoolRealArray( 0.5 )
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -1112, -88 ), Vector2( -1111.5, -88 ), Vector2( -1112.5, -88 ), Vector2( -1111.5, -88 ), Vector2( -1112.5, -88 ), Vector2( -1111.5, -88 ), Vector2( -1112.5, -88 ), Vector2( -1112, -88 ) ]
+}
+tracks/2/type = "audio"
+tracks/2/path = NodePath("MachinePour")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 69 )
+} ],
 "times": PoolRealArray( 0 )
 }
 
@@ -2653,6 +2683,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=121]
+resource_name = "Eingefügte Animation"
 length = 2.0
 step = 0.05
 tracks/0/type = "value"
@@ -2666,18 +2697,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 2, 8, 9, 10, 11, 3 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("..:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ Vector2( -1112, -88 ), Vector2( -1111.5, -88 ), Vector2( -1112, -88 ), Vector2( -1111.5, -88 ), Vector2( -1112, -88 ), Vector2( -1111.5, -88 ), Vector2( -1112, -88 ) ]
 }
 
 [sub_resource type="Animation" id=122]
@@ -3116,7 +3135,7 @@ hframes = 10
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cave/Entities/Dwarf/Sprite"]
 
 [node name="Player" parent="Cave/Entities" instance=ExtResource( 2 )]
-position = Vector2( -1224, -40 )
+position = Vector2( -1176, -40 )
 start_dir = "down"
 
 [node name="Machine" type="StaticBody2D" parent="Cave/Entities" groups=[
@@ -3153,7 +3172,7 @@ position = Vector2( -24, 16 )
 texture = ExtResource( 42 )
 vframes = 3
 hframes = 4
-frame = 3
+frame = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cave/Entities/Machine/SpriteLEDs"]
 anims/blink = SubResource( 120 )
@@ -3163,7 +3182,7 @@ position = Vector2( -24, 16 )
 texture = ExtResource( 42 )
 vframes = 3
 hframes = 4
-frame = 3
+frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cave/Entities/Machine/SpriteGold"]
 anims/pour = SubResource( 121 )
@@ -3191,6 +3210,10 @@ bus = "FX"
 [node name="MachineStart" type="AudioStreamPlayer" parent="Cave/Entities/Machine"]
 stream = ExtResource( 66 )
 volume_db = -5.0
+bus = "FX"
+
+[node name="MachinePour" type="AudioStreamPlayer" parent="Cave/Entities/Machine"]
+stream = ExtResource( 69 )
 bus = "FX"
 
 [node name="Exit" parent="Cave/Entities" instance=ExtResource( 68 )]
@@ -3241,6 +3264,23 @@ __meta__ = {
 [node name="takeFx" type="AudioStreamPlayer" parent="Cutscenes"]
 stream = ExtResource( 38 )
 bus = "FX"
+
+[node name="PuzzleForest" type="Node2D" parent="."]
+position = Vector2( -1272, -504 )
+script = ExtResource( 70 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Floor" type="Sprite" parent="PuzzleForest"]
+texture = ExtResource( 71 )
+centered = false
+
+[node name="Ceiling" type="Sprite" parent="PuzzleForest"]
+texture = ExtResource( 72 )
+centered = false
+
+[node name="YSort" type="YSort" parent="PuzzleForest"]
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
