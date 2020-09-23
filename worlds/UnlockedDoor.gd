@@ -9,7 +9,6 @@ export(Vector2) var border_y_after_tp = Vector2(-10000000, 10000000)
 
 var in_use = false
 
-onready var player = get_tree().get_nodes_in_group("Player")[0]
 onready var fx_open = $AudioStreamPlayer
 onready var new_parent_node = null
 
@@ -30,7 +29,7 @@ func _on_Area2D_area_entered(area):
 		teleport()
 
 func teleport():
-	if player.try_teleport(new_position, new_direction, new_parent_node, border_x_after_tp, border_y_after_tp):
+	if Utils.player.try_teleport(new_position, new_direction, new_parent_node, border_x_after_tp, border_y_after_tp):
 		fx_open.play()
 
 func _on_Area2D_area_exited(area):
