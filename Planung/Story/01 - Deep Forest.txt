@@ -1,14 +1,14 @@
-O - Schild
-W - Einfacher Pfeil
-N - Alles versperrt
-O - Trampelpfad
-W - Geist
-N - 2 Pfeile
-N - versteckter Pfeil
-W - flackerndes Licht
-S - 3 falsche Pfeile
-N - der Nicht-Überwucherte
-O - Turn-Around-Zeichen
-S - Bewegung dahin (einzelne Käfer)
-W - Labyrinth aus vielen Pfeilen
+E - 00 - Schild
+W - 01 - Einfacher Pfeil
+N - 02 - Alles versperrt
+E - 03 - Trampelpfad
+W - 04 - Geist
+N - 05 - 2 Pfeile
+N - 06 - versteckter Pfeil
+W - 07 - flackerndes Licht
+S - 08 - 3 falsche Pfeile
+N - 09 - der Nicht-Überwucherte
+E - 10 - Turn-Around-Zeichen
+S - 11 - Bewegung dahin (einzelne Käfer)
+W - 12 - Labyrinth aus vielen Pfeilen
 Ende
