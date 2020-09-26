@@ -1,0 +1,158 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://menus/EscSelected.png" type="Texture" id=2]
+[ext_resource path="res://menus/button_sound.wav" type="AudioStream" id=3]
+[ext_resource path="res://menus/button_sound_2.wav" type="AudioStream" id=4]
+[ext_resource path="res://menus/EscUnselected.png" type="Texture" id=5]
+[ext_resource path="res://fonts/font_normal01.tres" type="DynamicFont" id=6]
+[ext_resource path="res://menus/optionsMenu.tscn" type="PackedScene" id=7]
+[ext_resource path="res://menus/slight_up_and_down.tres" type="Material" id=8]
+[ext_resource path="res://menus/EscMenu.gd" type="Script" id=9]
+[ext_resource path="res://menus/VBoxContainerVarWidth.gd" type="Script" id=11]
+
+[node name="EscMenu" type="Control"]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+texture_normal = ExtResource( 5 )
+texture_selected = ExtResource( 2 )
+shader_selected = ExtResource( 8 )
+
+[node name="Blacken" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.886275 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Main" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -96.0
+margin_top = -54.0
+margin_right = 96.0
+margin_bottom = 54.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+centered = true
+
+[node name="ButtonContinue" type="NinePatchRect" parent="Main"]
+material = ExtResource( 8 )
+margin_left = 50.0
+margin_top = 20.0
+margin_right = 100.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 20 )
+texture = ExtResource( 2 )
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="RichTextLabel" parent="Main/ButtonContinue"]
+material = ExtResource( 8 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 2.0
+margin_right = -5.0
+margin_bottom = -2.0
+custom_fonts/normal_font = ExtResource( 6 )
+text = "Continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonOptions" type="NinePatchRect" parent="Main"]
+material = ExtResource( 8 )
+margin_left = 50.0
+margin_top = 44.0
+margin_right = 100.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 100, 20 )
+texture = ExtResource( 2 )
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="RichTextLabel" parent="Main/ButtonOptions"]
+material = ExtResource( 8 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 2.0
+margin_right = -5.0
+margin_bottom = -2.0
+custom_fonts/normal_font = ExtResource( 6 )
+text = "Options"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonQuit" type="NinePatchRect" parent="Main"]
+material = ExtResource( 8 )
+margin_left = 50.0
+margin_top = 68.0
+margin_right = 100.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 100, 20 )
+texture = ExtResource( 2 )
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="RichTextLabel" parent="Main/ButtonQuit"]
+material = ExtResource( 8 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 2.0
+margin_right = -5.0
+margin_bottom = -2.0
+custom_fonts/normal_font = ExtResource( 6 )
+text = "Save & Quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" parent="." instance=ExtResource( 7 )]
+visible = false
+
+[node name="SelectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "FX"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="PressSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+bus = "FX"
+__meta__ = {
+"_editor_description_": ""
+}

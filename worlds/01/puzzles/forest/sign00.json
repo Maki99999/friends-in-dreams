@@ -1,0 +1,13 @@
+{
+  "Start": {
+    "char_name": "Rembry",
+    "text": ["\"In diesem Wald ist ein goldener Schatz versteckt.\"",
+	"\"Wenn du den Hinweisen folgst, die ich vorbereitet habe, wirst du ihn erhalten.\"",
+	"\"Erster Hinweis: Gehe nach rechts.\""],
+	"sound": "normal",
+	"sound_pitch": 1.2,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"subtype": "thinking"
+  }
+}

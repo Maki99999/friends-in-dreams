@@ -1,0 +1,61 @@
+{
+  "Start": {
+    "char_name": "Robot",
+    "text": "Brau|che |Hil|fe. |Brau|che |Freund.",
+	"face": "neutral.png",
+	"sound": "robot",
+	"sound_pitch": 1,
+	"sound_pitch_randomness": 0,
+	"type": "normal",
+	"next": "2"
+  },
+  "2": {
+    "char_name": "Rembry",
+    "text": "W|-was meinst du?",
+	"sound": "normal",
+	"face": "fearsad01.png",
+	"sound_pitch": 1.2,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "3"
+  },
+  "3": {
+    "char_name": "Robot",
+    "text": "Wir |hel|fen, |wenn |du |hilfst.",
+	"face": "neutral.png",
+	"sound": "robot",
+	"sound_pitch": 1,
+	"sound_pitch_randomness": 0,
+	"type": "normal",
+	"next": "4"
+  },
+  "4": {
+    "char_name": "Rembry",
+    "text": "I|-ich denke nicht, d|-dass ich helfen kann.",
+	"sound": "normal",
+	"face": "fearsad01.png",
+	"sound_pitch": 1.2,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "5"
+  },
+  "5": {
+    "char_name": "Robot",
+    "text": "Du |kannst. |Folge |mir.",
+	"face": "neutral.png",
+	"sound": "robot",
+	"sound_pitch": 1,
+	"sound_pitch_randomness": 0,
+	"type": "normal",
+	"next": "6"
+  },
+  "6": {
+    "char_name": "Rembry",
+    "text": "... |Okay.",
+	"sound": "normal",
+	"face": "normal.png",
+	"sound_pitch": 1.2,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal"
+  }
+}

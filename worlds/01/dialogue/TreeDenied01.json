@@ -1,0 +1,78 @@
+{
+  "Start": {
+    "char_name": "Tree",
+    "text": "Du bist also zurück.",
+	"face": "neutral.png",
+	"sound": "wood",
+	"sound_pitch": 1,
+	"sound_pitch_randomness": 0.3,
+	"type": "normal",
+	"next": "2"
+  },
+  "2": {
+    "char_name": "Rembry",
+    "text": "Ja.",
+	"sound": "normal",
+	"face": "normal.png",
+	"sound_pitch": 1.2,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "3"
+  },
+  "3": {
+    "char_name": "Tree",
+    "text": "Ich vermute, der Apfel war nicht genug?",
+	"face": "neutral.png",
+	"sound": "wood",
+	"sound_pitch": 1,
+	"sound_pitch_randomness": 0.3,
+	"type": "normal",
+	"next": "4"
+  },
+  "4": {
+    "char_name": "Rembry",
+    "text": "Ja...",
+	"sound": "normal",
+	"face": "normal.png",
+	"sound_pitch": 1.2,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "5"
+  },
+  "5": {
+    "char_name": "Tree",
+    "text": ["Ich weiß zufällig, dass du den Apfel für Kaori brauchst.",
+	"Weißt du, Kaori war schon immer alleine.",
+	"Wahrscheinlich sucht sie nur eine Ausrede, um dich hier zu behalten."],
+	"face": "neutral.png",
+	"sound": "wood",
+	"sound_pitch": 1,
+	"sound_pitch_randomness": 0.3,
+	"type": "normal",
+	"next": "6"
+  },
+  "6": {
+    "char_name": "Rembry",
+    "text": "A-Aber...",
+	"sound": "normal",
+	"face": "sad.png",
+	"sound_pitch": 1.2,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "7"
+  },
+  "7": {
+    "char_name": "Tree",
+    "text": ["Du vertraust ihr wohl noch... Nagut.",
+	"Einen Apfel darfst du noch von mir haben... Aber:",
+	"Meine Äpfel sind normalerweise sehr selten.",
+	"Für den Apfel will ich deswegen etwas.",
+	"Mal sehen... Was bräuchte ich denn...",
+	"Bringe mir eine [color=#00FFFF]Goldmünze[/color] und ich gebe dir den Apfel."],
+	"face": "neutral.png",
+	"sound": "wood",
+	"sound_pitch": 1,
+	"sound_pitch_randomness": 0.3,
+	"type": "normal"
+  }
+}

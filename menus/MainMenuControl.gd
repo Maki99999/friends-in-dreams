@@ -32,6 +32,8 @@ func _ready():
 func _input(event):
 	if !(event is InputEventKey) || locked:
 		return
+	#if event.is_action_pressed("ui_debug"):
+		#SceneManager.change_scene("res://worlds/01/scene01.tscn") #TODO DEBUG
 	if event.is_action_pressed("ui_menu") && options_open:
 		play_sound_press()
 		close_options()

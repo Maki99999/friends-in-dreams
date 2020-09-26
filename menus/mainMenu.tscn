@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://menus/optionsMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://menus/MainMenuControl.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://menus/chet sevwel - Secret Lake Looping.wav" type="AudioStream" id=5]
 [ext_resource path="res://menus/button_sound.wav" type="AudioStream" id=6]
 [ext_resource path="res://menus/button_sound_2.wav" type="AudioStream" id=7]
+[ext_resource path="res://menus/SaveIcon.tscn" type="PackedScene" id=8]
 [ext_resource path="res://fonts/font_normal01.tres" type="DynamicFont" id=10]
 [ext_resource path="res://dialogue/Fade.gd" type="Script" id=20]
 [ext_resource path="res://menus/slight_up_and_down.tres" type="Material" id=29]
@@ -41,7 +42,7 @@ tracks/1/keys = {
 "values": [ true, true, false ]
 }
 
-[node name="World00" type="Node2D"]
+[node name="MainMenu" type="Node2D"]
 __meta__ = {
 "_edit_lock_": true
 }
@@ -330,6 +331,8 @@ bus = "FX"
 [node name="PressSound" type="AudioStreamPlayer" parent="GUI/Menu"]
 stream = ExtResource( 7 )
 bus = "FX"
+
+[node name="SaveIcon" parent="GUI" instance=ExtResource( 8 )]
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )

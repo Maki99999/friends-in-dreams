@@ -1,0 +1,11 @@
+{
+  "Start": {
+    "char_name": "Tree",
+    "text": "Bringe mir eine [color=#00FFFF]Goldmünze[/color] und ich gebe dir den Apfel.",
+	"face": "neutral.png",
+	"sound": "wood",
+	"sound_pitch": 1,
+	"sound_pitch_randomness": 0.3,
+	"type": "normal"
+  }
+}

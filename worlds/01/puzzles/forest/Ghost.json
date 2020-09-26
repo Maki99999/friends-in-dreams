@@ -1,0 +1,12 @@
+{
+  "Start": {
+    "char_name": "Misuzu",
+    "text": ["Hallo.",
+	"Ignoriere mich einfach, du musst als nächstes zurück nach links."],
+	"face": "normal.png",
+	"sound": "normal",
+	"sound_pitch": 1.3,
+	"sound_pitch_randomness": 0.2,
+	"type": "normal"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "Start": {
+    "char_name": "Tree",
+    "text": ".|.|.",
+	"face": "neutral.png",
+	"sound": "wood",
+	"sound_pitch": 1,
+	"sound_pitch_randomness": 0.3,
+	"type": "normal"
+  }
+}

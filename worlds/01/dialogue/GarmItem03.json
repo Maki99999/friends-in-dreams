@@ -1,0 +1,12 @@
+{
+  "Start": {
+    "char_name": "Garm",
+    "text": ["Es fehlt nur noch [color=#00FFFF]Gold[/color].",
+	"Vielleicht findest du in der Gegend etwas."],
+	"face": "normal.png",
+	"sound": "normal",
+	"sound_pitch": 0.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal"
+  }
+}

@@ -1,0 +1,32 @@
+Orte
+
+Blumenhügel
+Haus vor Hügel
+- Strommasten vom Haus zur Welt 2
+Apfelbaum
+- Rätsel davor
+Höhle
+- Maschine
+Verwinkelter dunkler tiefer Wald
+- Eingang, Mittelteil, Ziel
+Verlassenes überwuchertes Haus
+Eingang zu Welt 2
+
+
+Rätsel
+
+Vor Baum: Tor öffnet sich, wenn Figuren richtig gedreht sind.
+Maschine: Zwerg denkt zu kompliziert, MC löst Problem simpler.
+Wald: Umgebung beobachten, unterschiede feststellen, richtigen Weg damit ausfindig machen.
+Verlassenes Haus: Haus durchsuchen, Sachen kombinieren.
+
+
+Personen
+
+MC
+Mädchen
+Roboter
+Baum
+Zwerg
+Geist
+Torwächter für nächste Welt

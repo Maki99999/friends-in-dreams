@@ -1,0 +1,55 @@
+{
+  "Start": {
+    "char_name": "Garm",
+    "text": ["Wow! Hätte nicht gedacht, dass man das noch reparieren konnte.",
+	"Hast du gut gemacht. Willst du vielleicht unser Lehrling werden?"],
+	"face": "normal.png",
+	"sound": "normal",
+	"sound_pitch": 0.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "2"
+  },
+  "2": {
+    "char_name": "Rembry",
+    "text": "Nein...",
+	"sound": "normal",
+	"face": "normal.png",
+	"sound_pitch": 1.2,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "3"
+  },
+  "3": {
+    "char_name": "Garm",
+    "text": "Hahaha! Ich mach nur Spaß! Aber eine Belohnung wäre nicht schlecht.",
+	"face": "happy.png",
+	"sound": "normal",
+	"sound_pitch": 0.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "4"
+  },
+  "4": {
+    "char_name": "Garm",
+    "text": ["Wie wäre es damit: Du darfst die Maschine einmal benutzen.",
+	"Keine Sorge, ich helf dir auch dabei.",
+	"Einige Sachen fehen aber noch... Die Maschine braucht noch Gold und eine Form.",
+	"Du könntest warten, bis meine Brüder wiederkommen, ..."],
+	"face": "normal.png",
+	"sound": "normal",
+	"sound_pitch": 0.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "5"
+  },
+  "5": {
+    "char_name": "Garm",
+    "text": "... oder vielleicht findest du ja irgendwo in der Gegend [color=#00FFFF]Gold[/color] und eine [color=#00FFFF]Form[/color].",
+	"face": "wink.png",
+	"sound": "normal",
+	"sound_pitch": 0.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal"
+  },
+}

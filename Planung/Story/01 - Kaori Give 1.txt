@@ -1,0 +1,17 @@
+k: Kaori
+r: Rembry
+
+k Hast du jetzt endlich meinen Apfel dabei?
+r J-Ja. Hier.
+k Danke. Das ging schneller als erwartet.
+...
+Ja, dann...
+Ach Moment, ich wollte doch einen #1! Ja genau!
+Du hast die falsche Farbe gebracht, deswegen gilt die Abmachung nicht!
+Ha! Also musst du hier wohl noch eine Weile bleiben!
+r A-Aber-
+k Kein aber! Abmachung ist Abmachung!
+Bring mir einen #1 oder du musst hier bleiben! Das war die Abmachung.
+Während du das besorgst, räumt der alte Roboter das Gästezimmer für dich auf.
+r Okay...
+k Dann los los!

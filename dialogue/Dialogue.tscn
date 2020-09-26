@@ -1,0 +1,381 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://fonts/font_normal01.tres" type="DynamicFont" id=1]
+[ext_resource path="res://dialogue/Answers.gd" type="Script" id=2]
+[ext_resource path="res://dialogue/voices/normal/VoiceBeep01.wav" type="AudioStream" id=3]
+[ext_resource path="res://dialogue/background_light.png" type="Texture" id=4]
+[ext_resource path="res://dialogue/next_arrow.png" type="Texture" id=5]
+[ext_resource path="res://dialogue/background.png" type="Texture" id=6]
+[ext_resource path="res://dialogue/Answer.tscn" type="PackedScene" id=7]
+[ext_resource path="res://dialogue/Dialogue.gd" type="Script" id=8]
+[ext_resource path="res://dialogue/skip_circle.png" type="Texture" id=9]
+[ext_resource path="res://dialogue/skip_icon.png" type="Texture" id=10]
+
+[sub_resource type="Animation" id=1]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:anchor_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:anchor_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.6 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:anchor_bottom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.4, 1.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:margin_top")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ -33, -32.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:anchor_left")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.05, 0.6 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:anchor_right")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.45, 1.0 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "fade_in"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[node name="Dialogue" type="Control" groups=[
+"dialogue",
+]]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+player_path = NodePath("../../Inside/Entities/Player")
+time_btwn_letters = 0.06
+time_btwn_letters_fast = 0.025
+time_btwn_letters_long_mult = 8.0
+cooldown = 1.0
+cooldown_before_answers = 0.2
+letters_btwn_sound = 2
+letters_btwn_sound_fast = 3
+voice_normal = ExtResource( 3 )
+
+[node name="DialogueBox" type="MarginContainer" parent="."]
+anchor_top = 0.6
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="NinePatchRect" parent="DialogueBox"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 310.0
+margin_bottom = 61.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 32, 16 )
+patch_margin_left = 15
+patch_margin_top = 7
+patch_margin_right = 15
+patch_margin_bottom = 7
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="DialogueBox"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 310.0
+margin_bottom = 61.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 8
+custom_constants/margin_top = 8
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 8
+
+[node name="HSplitContainer" type="HSplitContainer" parent="DialogueBox/MarginContainer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 292.0
+margin_bottom = 43.0
+split_offset = 104
+
+[node name="Text" type="RichTextLabel" parent="DialogueBox/MarginContainer/HSplitContainer"]
+margin_right = 240.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/mono_font = ExtResource( 1 )
+custom_fonts/normal_font = ExtResource( 1 )
+custom_constants/line_separation = 2
+bbcode_enabled = true
+bbcode_text = "Aber wenn du zu lange brauchst, musst du für mich als Hausfrau arbeiten. [wave amp=20 freq=4]Hihihihi![/wave]"
+text = "Aber wenn du zu lange brauchst, musst du für mich als Hausfrau arbeiten. Hihihihi!"
+scroll_active = false
+
+[node name="Face" type="TextureRect" parent="DialogueBox/MarginContainer/HSplitContainer"]
+margin_left = 252.0
+margin_right = 284.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DialogueBox"]
+anims/idle = SubResource( 1 )
+anims/open_dialogue = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="DialogueBox"]
+wait_time = 0.001
+
+[node name="SmallArrow" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -8.0
+margin_top = -32.0
+margin_right = 8.0
+margin_bottom = -16.0
+texture = ExtResource( 5 )
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SmallArrow"]
+anims/blink = SubResource( 3 )
+anims/idle = SubResource( 4 )
+
+[node name="Answers" type="MarginContainer" parent="."]
+visible = false
+anchor_left = 1.05
+anchor_top = 0.1
+anchor_right = 1.45
+anchor_bottom = 0.6
+custom_constants/margin_right = 10
+custom_constants/margin_bottom = -8
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+normal_texture = ExtResource( 6 )
+highlight_texture = ExtResource( 4 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Answers"]
+margin_right = 118.0
+margin_bottom = 98.0
+custom_constants/separation = 23
+alignment = 2
+
+[node name="Answer" parent="Answers/VBoxContainer" instance=ExtResource( 7 )]
+margin_top = 98.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Answers"]
+anims/idle = SubResource( 5 )
+anims/open_answers = SubResource( 6 )
+
+[node name="Voice01" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+bus = "FX"
+
+[node name="Voice02" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+bus = "FX"
+
+[node name="Skip" type="MarginContainer" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -8.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureProgress" type="TextureProgress" parent="Skip"]
+margin_right = 16.0
+margin_bottom = 16.0
+texture_over = ExtResource( 10 )
+texture_progress = ExtResource( 9 )
+fill_mode = 4
+tint_under = Color( 1, 1, 1, 0 )
+radial_initial_angle = 161.9
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Skip"]
+anims/fade_in = SubResource( 7 )
+anims/idle = SubResource( 8 )

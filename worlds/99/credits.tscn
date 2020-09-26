@@ -1,0 +1,116 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://worlds/99/Credits.gd" type="Script" id=1]
+[ext_resource path="res://fonts/font_normal01.tres" type="DynamicFont" id=2]
+[ext_resource path="res://fonts/font_normal02.tres" type="DynamicFont" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "t"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect/RichTextLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5, 8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect/RichTextLabel2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 6.5, 8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ColorRect/RichTextLabel3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 6.5, 8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Credits" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.129412, 0.129412, 0.129412, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/ColorRect"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 104.0
+margin_top = 72.0
+margin_right = 200.0
+margin_bottom = 104.0
+custom_fonts/normal_font = ExtResource( 3 )
+text = "The End"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/Control/ColorRect"]
+margin_left = 88.0
+margin_top = 8.0
+margin_right = 184.0
+margin_bottom = 40.0
+custom_fonts/normal_font = ExtResource( 3 )
+text = "Credits"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="CanvasLayer/Control/ColorRect"]
+margin_left = 8.0
+margin_top = 40.0
+margin_right = 320.0
+margin_bottom = 232.0
+custom_fonts/normal_font = ExtResource( 2 )
+text = "Most Things: Maki99999
+
+Itch.io:
+16x16 Tileset by asakuraki
+Kitchen and more - RPG Tileset [16x16] by LimeZu
+m5x7 by Daniel Linssen
+
+opengameart.org:
+Car tire squeal skid loop by audible-edge (Tom Haigh)
+Secret Lake by Chet Sevwel"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Control"]
+anims/t = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="CanvasLayer/Control"]

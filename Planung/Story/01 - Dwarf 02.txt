@@ -1,0 +1,30 @@
+g: Garm
+r: Rembry
+
+g Wow! Hätte nicht gedacht, dass man das noch reparieren konnte.
+Hast du gut gemacht. Willst du vielleicht unser Lehrling werden?
+r Nein...
+g Hahaha! Ich mach nur Spaß! Aber eine Belohnung wäre nicht schlecht.
+Wie wäre es damit: Du darfst die Maschine einmal benutzen.
+Keine Sorge, ich helf dir dabei.
+Einige Sachen fehen aber noch... Die Maschine braucht noch Gold und eine Form.
+Du könntest warten, bis meine Brüder wiederkommen, ...
+oder vielleicht findest du ja irgendwo in der Gegend []Gold[] und eine []Form[].
+
+
+---
+
+
+g Ich helf dir beim Benutzen der Maschine.
+Wenn du nicht auf meine Brüder warten willst, kannst du in der Gegend []Gold[] und eine []Form[] suchen.
+
+
+
+---
+
+
+g Oh, du hast Gold gefunden! Jetzt fehlt nur noch eine []Form[].
+-
+g Oh, du hast eine Form gefunden! Jetzt fehlt nur noch []Gold[].
+--
+g Sehr schön, jetzt haben wir Gold und eine Form. Dann schmeiß ich mal die Maschine an.

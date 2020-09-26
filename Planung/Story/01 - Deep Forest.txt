@@ -1,0 +1,14 @@
+E - 00 - Schild
+W - 01 - Einfacher Pfeil
+N - 02 - Alles versperrt
+E - 03 - Trampelpfad
+W - 04 - Geist
+N - 05 - 2 Pfeile
+N - 06 - versteckter Pfeil
+W - 07 - flackerndes Licht
+S - 08 - 3 falsche Pfeile
+S - 09 - der Nicht-Überwucherte
+E - 10 - Pfeil
+S - 11 - Bewegung dahin (einzelne Käfer)
+O - 12 - Labyrinth aus vielen Pfeilen
+Ende

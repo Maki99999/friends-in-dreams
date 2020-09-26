@@ -1,0 +1,21 @@
+{
+  "Start": {
+    "char_name": "Rembry",
+    "text": "Wie soll ich da jetzt ran kommen?",
+	"sound": "normal",
+	"face": "normal.png",
+	"sound_pitch": 1.2,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "2"
+  },
+  "2": {
+    "char_name": "Robot",
+    "text": "...",
+	"face": "neutral.png",
+	"sound": "robot",
+	"sound_pitch": 1,
+	"sound_pitch_randomness": 0,
+	"type": "normal"
+  }
+}

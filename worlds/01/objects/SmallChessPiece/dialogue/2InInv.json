@@ -1,0 +1,26 @@
+{
+  "Start": {
+    "char_name": "Rembry",
+    "text": "Ein Podest. Soll ich etwas draufstellen?",
+	"sound": "normal",
+	"sound_pitch": 1.2,
+	"sound_pitch_randomness": 0.1,
+	"type": "branching",
+	"subtype": "thinking",
+	"next": ["End", "Yes1", "Yes2"],
+	"answers": ["Nein", "#1", "#2"]
+  },
+  "Yes1": {
+	"type": "execute",
+	"function": "place",
+	"parameters": ["#1"]
+  },
+  "Yes2": {
+	"type": "execute",
+	"function": "place",
+	"parameters": ["#2"]
+  },
+  "End": {
+	"type": "end"
+  }
+}

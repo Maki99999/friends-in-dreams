@@ -1,0 +1,88 @@
+{
+  "Start": {
+    "char_name": "Tree",
+    "text": "Hallo.",
+	"face": "neutral.png",
+	"sound": "wood",
+	"sound_pitch": 1,
+	"sound_pitch_randomness": 0.3,
+	"type": "normal",
+	"next": "2"
+  },
+  "2": {
+    "char_name": "Rembry",
+    "text": "!",
+	"sound": "normal",
+	"face": "surprise.png",
+	"sound_pitch": 1.7,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "3"
+  },
+  "3": {
+    "char_name": "Tree",
+    "text": "Du brauchst einen Apfel?",
+	"face": "neutral.png",
+	"sound": "wood",
+	"sound_pitch": 1,
+	"sound_pitch_randomness": 0.3,
+	"type": "normal",
+	"next": "4"
+  },
+  "4": {
+    "char_name": "Rembry",
+    "text": "J|-Ja.",
+	"sound": "normal",
+	"face": "normal.png",
+	"sound_pitch": 1.2,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "5"
+  },
+  "5": {
+    "char_name": "Tree",
+    "text": ["Nun gut, einen Apfel kann ich dir geben.", "Beachte aber, dass der Apfel keines deiner Probleme lösen wird."],
+	"face": "neutral.png",
+	"sound": "wood",
+	"sound_pitch": 1,
+	"sound_pitch_randomness": 0.3,
+	"type": "normal",
+	"next": "6"
+  },
+  "6": {
+    "char_name": "Rembry",
+    "text": "...?",
+	"sound": "normal",
+	"face": "normal.png",
+	"sound_pitch": 1.2,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "7"
+  },
+  "7": {
+    "char_name": "Tree",
+    "text": "Also, in welcher [color=#00FFFF]Farbe[/color] willst du den Apfel haben?",
+	"face": "neutral.png",
+	"sound": "wood",
+	"sound_pitch": 1,
+	"sound_pitch_randomness": 0.3,
+	"type": "branching",
+	"next": ["E1", "E2", "E3"],
+	"answers": ["#1", "#2", "#3"]
+  },
+  "E1": {
+	"type": "execute",
+	"function": "apple_fall",
+	"parameters": ["#1"]
+  },
+  "E2": {
+	"type": "execute",
+	"function": "apple_fall",
+	"parameters": ["#2"]
+  },
+  "E3": {
+	"type": "execute",
+	"function": "apple_fall",
+	"parameters": ["#3"]
+  }
+}

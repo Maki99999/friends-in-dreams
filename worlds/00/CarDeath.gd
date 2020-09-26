@@ -38,7 +38,8 @@ func _on_area_entered(area):
 		fx_wheels.stop()
 		music.stop()
 		yield(fx_crash, "finished")
-		get_tree().quit()
+		
+		SceneManager.change_scene("res://worlds/01/scene01.tscn")
 
 func move_car():
 	car.global_position.x = player.global_position.x + 20 * 16

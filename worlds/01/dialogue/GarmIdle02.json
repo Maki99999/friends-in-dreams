@@ -1,0 +1,11 @@
+{
+  "Start": {
+    "char_name": "Garm",
+    "text": ["Jo Kleiner. Ich warte immernoch auf meine Brüder."],
+	"face": "normal.png",
+	"sound": "normal",
+	"sound_pitch": 0.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal"
+  }
+}
