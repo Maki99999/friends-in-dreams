@@ -1,0 +1,24 @@
+{
+  "Start": {
+    "char_name": "Tree",
+    "text": ["Wie ich sehe, hast du eine Münze gefunden.",
+	"Nun denn, in welcher [color=#00FFFF]Farbe[/color] willst du den Apfel haben?"],
+	"face": "neutral.png",
+	"sound": "wood",
+	"sound_pitch": 1,
+	"sound_pitch_randomness": 0.3,
+	"type": "branching",
+	"next": ["E1", "E2"],
+	"answers": ["#1", "#2"]
+  },
+  "E1": {
+	"type": "execute",
+	"function": "apple_fall2",
+	"parameters": ["#1"]
+  },
+  "E2": {
+	"type": "execute",
+	"function": "apple_fall2",
+	"parameters": ["#2"]
+  }
+}

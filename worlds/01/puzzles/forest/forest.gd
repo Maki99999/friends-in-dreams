@@ -13,14 +13,14 @@ var is_teleporting = false
 const teleport_pos = {	"N": Vector2(-1096, -472), "E": Vector2(-952, -392),\
 						"S": Vector2(-1096, -328), "W": Vector2(-1256, -392)}
 #const directions = ["N", "E", "S", "W"]
-const correct_way = "EWNEWNNWSNESW_"
-const correct_way_reversed = "WESWESSENSWNE_"
+const correct_way = "EWNEWNNWSSESE_"
+const correct_way_reversed = "WESWESSENNWNW_"
 const id = "01forest01"
 
 func _ready():
+	$"07/Overlay/AnimationPlayer".play("flicker")
+	$"YSort/11/Sprite/AnimationPlayer".play("ants_move")
 	reset_scenery()
-	yield(get_tree(), "idle_frame")
-	restore({id:{"current_pos": 4}})
 
 func maybe_teleport(var to):
 	is_teleporting = true
@@ -34,21 +34,22 @@ func maybe_teleport(var to):
 		yield(teleport_out(), "completed")
 	is_teleporting = false
 
-func change_scenery(var old_depth, var depth):
-	timer.start(Utils.player.teleport_cooldown)
-	yield(timer, "timeout")
+func change_scenery(var old_depth, var depth, var instant = false):
+	if !instant:
+		timer.start(get_tree().get_nodes_in_group("Player")[0].teleport_cooldown)
+		yield(timer, "timeout")
 	if old_depth < scenery.size():
-		for obj in scenery[old_depth]:
+		for obj in scenery[int(old_depth)]:
 			obj.position = Vector2(8, 8) + Vector2(-320, 0)
 	if depth < scenery.size():
-		for obj in scenery[depth]:
+		for obj in scenery[int(depth)]:
 			obj.position = Vector2(8, 8) + Vector2(0, 0)
 
 func reset_scenery():
 	for one_scenery in scenery.values():
 		for obj in one_scenery:
 			obj.position = Vector2(8, 8) + Vector2(-320, 0)
-	change_scenery(100000, 0)
+	change_scenery(100000, 0, true)
 
 func teleport_out():
 	SaveLoad.save_game()
@@ -66,7 +67,7 @@ func restore(var saved_data):
 	var data = saved_data[id]
 	
 	current_pos = data["current_pos"]
-	change_scenery(0, current_pos)
+	change_scenery(0, current_pos, true)
 
 func _on_Up_area_entered(_area):
 	if !is_teleporting:

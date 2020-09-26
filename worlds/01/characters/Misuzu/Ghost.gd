@@ -29,9 +29,8 @@ func _process(_delta):
 		random_flicker = true
 
 func use():
-	#bis jetzt nur debug
-	get_tree().get_nodes_in_group("dialogue")[0].start_dialogue(\
-	"res://characters/side_characters/test_npc/testnpc_dialogue02.json",\
-	{"Test NPC": "res://characters/side_characters/test_npc/"})
-	
-	
+	if !Utils.player.inventory.has("mold"):
+		Utils.dialogue.start_dialogue(\
+				"res://worlds/01/dialogue/Misuzu01.json",\
+				{"Misuzu": "res://worlds/01/characters/Misuzu/faces/"})
+		Utils.player.inventory.append("mold")

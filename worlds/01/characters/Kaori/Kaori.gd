@@ -10,7 +10,7 @@ const wants_apples = ["green", "red", "purple"]
 const id = "01Kaori"
 
 func _ready():
-	state = "wait" #TODO: DEBUG
+	#state = "back2" #TODO: DEBUG
 	pass
 
 func use():
@@ -28,8 +28,11 @@ func use():
 			tree.state = "2apples"
 			tree.tree_after_block.is_enabled = false
 			SaveLoad.save_game()
-		_:
-			pass
+		"back2":
+			yield(dialogue.start_dialogue("res://worlds/01/dialogue/KaoriTempEnd.json", \
+				{"Rembry": "res://characters/mc/faces/", \
+				"Kaori": "res://worlds/01/characters/Kaori/faces/"}, false), "completed")
+			SceneManager.change_scene("res://worlds/99/credits.tscn")
 
 func dialogue_wait_apple():
 	var remaining = Utils.complement(wants_apples, Utils.player.inventory)

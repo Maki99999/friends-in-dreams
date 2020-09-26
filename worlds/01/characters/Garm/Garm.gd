@@ -9,7 +9,7 @@ var state = "init"
 const id = "01Garm"
 
 func _ready():
-	restore({id: {"state": "items"}}) #TODO Debug
+	#restore({id: {"state": "items"}}) #TODO Debug
 	pass
 
 func use():

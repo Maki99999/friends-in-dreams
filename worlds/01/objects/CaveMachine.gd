@@ -31,13 +31,13 @@ func _ready():
 	ui.visible = false
 	init_maze()
 	yield(get_tree(), "idle_frame")
-	restore({id: {"has_gold": false, "has_mold": false, "minigame_completed": true, "maze_nesw": maze_pregenerated, "completed": false}}) #TODO Debug
+	#restore({id: {"has_gold": false, "has_mold": false, "minigame_completed": true, "maze_nesw": maze_pregenerated, "completed": false}}) #TODO Debug
 
 func _input(event):
 	if !(event is InputEventKey) || !in_minigame:
 		return
-	if event.is_action_pressed("ui_debug"): #TODO DEBUG
-		minigame_complete()
+	#if event.is_action_pressed("ui_debug"): #TODO DEBUG
+	#	minigame_complete()
 	if event.is_action_pressed("ui_left"):
 		if selected_y == -10:
 			selected_x = 0

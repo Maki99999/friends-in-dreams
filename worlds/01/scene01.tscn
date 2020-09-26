@@ -1,4 +1,4 @@
-[gd_scene load_steps=227 format=2]
+[gd_scene load_steps=228 format=2]
 
 [ext_resource path="res://worlds/01/tiles/house02.png" type="Texture" id=1]
 [ext_resource path="res://characters/mc/Player.tscn" type="PackedScene" id=2]
@@ -93,6 +93,7 @@
 [ext_resource path="res://worlds/01/puzzles/forest/cross.png" type="Texture" id=91]
 [ext_resource path="res://worlds/01/puzzles/forest/ants.png" type="Texture" id=92]
 [ext_resource path="res://worlds/01/puzzles/forest/02aa.png" type="Texture" id=93]
+[ext_resource path="res://worlds/01/puzzles/forest/ForestEnd.gd" type="Script" id=94]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
@@ -2750,7 +2751,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=125]
 length = 6.5
 tracks/0/type = "animation"
-tracks/0/path = NodePath("../Entities/Player/AnimationPlayer")
+tracks/0/path = NodePath("../Main/Entities/Player/AnimationPlayer")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -3044,6 +3045,10 @@ script = ExtResource( 74 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Main/Entities/ForestEntrance"]
 shape = SubResource( 80 )
+
+[node name="Player" parent="Main/Entities" instance=ExtResource( 2 )]
+position = Vector2( 488, 680 )
+start_dir = "down"
 
 [node name="Layer2" type="TileMap" parent="Main"]
 tile_set = SubResource( 64 )
@@ -3389,10 +3394,6 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Player" parent="PuzzleForest/YSort" instance=ExtResource( 2 )]
-position = Vector2( 168, 152 )
-start_dir = "down"
-
 [node name="00" type="Node2D" parent="PuzzleForest/YSort"]
 position = Vector2( -312, 8 )
 __meta__ = {
@@ -3428,9 +3429,6 @@ __meta__ = {
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="PuzzleForest/YSort/01/Sign"]
-collision_layer = 3
-collision_mask = 3
-script = ExtResource( 75 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleForest/YSort/01/Sign/StaticBody2D"]
 shape = SubResource( 127 )
@@ -3449,9 +3447,6 @@ __meta__ = {
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="PuzzleForest/YSort/02/Tree"]
-collision_layer = 3
-collision_mask = 3
-script = ExtResource( 75 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleForest/YSort/02/Tree/StaticBody2D"]
 shape = SubResource( 128 )
@@ -3510,9 +3505,6 @@ __meta__ = {
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="PuzzleForest/YSort/05/Sign"]
-collision_layer = 3
-collision_mask = 3
-script = ExtResource( 75 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleForest/YSort/05/Sign/StaticBody2D"]
 shape = SubResource( 127 )
@@ -3525,9 +3517,6 @@ __meta__ = {
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="PuzzleForest/YSort/05/Sign2"]
-collision_layer = 3
-collision_mask = 3
-script = ExtResource( 75 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleForest/YSort/05/Sign2/StaticBody2D"]
 shape = SubResource( 127 )
@@ -3551,16 +3540,13 @@ __meta__ = {
 }
 
 [node name="Sign" type="Sprite" parent="PuzzleForest/YSort/08"]
-position = Vector2( 144, 96 )
-texture = ExtResource( 88 )
+position = Vector2( 160, 80 )
+texture = ExtResource( 85 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="PuzzleForest/YSort/08/Sign"]
-collision_layer = 3
-collision_mask = 3
-script = ExtResource( 75 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleForest/YSort/08/Sign/StaticBody2D"]
 shape = SubResource( 127 )
@@ -3573,9 +3559,6 @@ __meta__ = {
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="PuzzleForest/YSort/08/Sign2"]
-collision_layer = 3
-collision_mask = 3
-script = ExtResource( 75 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleForest/YSort/08/Sign2/StaticBody2D"]
 shape = SubResource( 127 )
@@ -3588,9 +3571,6 @@ __meta__ = {
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="PuzzleForest/YSort/08/Sign3"]
-collision_layer = 3
-collision_mask = 3
-script = ExtResource( 75 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleForest/YSort/08/Sign3/StaticBody2D"]
 shape = SubResource( 127 )
@@ -3618,13 +3598,12 @@ texture = ExtResource( 92 )
 centered = false
 offset = Vector2( -8, -8 )
 hframes = 3
-frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PuzzleForest/YSort/11/Sprite"]
 anims/ants_move = SubResource( 130 )
 
 [node name="12" type="Node2D" parent="PuzzleForest/YSort"]
-position = Vector2( 8, 8 )
+position = Vector2( -312, 8 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -3637,9 +3616,6 @@ __meta__ = {
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="PuzzleForest/YSort/12/Sign1"]
-collision_layer = 3
-collision_mask = 3
-script = ExtResource( 75 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleForest/YSort/12/Sign1/StaticBody2D"]
 shape = SubResource( 127 )
@@ -3652,9 +3628,6 @@ __meta__ = {
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="PuzzleForest/YSort/12/Sign2"]
-collision_layer = 3
-collision_mask = 3
-script = ExtResource( 75 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleForest/YSort/12/Sign2/StaticBody2D"]
 shape = SubResource( 127 )
@@ -3667,9 +3640,6 @@ __meta__ = {
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="PuzzleForest/YSort/12/Sign3"]
-collision_layer = 3
-collision_mask = 3
-script = ExtResource( 75 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleForest/YSort/12/Sign3/StaticBody2D"]
 shape = SubResource( 127 )
@@ -3682,9 +3652,6 @@ __meta__ = {
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="PuzzleForest/YSort/12/Sign4"]
-collision_layer = 3
-collision_mask = 3
-script = ExtResource( 75 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleForest/YSort/12/Sign4/StaticBody2D"]
 shape = SubResource( 127 )
@@ -3697,9 +3664,6 @@ __meta__ = {
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="PuzzleForest/YSort/12/Sign5"]
-collision_layer = 3
-collision_mask = 3
-script = ExtResource( 75 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleForest/YSort/12/Sign5/StaticBody2D"]
 shape = SubResource( 127 )
@@ -3712,9 +3676,6 @@ __meta__ = {
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="PuzzleForest/YSort/12/Sign6"]
-collision_layer = 3
-collision_mask = 3
-script = ExtResource( 75 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleForest/YSort/12/Sign6/StaticBody2D"]
 shape = SubResource( 127 )
@@ -3727,9 +3688,6 @@ __meta__ = {
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="PuzzleForest/YSort/12/Sign7"]
-collision_layer = 3
-collision_mask = 3
-script = ExtResource( 75 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleForest/YSort/12/Sign7/StaticBody2D"]
 shape = SubResource( 127 )
@@ -3742,9 +3700,6 @@ __meta__ = {
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="PuzzleForest/YSort/12/Sign8"]
-collision_layer = 3
-collision_mask = 3
-script = ExtResource( 75 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleForest/YSort/12/Sign8/StaticBody2D"]
 shape = SubResource( 127 )
@@ -3757,9 +3712,6 @@ __meta__ = {
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="PuzzleForest/YSort/12/Sign9"]
-collision_layer = 3
-collision_mask = 3
-script = ExtResource( 75 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleForest/YSort/12/Sign9/StaticBody2D"]
 shape = SubResource( 127 )
@@ -3772,9 +3724,6 @@ __meta__ = {
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="PuzzleForest/YSort/12/Sign10"]
-collision_layer = 3
-collision_mask = 3
-script = ExtResource( 75 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleForest/YSort/12/Sign10/StaticBody2D"]
 shape = SubResource( 127 )
@@ -3787,9 +3736,6 @@ __meta__ = {
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="PuzzleForest/YSort/12/Sign11"]
-collision_layer = 3
-collision_mask = 3
-script = ExtResource( 75 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleForest/YSort/12/Sign11/StaticBody2D"]
 shape = SubResource( 127 )
@@ -3802,9 +3748,6 @@ __meta__ = {
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="PuzzleForest/YSort/12/Sign12"]
-collision_layer = 3
-collision_mask = 3
-script = ExtResource( 75 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleForest/YSort/12/Sign12/StaticBody2D"]
 shape = SubResource( 127 )
@@ -3817,9 +3760,6 @@ __meta__ = {
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="PuzzleForest/YSort/12/Sign13"]
-collision_layer = 3
-collision_mask = 3
-script = ExtResource( 75 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleForest/YSort/12/Sign13/StaticBody2D"]
 shape = SubResource( 127 )
@@ -3833,6 +3773,16 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="PuzzleForest/YSort/13"]
 position = Vector2( 144, 80 )
 texture = ExtResource( 91 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="PuzzleForest/YSort/13/Sprite" groups=[
+"Saving",
+]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 94 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleForest/YSort/13/Sprite/StaticBody2D"]
+shape = SubResource( 127 )
 
 [node name="Ceiling" type="Sprite" parent="PuzzleForest"]
 texture = ExtResource( 72 )

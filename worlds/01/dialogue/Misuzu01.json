@@ -1,0 +1,12 @@
+{
+  "Start": {
+    "char_name": "Misuzu",
+    "text": ["Hallo, ich habe etwas für dich.",
+	"Eine Münzform. Die wird dir bestimmt weiter helfen."],
+	"face": "normal.png",
+	"sound": "normal",
+	"sound_pitch": 1.3,
+	"sound_pitch_randomness": 0.2,
+	"type": "normal"
+  }
+}

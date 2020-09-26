@@ -1,0 +1,42 @@
+{
+  "Start": {
+    "char_name": "Kaori",
+    "text": "Hast du jetzt endlich meinen Apfel dabei?",
+	"sound": "normal",
+	"face": "normal_left.png",
+	"sound_pitch": 1.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "1"
+  },
+  "1": {
+    "char_name": "Rembry",
+    "text": "J|-Ja. Hier.",
+	"sound": "normal",
+	"face": "normal.png",
+	"sound_pitch": 1.2,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "2"
+  },
+  "2": {
+    "char_name": "Kaori",
+    "text": ["Danke. Das hat aber lange gedauert.",
+	"Willst du vielleicht ab jetzt hier wohnen?"],
+	"sound": "normal",
+	"face": "normal.png",
+	"sound_pitch": 1.4,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"next": "3"
+  },
+  "3": {
+    "char_name": "Rembry",
+    "text": "Okay.",
+	"sound": "normal",
+	"face": "normal.png",
+	"sound_pitch": 1.2,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal"
+  }
+}

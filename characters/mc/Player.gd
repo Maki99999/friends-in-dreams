@@ -36,7 +36,7 @@ var pos_before_cutscene = null
 var inventory = []
 
 func _ready():
-	inventory = ["green"] #TODO DEBUG
+	#inventory = ["green", "gold", "mold", "coin", "red"] #TODO DEBUG
 	
 	animation_player.play(start_dir)
 	
@@ -236,8 +236,13 @@ func save():
 	var pos = global_position
 	if pos_before_cutscene != null:
 		pos = pos_before_cutscene
-	var saved_data = {	"x": pos.x, 
-						"y": pos.y, 
+	var saved_data = {	"x": pos.x,
+						"y": pos.y,
+						"parent": get_parent().get_path(),
+						"cam.limit_left": cam.limit_left,
+						"cam.limit_right": cam.limit_right,
+						"cam.limit_top": cam.limit_top,
+						"cam.limit_bottom": cam.limit_bottom,
 						"facing": facing,
 						"inventory": inventory}
 	return([id, saved_data])
@@ -245,8 +250,18 @@ func save():
 func restore(var saved_data):
 	var player_data = saved_data[id]
 	
-	global_position = Vector2(player_data["x"], player_data["y"])
 	inventory = player_data["inventory"]
+
+	cam.limit_left = player_data["cam.limit_left"]
+	cam.limit_right = player_data["cam.limit_right"]
+	cam.limit_top = player_data["cam.limit_top"]
+	cam.limit_bottom = player_data["cam.limit_bottom"]
 
 	facing = player_data["facing"]
 	animation_player.play(facing)
+
+	var new_parent = get_node(NodePath(player_data["parent"]))
+	get_parent().remove_child(self)
+	new_parent.add_child(self)
+	
+	global_position = Vector2(player_data["x"], player_data["y"])

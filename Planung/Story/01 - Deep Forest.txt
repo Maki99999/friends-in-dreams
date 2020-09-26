@@ -7,8 +7,8 @@ N - 05 - 2 Pfeile
 N - 06 - versteckter Pfeil
 W - 07 - flackerndes Licht
 S - 08 - 3 falsche Pfeile
-N - 09 - der Nicht-Überwucherte
-E - 10 - Turn-Around-Zeichen
+S - 09 - der Nicht-Überwucherte
+E - 10 - Pfeil
 S - 11 - Bewegung dahin (einzelne Käfer)
-W - 12 - Labyrinth aus vielen Pfeilen
+O - 12 - Labyrinth aus vielen Pfeilen
 Ende

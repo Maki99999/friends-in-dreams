@@ -29,7 +29,7 @@ func _process(_delta):
 
 func use():
 	Utils.dialogue.start_dialogue(\
-	"res://worlds/01/puzzles/forest/Ghost.json",\
-	{"Misuzu": "res://worlds/01/characters/Misuzu/faces/"})
+			"res://worlds/01/puzzles/forest/Ghost.json",\
+			{"Misuzu": "res://worlds/01/characters/Misuzu/faces/"})
 	
 	

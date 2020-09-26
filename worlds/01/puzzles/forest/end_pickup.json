@@ -1,0 +1,13 @@
+{
+  "Start": {
+    "char_name": "Rembry",
+    "text": ["Die Erde ist hier etwas lose...",
+	"Ah, ich sehe etwas Goldenes.",
+	"Ich habe einen Goldklumpen aufgehoben."],
+	"sound": "normal",
+	"sound_pitch": 1.2,
+	"sound_pitch_randomness": 0.1,
+	"type": "normal",
+	"subtype": "thinking"
+  }
+}

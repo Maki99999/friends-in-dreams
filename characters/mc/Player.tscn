@@ -437,7 +437,6 @@ texture = ExtResource( 1 )
 offset = Vector2( 0, -10 )
 vframes = 5
 hframes = 10
-frame = 13
 
 [node name="Camera2D" type="Camera2D" parent="NotTeleporting"]
 visible = false

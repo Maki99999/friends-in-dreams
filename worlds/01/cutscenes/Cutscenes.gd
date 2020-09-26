@@ -11,11 +11,10 @@ onready var take_fx = $takeFx
 var finished_cutscenes = []
 var current_cutscene = ""
 
-const dialogue_path_prefix = "res://worlds/01/dialogue/"
 const id = "01Cutscenes01"
 
 func _ready():
-	finished_cutscenes = ["Start"] #TODO DEBUG
+	#finished_cutscenes = ["Start"] #TODO DEBUG
 	if !("Start" in finished_cutscenes):
 		cutscene_start()
 	else:
@@ -39,7 +38,7 @@ func cutscene_start():
 	player.teleport_instant(start_pos)
 	anim.play("CutsceneStart")
 	yield(anim, "animation_finished")
-	dialogue.start_dialogue(dialogue_path_prefix + "/start.json", \
+	dialogue.start_dialogue("res://worlds/01/dialogue/start.json", \
 		{"Rembry": "res://characters/mc/faces/"}, true, self)
 	player.unfreeze()
 	end_cutscene("Start")
@@ -69,7 +68,7 @@ func cutscene_robot_start():
 		left = Vector2.RIGHT * 16
 
 	yield(robot.move_to(player.global_position + Vector2.DOWN * 16, "up"), "completed")
-	yield(dialogue.start_dialogue(dialogue_path_prefix + "RobotStart01.json", \
+	yield(dialogue.start_dialogue("res://worlds/01/dialogue/RobotStart01.json", \
 		{"Rembry": "res://characters/mc/faces/", \
 		"Robot": "res://worlds/01/characters/Robot/faces/"}), "completed")
 
@@ -77,7 +76,7 @@ func cutscene_robot_start():
 	yield(robot.move_to(player.global_position + left, null, 9.0), "completed")
 	yield(robot.move_to(player.global_position + Vector2.UP * 16, "down", 9.0, true), "completed")
 
-	yield(dialogue.start_dialogue(dialogue_path_prefix + "/RobotStart02.json", \
+	yield(dialogue.start_dialogue("res://worlds/01/dialogue/RobotStart02.json", \
 		{"Rembry": "res://characters/mc/faces/", \
 		"Robot": "res://worlds/01/characters/Robot/faces/"}), "completed")
 
@@ -97,7 +96,7 @@ func cutscene_robot_start():
 	yield(robot.move_to(player.global_position + left, null, 9.0), "completed")
 	yield(robot.move_to(player.global_position + Vector2.DOWN * 16, "up", 9.0, true), "completed")
 
-	yield(dialogue.start_dialogue(dialogue_path_prefix + "/RobotStart03.json", \
+	yield(dialogue.start_dialogue("res://worlds/01/dialogue/RobotStart03.json", \
 		{"Rembry": "res://characters/mc/faces/", \
 		"Robot": "res://worlds/01/characters/Robot/faces/"}), "completed")
 	
@@ -115,7 +114,7 @@ func cutscene_robot_start():
 	door.in_use = false
 	yield(player.move_to_mult([Vector2(-1208,392), Vector2(-1128,408), Vector2(-1112,408)]), "completed")
 	
-	yield(dialogue.start_dialogue(dialogue_path_prefix + "/KaoriStart01.json", \
+	yield(dialogue.start_dialogue("res://worlds/01/dialogue/KaoriStart01.json", \
 		{"Rembry": "res://characters/mc/faces/", \
 		"Robot": "res://worlds/01/characters/Robot/faces/", \
 		"Kaori": "res://worlds/01/characters/Kaori/faces/"}, true, robot), "completed")
@@ -151,7 +150,6 @@ func cutscene_tree_01b(var tree, var color):
 	yield(dialogue.start_dialogue("res://worlds/01/dialogue/Tree03.json", \
 					{"Rembry": "res://characters/mc/faces/"}), "completed")
 	
-	
 	timer.start(0.2)
 	yield(timer, "timeout")
 	tree.apple_take(color)
@@ -165,6 +163,22 @@ func cutscene_tree_01b(var tree, var color):
 	
 	player.unfreeze()
 	end_cutscene("Tree01")
+	
+func cutscene_tree_02b(var tree, var color):
+	var kaori = get_node("/root/World01/House/Entities/Kaori")
+	
+	yield(dialogue.start_dialogue("res://worlds/01/dialogue/Tree03.json", \
+					{"Rembry": "res://characters/mc/faces/"}), "completed")
+	
+	timer.start(0.2)
+	yield(timer, "timeout")
+	tree.apple_take(color)
+	take_fx.play()
+	
+	player.inventory.append(color)
+	kaori.state = "back2"
+	
+	player.unfreeze()
 
 func can_start_cutscene(var cutscene_name):
 	return !finished_cutscenes.has(cutscene_name) \
