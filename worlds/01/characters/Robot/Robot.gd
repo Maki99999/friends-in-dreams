@@ -88,6 +88,7 @@ func move_with_player(var points):
 
 func walk_to_gate01():
 	state = "to_gate01"
+	SaveLoad.save_game()
 	
 	yield(move_to(Vector2(-1208, 472), "down", 3.0), "completed")
 	yield(teleport(Vector2(600, 648), get_node("/root/World01/Main/Entities"), true, true), "completed")
@@ -97,9 +98,11 @@ func walk_to_gate01():
 							Vector2(1544, 440), \
 							Vector2(1544, 376)]), "completed")
 	state = "gate01"
+	SaveLoad.save_game()
 
 func walk_to_tree01():
 	state = "tree01"
+	SaveLoad.save_game()
 	yield(move_to(Vector2(1528, 376), null, 3.0), "completed")
 	yield(move_to(Vector2(1528, 216), null, 3.0), "completed")
 	yield(move_to(Vector2(1560, 216), "down", 3.0), "completed")

@@ -3907,6 +3907,42 @@ polygon = PoolVector2Array( 320, 192, 320, 112, 208, 112, 208, 128, 192, 128, 19
 
 [node name="Timer" type="Timer" parent="PuzzleForest"]
 
+[node name="Footsteps" type="Node2D" parent="."]
+visible = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="solidfootsteps" type="Area2D" parent="Footsteps"]
+collision_layer = 4
+collision_mask = 4
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Footsteps/solidfootsteps"]
+polygon = PoolVector2Array( -1328, -160, -912, -160, -912, 176, -1152, 176, -1152, 352, -1328, 352 )
+
+[node name="woodfootsteps" type="Area2D" parent="Footsteps"]
+collision_layer = 4
+collision_mask = 4
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Footsteps/woodfootsteps"]
+polygon = PoolVector2Array( -1328, 512, -976, 512, -976, 208, -1152, 208, -1152, 352, -1328, 352 )
+
+[node name="grassfootsteps" type="Area2D" parent="Footsteps"]
+collision_layer = 4
+collision_mask = 4
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Footsteps/grassfootsteps"]
+polygon = PoolVector2Array( -1664, -256, -512, -256, -512, 1280, 3328, 1280, 3328, -1280, -1664, -1280 )
+
 [node name="GUI" type="CanvasLayer" parent="."]
 
 [node name="Dialogue" parent="GUI" instance=ExtResource( 9 )]

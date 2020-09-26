@@ -30,7 +30,8 @@ func _process(_delta):
 
 func use():
 	if !Utils.player.inventory.has("mold"):
-		Utils.dialogue.start_dialogue(\
+		yield(Utils.dialogue.start_dialogue(\
 				"res://worlds/01/dialogue/Misuzu01.json",\
-				{"Misuzu": "res://worlds/01/characters/Misuzu/faces/"})
+				{"Misuzu": "res://worlds/01/characters/Misuzu/faces/"}), "completed")
 		Utils.player.inventory.append("mold")
+		SaveLoad.save_game()

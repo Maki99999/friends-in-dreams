@@ -33,6 +33,7 @@ var use_on_cooldown = false
 var proc_sem = 1
 var is_teleporting = false
 var pos_before_cutscene = null
+var cam_before_cutscene = null
 var inventory = []
 
 func _ready():
@@ -103,7 +104,7 @@ func try_moving():
 
 func move(var dir):
 	facing = dir
-	if Input.is_action_pressed("ui_cancel"):
+	if Input.is_action_pressed("ui_cancel") && pos_before_cutscene == null:
 		animation_player.play("walk_" + dir + "_fast")
 	else:
 		animation_player.play("walk_" + dir)
@@ -114,7 +115,7 @@ func move(var dir):
 	not_teleporting.position = start_position_local
 	
 	var current_walk_speed = speed
-	if Input.is_action_pressed("ui_cancel"):
+	if Input.is_action_pressed("ui_cancel") && pos_before_cutscene == null:
 		current_walk_speed *= 1.8
 	tween.interpolate_property(not_teleporting, "position", start_position_local, Vector2.ZERO, 1.0/current_walk_speed, Tween.TRANS_LINEAR)
 	
@@ -234,15 +235,14 @@ func play_footstep_sound():
 
 func save():
 	var pos = global_position
+	var camlimit = [cam.limit_left, cam.limit_right, cam.limit_top, cam.limit_bottom]
 	if pos_before_cutscene != null:
 		pos = pos_before_cutscene
+		camlimit = cam_before_cutscene
 	var saved_data = {	"x": pos.x,
 						"y": pos.y,
 						"parent": get_parent().get_path(),
-						"cam.limit_left": cam.limit_left,
-						"cam.limit_right": cam.limit_right,
-						"cam.limit_top": cam.limit_top,
-						"cam.limit_bottom": cam.limit_bottom,
+						"camlimit": camlimit,
 						"facing": facing,
 						"inventory": inventory}
 	return([id, saved_data])
@@ -252,10 +252,10 @@ func restore(var saved_data):
 	
 	inventory = player_data["inventory"]
 
-	cam.limit_left = player_data["cam.limit_left"]
-	cam.limit_right = player_data["cam.limit_right"]
-	cam.limit_top = player_data["cam.limit_top"]
-	cam.limit_bottom = player_data["cam.limit_bottom"]
+	cam.limit_left = player_data["camlimit"][0]
+	cam.limit_right = player_data["camlimit"][1]
+	cam.limit_top = player_data["camlimit"][2]
+	cam.limit_bottom = player_data["camlimit"][3]
 
 	facing = player_data["facing"]
 	animation_player.play(facing)

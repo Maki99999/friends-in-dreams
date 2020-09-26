@@ -15,6 +15,7 @@ const id = "01Cutscenes01"
 
 func _ready():
 	#finished_cutscenes = ["Start"] #TODO DEBUG
+	yield(get_tree(),"idle_frame")
 	if !("Start" in finished_cutscenes):
 		cutscene_start()
 	else:
@@ -23,11 +24,13 @@ func _ready():
 func start_cutscene(var name, var save_pos):
 	current_cutscene = name
 	player.pos_before_cutscene = save_pos
+	player.cam_before_cutscene = [player.cam.limit_left, player.cam.limit_right, player.cam.limit_top, player.cam.limit_bottom]
 
 func end_cutscene(var name):
 	finished_cutscenes.append(name)
 	current_cutscene = ""
 	player.pos_before_cutscene = null
+	player.cam_before_cutscene = null
 	SaveLoad.save_game()
 
 func cutscene_start():
@@ -120,7 +123,6 @@ func cutscene_robot_start():
 		"Kaori": "res://worlds/01/characters/Kaori/faces/"}, true, robot), "completed")
 	
 	player.unfreeze()
-	timer.queue_free()
 	end_cutscene("RobotStart")
 
 func cutscene_tree_01(var tree):

@@ -11,6 +11,7 @@ func use():
 				"res://worlds/01/puzzles/forest/end_pickup.json",\
 				{"Rembry": "res://characters/mc/faces/"}, true), "completed")
 		Utils.player.inventory.append("gold")
+		SaveLoad.save_game()
 
 func save():
 	var saved_data = {"has_been_used": has_been_used}
