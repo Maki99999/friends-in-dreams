@@ -50,6 +50,8 @@ züge
 spielkarten
 schnee
 creepy-sweet
+Disco, Musik ist nur regelmäßiger beat, jeden beat geht das Licht an, das dann wieder ganz dunkel wird. Jeden beat sieht man npcs in anderer position
+Wolkenwelt
 
 
 kleine Orte:
@@ -98,6 +100,9 @@ künstliche sternendecke, manche sterne beweglich, man muss sternenbilder erstel
 sliding puzzle(eis)
 sokoban
 im spiegel andere sachen
+limitierte schrittzahl statt limitierte Zeit
+Zahlen entschlüsseln(Zahlen in eigener font, Zahlen teilweise verdeckt oder so)
+Farbrätsel a la the witness, z. B. Zwei gleich aussehende Schlüssel sehen hinter einer gefärbten Glasscheibe unterschiedlich aus
 
 alles obrige in verschiedenen schwierigkeitsgraden
 bei jedem rätsel eienn twist rein, z.b.  gleise müssen repariert werden oder ein kabel muss ersetzt werden
